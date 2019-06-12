@@ -19,10 +19,9 @@ export default class Tokens extends Component {
   }
 
   componentWillMount() {
-    // let accountId = window.nearlib.dev.myAccountId
     // This is where we get into trouble with global vars
-    // TODO: add sane state management
-    let loggedIn = this.checkLoggedIn();
+    // TODO: add sane state management and dependency injection
+    let loggedIn = window.walletAccount.isSignedIn();
     if (loggedIn) {
       this.signedInFlow();
     } else {
