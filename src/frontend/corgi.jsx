@@ -18,10 +18,11 @@ export default class Tokens extends Component {
     this.requestSignOut = this.requestSignOut.bind(this);
   }
 
-  async componentWillMount() {
+  componentWillMount() {
     // This is where we get into trouble with global vars
     // TODO: add sane state management and dependency injection
-    let loggedIn = await this.checkLoggedIn();
+    // This is more dependable than using the async 
+    let loggedIn = window.walletAccount.isSignedIn();
     if (loggedIn) {
       this.signedInFlow();
     } else {
@@ -66,8 +67,8 @@ export default class Tokens extends Component {
     )
   }
 
-  async requestSignOut() {
-    this.props.wallet.signOut()
+  requestSignOut() {
+    this.props.wallet.signOut();
     this.signedOutFlow();
   }
 

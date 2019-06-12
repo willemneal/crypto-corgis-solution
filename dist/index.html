@@ -12,7 +12,7 @@
   <div class="container">
     <h1>Hello, you have got a Corgi!</h1>
 
-    <p>Here is how you use can use it from JavaScript.</p>
+    <p>Here is how you use can interact with the smart contract powering these Corgis. See below for a simple frontend for corgis with uniqe fur color!</p>
 
     <p>To init:</p>
     <pre>contract.init({initialOwner: nearlib.dev.myAccountId})
@@ -22,13 +22,10 @@
     <pre>contract.createRandomCorgi({name: "Winifred The Corgi King", seed: 1})
     </pre>
 
-    <p>To check your balance:</p>
-    <pre>contract.balanceOf({owner: nearlib.dev.myAccountId})
-    </pre>
-
     <p>To send a Corgi:</p>
     <pre>contract.transfer({to: 'bob.near', tokenId: 'a233safhj23'})
     </pre>
+
     <div id="tokens">
       Loading...
     </div>
