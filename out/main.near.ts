@@ -2,8 +2,8 @@
       import { storage, near, base64 } from "./near";
       import { JSONEncoder } from "./json/encoder";
       import { JSONDecoder, ThrowingJSONHandler, DecoderState } from "./json/decoder";
-      import {init as wrapped_init, login as wrapped_login, balanceOf as wrapped_balanceOf, ownerOf as wrapped_ownerOf, totalSupply as wrapped_totalSupply, name as wrapped_name, symbol as wrapped_symbol, approve as wrapped_approve, takeOwnership as wrapped_takeOwnership, transfer as wrapped_transfer, generateRandomDna as wrapped_generateRandomDna, generateRandomColorHex as wrapped_generateRandomColorHex, createRandomCorgi as wrapped_createRandomCorgi, getCorgi as wrapped_getCorgi, setCorgi as wrapped_setCorgi, getSender as wrapped_getSender, getCorgisByOwner as wrapped_getCorgisByOwner, setBalance as wrapped_setBalance} from "./main";
-
+      import {init as wrapped_init, login as wrapped_login, balanceOf as wrapped_balanceOf, ownerOf as wrapped_ownerOf, totalSupply as wrapped_totalSupply, name as wrapped_name, symbol as wrapped_symbol, transfer as wrapped_transfer, generateRandomDna as wrapped_generateRandomDna, generateRandomColorHex as wrapped_generateRandomColorHex, createRandomCorgi as wrapped_createRandomCorgi, getCorgi as wrapped_getCorgi, setCorgi as wrapped_setCorgi, getSender as wrapped_getSender, getCorgisByOwner as wrapped_getCorgisByOwner, setBalance as wrapped_setBalance} from "./main";
+      
       // Runtime functions
       @external("env", "return_value")
       declare function return_value(value_len: usize, value_ptr: usize): void;
@@ -371,117 +371,6 @@ if (result != null) {
         return_value(val.byteLength, val.buffer.data);
       
 }
-export class __near_ArgsParser_approve extends ThrowingJSONHandler {
-        buffer: Uint8Array;
-        decoder: JSONDecoder<__near_ArgsParser_approve>;
-        handledRoot: boolean = false;
-      
-__near_param_to: String;
-__near_param_tokenId: String;
-setString(name: string, value: String): void {
-if (name == "to") {
-            this.__near_param_to = <String>value;
-            return;
-          }
-if (name == "tokenId") {
-            this.__near_param_tokenId = <String>value;
-            return;
-          }
-
-        super.setString(name, value);
-      }
-setNull(name: string): void {
-if (name == "to") {
-        this.__near_param_to = <String>null;
-        return;
-      }
-if (name == "tokenId") {
-        this.__near_param_tokenId = <String>null;
-        return;
-      }
-
-      super.setNull(name);
-    }
-
-      pushObject(name: string): bool {
-if (!this.handledRoot) {
-      assert(name == null);
-      this.handledRoot = true;
-      return true;
-    } else {
-      assert(name != null);
-    }
-
-        return super.pushObject(name);
-      }
-
-      pushArray(name: string): bool {
-
-        return super.pushArray(name);
-      }
-}
-export function approve(): void {
-      // Reading input bytes.
-      let json = storage._internalReadBytes(4, 0, 0);
-      let handler = new __near_ArgsParser_approve();
-      handler.buffer = json;
-      handler.decoder = new JSONDecoder<__near_ArgsParser_approve>(handler);
-      handler.decoder.deserialize(json);
-wrapped_approve(
-handler.__near_param_to,handler.__near_param_tokenId
-);
-}
-export class __near_ArgsParser_takeOwnership extends ThrowingJSONHandler {
-        buffer: Uint8Array;
-        decoder: JSONDecoder<__near_ArgsParser_takeOwnership>;
-        handledRoot: boolean = false;
-      
-__near_param_tokenId: String;
-setString(name: string, value: String): void {
-if (name == "tokenId") {
-            this.__near_param_tokenId = <String>value;
-            return;
-          }
-
-        super.setString(name, value);
-      }
-setNull(name: string): void {
-if (name == "tokenId") {
-        this.__near_param_tokenId = <String>null;
-        return;
-      }
-
-      super.setNull(name);
-    }
-
-      pushObject(name: string): bool {
-if (!this.handledRoot) {
-      assert(name == null);
-      this.handledRoot = true;
-      return true;
-    } else {
-      assert(name != null);
-    }
-
-        return super.pushObject(name);
-      }
-
-      pushArray(name: string): bool {
-
-        return super.pushArray(name);
-      }
-}
-export function takeOwnership(): void {
-      // Reading input bytes.
-      let json = storage._internalReadBytes(4, 0, 0);
-      let handler = new __near_ArgsParser_takeOwnership();
-      handler.buffer = json;
-      handler.decoder = new JSONDecoder<__near_ArgsParser_takeOwnership>(handler);
-      handler.decoder.deserialize(json);
-wrapped_takeOwnership(
-handler.__near_param_tokenId
-);
-}
 export class __near_ArgsParser_transfer extends ThrowingJSONHandler {
         buffer: Uint8Array;
         decoder: JSONDecoder<__near_ArgsParser_transfer>;
@@ -724,7 +613,7 @@ handler.__near_param_name,handler.__near_param_seed
       
 if (result != null) {
           encoder.pushObject(null);
-          __near_encode_Corgi(<Corgi>result, encoder);
+          __near_encode_Corgi(result, encoder);
           encoder.popObject();
         } else {
           encoder.setNull(null);
@@ -789,7 +678,7 @@ handler.__near_param_tokenId
       
 if (result != null) {
           encoder.pushObject(null);
-          __near_encode_Corgi(<Corgi>result, encoder);
+          __near_encode_Corgi(result, encoder);
           encoder.popObject();
         } else {
           encoder.setNull(null);
@@ -824,7 +713,7 @@ if (!this.handledRoot) {
       assert(name != null);
     }
 if (name == "corgi") {
-          this.__near_param_corgi = <Corgi>__near_decode_Corgi(this.buffer, this.decoder.state);
+          this.__near_param_corgi = __near_decode_Corgi(this.buffer, this.decoder.state);
           return false;
         }
 
@@ -953,7 +842,7 @@ handler.__near_param_owner
       
 if (result != null) {
           encoder.pushObject(null);
-          __near_encode_CorgiArray(<CorgiArray>result, encoder);
+          __near_encode_CorgiArray(result, encoder);
           encoder.popObject();
         } else {
           encoder.setNull(null);
@@ -976,7 +865,7 @@ if (name == "owner") {
             return;
           }
 if (name == "balance") {
-            this.__near_param_balance = U64.parseInt(value);
+              this.__near_param_balance = U64.parseInt(value);
               return;
             }
 

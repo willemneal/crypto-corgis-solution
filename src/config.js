@@ -1,6 +1,7 @@
 (function() {
-    const CONTRACT_NAME = 'two.taters'; /* TODO: fill this in! */
+    const CONTRACT_NAME = 'one.taters'; /* TODO: fill this in! */
     const DEFAULT_ENV = 'local';
+    const APP_NAME = "Crypto Corgis";
 
     function getConfig(env) {
         switch (env) {
@@ -10,12 +11,14 @@
                     nodeUrl: 'https://studio.nearprotocol.com/devnet',
                     helperUrl: 'https://studio.nearprotocol.com/contract-api',
                     contractName: CONTRACT_NAME,
+                    appName: APP_NAME
                 };
             case 'local':
             case 'test':
                 return {
                     nodeUrl: 'http://localhost:3030',
-                    contractName: CONTRACT_NAME
+                    contractName: CONTRACT_NAME,
+                    appName: APP_NAME
                 };
             default:
                 throw Error(`Unconfigured environment '${env}'. Can be configured in src/config.js.`);

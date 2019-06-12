@@ -1,22 +1,48 @@
 import React, {Component} from 'react';
 
 export default class Tokens extends Component {
-
   constructor(props) {
     super(props);
-    this.getCorgis = this.getCorgis.bind(this);
     this.state = {
       loaded: false,
       corgis: [],
-      newCorgiName: ""
+      newCorgiName: "",
+      loggedIn: false
     }
+    this.getCorgis = this.getCorgis.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.checkLoggedIn = this.checkLoggedIn.bind(this);
+    this.signedInFlow = this.signedInFlow.bind(this);
+    this.requestSignIn = this.requestSignIn.bind(this);
+    this.requestSignOut = this.requestSignOut.bind(this);
   }
 
   componentWillMount() {
-    let accountId = window.nearlib.dev.myAccountId
+    // let accountId = window.nearlib.dev.myAccountId
+    // This is where we get into trouble with global vars
+    // TODO: add sane state management
+    let loggedIn = this.checkLoggedIn();
+    if (loggedIn) {
+      this.signedInFlow();
+    } else {
+      this.signedOutFlow();
+    }
+  }
+
+  signedOutFlow() {
+    this.setState({
+      loggedIn:false,
+      loaded: true
+    });
+  }
+
+  async signedInFlow() {
+    const accountId = await this.props.wallet.getAccountId();
     this.getCorgis(accountId).then(res => {
+      this.setState({
+        loggedIn: true
+      });
       if (res == null || res.corgis.length < 1 || res.corgis == null) {
         this.setState({
           loaded: true
@@ -24,10 +50,26 @@ export default class Tokens extends Component {
       } else {
         this.setState({
           corgis: res.corgis,
-          loaded:true
+          loaded: true
         });
       }
     })
+  }
+
+  async checkLoggedIn() {
+    await this.props.wallet.isSignedIn();
+  }
+
+  async requestSignIn() {
+    await this.props.wallet.requestSignIn(
+      window.nearConfig.contractName,
+      window.nearConfig.appName
+    )
+  }
+
+  async requestSignOut() {
+    this.props.wallet.signOut()
+    this.signedOutFlow();
   }
 
   getCorgis(owner) {
@@ -71,51 +113,115 @@ export default class Tokens extends Component {
   }
 
   render() {
-    console.log("called")
-    if (this.state.loaded && this.state.corgis.length > 0) {
-      let corgiComponents = this.state.corgis.map(corgi => {
-        return(
-          <li key= {corgi.dna}>
-            <Corgi key = {corgi.dna}
-                   name = {corgi.name}
-                   color = {corgi.color}/>
-          </li>
-        )
-      })
-      return(
-        <div>
-          <input id="newCorgiName" type="text" placeholder="Corgi name" onChange={this.handleChange} value={this.state.newCorgiName} />
-          <button onClick={this.handleSubmit}>Create Corgi!</button>
-          <ul>
-            { corgiComponents }
-          </ul>
-        </div>
-      )
-    } else if (!this.state.loaded) {
-      return <p>Loading...</p>
-    } else {
+    if (this.state.loaded && this.state.loggedIn) {
       return (
         <div>
-          <p>Create a corgi!</p>
-          <input id="newCorgiName" type="text" placeholder="Corgi name" onChange={this.handleChange} value={this.state.newCorgiName} />
-          <button onClick={this.handleSubmit}>Create Corgi!</button>
+          <Button action={this.requestSignOut} description="Sign out" />
+          <p>
+            <input 
+              id="newCorgiName"
+              type="text"
+              placeholder="Corgi name"
+              onChange={this.handleChange}
+              value={this.state.newCorgiName} />
+            <button onClick={this.handleSubmit}>Create Corgi!</button>
+          </p>
+          {this.state.corgis.length > 0 ? 
+            <ul>
+              <CorgiComponents 
+                trigger={this.signedInFlow} 
+                contract={this.props.contract} 
+                corgis={this.state.corgis} />
+            </ul>
+          : ""}
         </div>
       )
+    } else if (this.state.loaded) {
+      return (
+        <Button action={this.requestSignIn} description="Please Log In" />
+      )
+    } else {
+      return ("Loading...");
     }
   }
 }
 
-// function Button(props) {
-//   return(
-//     <div>
-//       <button onClick={props.login()}>Login</button>
-//     </div>
-//   )
-// }
+function CorgiComponents(props) {
+  return props.corgis.map(corgi => {
+    return (
+      <li key={corgi.dna}>
+        <Corgi 
+          trigger={props.trigger}
+          contract={props.contract}
+          dna={corgi.dna}
+          name={corgi.name}
+          color={corgi.color} />
+      </li>
+    )
+  })
+}
+
+function Button(props) {
+  return(
+    <button onClick={props.action}>{props.description}</button>
+  )
+}
+
+class TransferCorgi extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipient: "",
+      loading: false
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.transferCorgi = this.transferCorgi.bind(this);
+  }
+
+  transferCorgi(e) {
+    e.preventDefault();
+    this.setState({loading: true});
+    console.log(this.props.corgiDNA, this.state.recipient);
+    this.props.contract.transfer({
+      to: this.state.recipient,
+      tokenId: this.props.corgiDNA})
+    .then(res => {
+      this.props.trigger();
+      this.setState({loading: false});
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
+  
+  render() {
+    return (
+      <div>
+        {!this.state.loading ?
+          <React.Fragment>
+            <input id="recipient"
+              type="text"
+              placeholder="Corgi recipient"
+              onChange={this.handleChange}
+              value={this.state.recipient} />
+            <Button action={this.transferCorgi} description="Transfer" />
+          </React.Fragment>
+        : "Loading..."}
+      </div>
+    )
+  }
+}
 
 class Corgi extends Component {
   render () {
-    let specificColor = { backgroundColor: this.props.color };
+    let specificColor = { 
+      backgroundColor: this.props.color 
+    };
     return (
       <div className="wrapper">
         <div className="resize" id="corgi_wrap">
@@ -149,7 +255,16 @@ class Corgi extends Component {
             </div>
           </div>
         </div>
+        <div>
+        </div>
         <div className="note">Drag for length</div>
+        <div>
+          <TransferCorgi
+            trigger={this.props.trigger}
+            contract={this.props.contract}
+            corgiDNA={this.props.dna}
+            handleChange={this.handleChange} />
+        </div>
         <div className="note">{this.props.name}</div>
       </div>
     )

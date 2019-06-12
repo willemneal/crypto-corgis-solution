@@ -21,7 +21,6 @@ export function init(initialOwner: string): void {
 }
 
 // Collections where we store data
-let approvals = collections.map<string, string>("a");
 let balances = collections.map<string, u64>("b");
 let corgis = collections.map<string, Corgi>("c");
 let corgisByOwner = collections.map<string, CorgiArray>("co");
@@ -51,43 +50,40 @@ export function symbol(): string {
   return SYMBOL;
 }
 
-export function approve(to: string, tokenId: string): void {
+export function transfer(to: string, tokenId: string):void {
   let corgi = getCorgi(tokenId);
-  assert(corgi.owner == context.sender, "Corgi does not belong to you");
-  approvals.set(tokenId, to);
+  assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
+  incrementNewOwnerCorgis(to, tokenId);
+  decrementOldOwnerCorgis(corgi.owner, tokenId);
 }
 
-export function takeOwnership(tokenId: string): void {
-  let approvedParty = approvals.get(tokenId);
-  assert(approvedParty === context.sender, "You are not approved to take this Corgi")
-  let corgi = corgis.get(tokenId);
-  assert(corgi == null, "Corgi does not exist");
-  corgi.owner = context.sender;
-  setCorgi(corgi);
-  approvals.delete(tokenId);
-}
-
-export function transfer(to: string, tokenId: string): void {
+function incrementNewOwnerCorgis(to: string, tokenId: string):void {
   let corgi = getCorgi(tokenId);
-  assert(corgi == null, "corgi does not exist");
-  let owner = corgi.owner;
-  assert(owner === context.sender, "corgi does not belong to " + context.sender);
-  let ownerBalance = balanceOf(owner);
-  setBalance(owner, ownerBalance - 1);
-  let receiverBalance = balanceOf(to);
-  setBalance(to, receiverBalance + 1);
   corgi.owner = to;
+  near.log(to);
+  setCorgisByOwner(corgi);
   setCorgi(corgi);
-  approvals.delete(tokenId);
 }
 
-// Corgi specific code
+function decrementOldOwnerCorgis(from: string, tokenId: string):void {
+  let _corgis = corgisByOwner.get(from).corgis;
+  for (let i = 0; i < _corgis.length; i++) {
+    if (tokenId == _corgis[i].dna) {
+      _corgis.splice(i, 1);
+      near.log("match");
+    }
+  }
+  let oca = new CorgiArray()
+  oca.corgis = _corgis;
+  corgisByOwner.set(from, oca);
+}
+
 function updateBalance(owner: string, increment: u64): void {
   let balance = balanceOf(owner);
   if (balance) {
     near.log(`${balance}`);
   } else {
-    near.log("issues")
+    near.log("issues");
   }
 }
 
