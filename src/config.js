@@ -1,5 +1,5 @@
 (function() {
-    const CONTRACT_NAME = 'one.taters'; /* TODO: fill this in! */
+    const ACCOUNT_ID = 'one.taters'; /* TODO: fill this in! */
     const DEFAULT_ENV = 'local';
     const APP_NAME = "Crypto Corgis";
 
@@ -10,14 +10,14 @@
                 return {
                     nodeUrl: 'https://studio.nearprotocol.com/devnet',
                     helperUrl: 'https://studio.nearprotocol.com/contract-api',
-                    contractName: CONTRACT_NAME,
+                    contractName: ACCOUNT_ID,
                     appName: APP_NAME
                 };
             case 'local':
             case 'test':
                 return {
                     nodeUrl: 'http://localhost:3030',
-                    contractName: CONTRACT_NAME,
+                    contractName: ACCOUNT_ID,
                     appName: APP_NAME
                 };
             default:
