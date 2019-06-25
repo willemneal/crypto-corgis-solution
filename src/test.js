@@ -16,26 +16,26 @@ describe("Greeter", function() {
       const contractName = testSettings.contractName ?
         testSettings.contractName :
         (new URL(window.location.href)).searchParams.get("contractName");
-      contract = await near.loadContract(contractName, {
-        viewMethods: ["totalSupply", "balanceOf", "allowance", "ownerOf", "name", "symbol", "getCorgisByOwner", "getCorgi", "getSender", "generateRandomDna", "generateRandomColorHex"],
-        changeMethods: ["init", "transfer", "approve", "transferFrom", "createRandomCorgi", "takeOwnership", "setCorgi", "setCorgisByOwner", "setBalance"],
-        sender: accountId
-      });
+      // contract = await near.loadContract(contractName, {
+      //   viewMethods: ["totalSupply", "balanceOf", "allowance", "ownerOf", "name", "symbol", "getCorgisByOwner", "getCorgi", "getSender", "generateRandomDna", "generateRandomColorHex"],
+      //   changeMethods: ["init", "transfer", "approve", "transferFrom", "createRandomCorgi", "takeOwnership", "setCorgi", "setCorgisByOwner", "setBalance"],
+      //   sender: accountId
+      // });
     });
 
     // Multiple tests can be described below. Search Jasmine JS for documentation.
-    describe("Tokens", function() {
-      beforeAll(async function() {
-        // There can be some common setup for each test.
-        contract.init({
-          initialOwner: accountId
-        })
-      });
+  //   describe("Tokens", function() {
+  //     beforeAll(async function() {
+  //       // There can be some common setup for each test.
+  //       contract.init({
+  //         initialOwner: accountId
+  //       })
+  //     });
 
-      it("gets the total supply", async function() {
-        const result = await contract.totalSupply();
-        expect(result).toBe("420");
-      });
-  });
+  //     it("gets the total supply", async function() {
+  //       const result = await contract.totalSupply();
+  //       expect(result).toBe("420");
+  //     });
+  // });
 });
 // << tests-snippet
