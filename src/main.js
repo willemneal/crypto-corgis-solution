@@ -25,29 +25,29 @@ async function doInitContract() {
     new nearlib.LocalNodeConnection(nearConfig.nodeUrl),
   ));
 
-  // window.contract = await near.loadContract(nearConfig.contractName, {
-  //   viewMethods: [
-  //     "totalSupply",
-  //     "balanceOf",
-  //     "allowance",
-  //     "ownerOf",
-  //     "name",
-  //     "symbol",
-  //     "getCorgisByOwner",
-  //     "getCorgi",
-  //     "getSender"],
-  //   changeMethods: [
-  //     "init",
-  //     "transfer",
-  //     "approve",
-  //     "transferFrom",
-  //     "createRandomCorgi",
-  //     "takeOwnership",
-  //     "setCorgi",
-  //     "setCorgisByOwner",
-  //     "setBalance"],
-  //   sender: window.accountId
-  // });
+  window.contract = await near.loadContract(nearConfig.contractName, {
+    viewMethods: [
+      "totalSupply",
+      "balanceOf",
+      "allowance",
+      "ownerOf",
+      "name",
+      "symbol",
+      "getCorgisByOwner",
+      "getCorgi",
+      "getSender"],
+    changeMethods: [
+      "init",
+      "transfer",
+      "approve",
+      "transferFrom",
+      "createRandomCorgi",
+      "takeOwnership",
+      "setCorgi",
+      "setCorgisByOwner",
+      "setBalance"],
+    sender: window.accountId
+  });
 }
 
 function sleep(time) {
