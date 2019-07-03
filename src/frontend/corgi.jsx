@@ -115,16 +115,18 @@ export default class Tokens extends Component {
   render() {
     if (this.state.loaded && this.state.loggedIn) {
       return (
-        <div>
-          <Button action={this.requestSignOut} description="Sign out" />
+        <div className='tokens'>
           <p>
             <input 
+              className="newCorgiName"
               id="newCorgiName"
               type="text"
               placeholder="Corgi name"
               onChange={this.handleChange}
               value={this.state.newCorgiName} />
-            <button onClick={this.handleSubmit}>Create Corgi!</button>
+            <Button 
+              action={this.handleSubmit}
+              description="Create Corgi!" />
           </p>
           {this.state.corgis.length > 0 ? 
             <ul>
@@ -134,11 +136,17 @@ export default class Tokens extends Component {
                 corgis={this.state.corgis} />
             </ul>
           : ""}
+          <Button 
+            style={{backgroundColor: 'blue'}}
+            action={this.requestSignOut} 
+            description="Sign out" />
         </div>
       )
     } else if (this.state.loaded) {
       return (
-        <Button action={this.requestSignIn} description="Please Log In" />
+        <Button 
+          action={this.requestSignIn} 
+          description="Please Log In" />
       )
     } else {
       return ("Loading...");
@@ -163,7 +171,9 @@ function CorgiComponents(props) {
 
 function Button(props) {
   return(
-    <button onClick={props.action}>{props.description}</button>
+    <button 
+      className="Button blue"
+      onClick={props.action}>{props.description}</button>
   )
 }
 
@@ -204,12 +214,16 @@ class TransferCorgi extends Component {
       <div>
         {!this.state.loading ?
           <React.Fragment>
-            <input id="recipient"
+            <input 
+              className="newCorgiName"
+              id="recipient"
               type="text"
               placeholder="Corgi recipient"
               onChange={this.handleChange}
               value={this.state.recipient} />
-            <Button action={this.transferCorgi} description="Transfer" />
+            <Button 
+              action={this.transferCorgi} 
+              description="Transfer" />
           </React.Fragment>
         : "Loading..."}
       </div>
@@ -224,22 +238,24 @@ class Corgi extends Component {
     };
     return (
       <div className="wrapper">
+        <div className="note"><strong>Corgi Name:</strong> {this.props.name}</div>
         <div className="resize" id="corgi_wrap">
           <div className="corgi_head_area">
             <div className="fuwa corgi_face_area">
               <div style={specificColor} className="corgi_face_before"></div>
-              <div className="corgi_face white">
+              <div className="corgi_face brown">
                 <div style={specificColor} className="corgi_face_after"></div>
                 <div className="eye-left"></div>
                 <div className="eye-right"></div>
-                <div className="corgi_nose white">
+                <div className="corgi_nose brown">
                   <div className="nose"></div>
+                  <div className="nose_mouse"></div>
                 </div>
                 <div style={specificColor} className="ear-left brown"></div>
                 <div style={specificColor} className="ear-right brown"></div>
               </div>
             </div>
-            <div className="corgi_breast white">
+            <div className="corgi_breast brown">
             </div>
             <div style={specificColor} className="leg_fr_left brown"></div>
             <div style={specificColor} className="leg_fr_right brown"></div>
@@ -265,7 +281,7 @@ class Corgi extends Component {
             corgiDNA={this.props.dna}
             handleChange={this.handleChange} />
         </div>
-        <div className="note">{this.props.name}</div>
+        
       </div>
     )
   }
