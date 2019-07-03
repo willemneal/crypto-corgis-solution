@@ -29,23 +29,23 @@ async function doInitContract() {
     viewMethods: [
       "totalSupply",
       "balanceOf",
-      "allowance",
       "ownerOf",
       "name",
       "symbol",
       "getCorgisByOwner",
       "getCorgi",
-      "getSender"],
+      "getSender",
+      "allowance",],
     changeMethods: [
       "init",
       "transfer",
-      "approve",
-      "transferFrom",
       "createRandomCorgi",
-      "takeOwnership",
       "setCorgi",
       "setCorgisByOwner",
-      "setBalance"],
+      "setBalance",
+      "approve",
+      "transferFrom",
+      "takeOwnership"],
     sender: window.accountId
   });
 }
