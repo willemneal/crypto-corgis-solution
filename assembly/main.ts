@@ -2,6 +2,8 @@ import "allocator/arena";
 import { context, storage, near, collections, base64 } from "./near";
 import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
 
+export { memory }
+
 // export { CorgiTokenMarket } ;
 
 // --- contract code goes below
