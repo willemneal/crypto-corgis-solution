@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+.backup {
+  height: 35vh;
+  width: 90vw;
+  background: rgba(251, 176, 64, 0.5);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding: 2%;
+}
+
+.text-poster {
+    width: 50%;
+}
+
+.text1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #24272a;
+  letter-spacing: 0;
+  line-height: 54px;
+}
+
+.text2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: lighter;
+  color: #24272a;
+  letter-spacing: 0;
+  line-height: 54px;
+}
+
+@media (min-width: 410px) {
+  .backup {
+    flex-direction: column;
+  }
+}

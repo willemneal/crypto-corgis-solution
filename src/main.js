@@ -1,6 +1,6 @@
 // Loads nearlib and this contract into window scope.
 import "babel-polyfill";
-import App from "./frontend/container/App.jsx";
+import App from "./frontend/container/App";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./config.js"
