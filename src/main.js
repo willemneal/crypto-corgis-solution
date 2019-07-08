@@ -1,9 +1,8 @@
 // Loads nearlib and this contract into window scope.
 import "babel-polyfill";
-import Tokens from "./frontend/corgi.jsx";
+import App from "./frontend/container/App.jsx";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./frontend/corgi.css";
 import "./config.js"
 
 async function doInitContract() {
@@ -25,29 +24,29 @@ async function doInitContract() {
     new nearlib.LocalNodeConnection(nearConfig.nodeUrl),
   ));
 
-  // window.contract = await near.loadContract(nearConfig.contractName, {
-  //   viewMethods: [
-  //     "totalSupply",
-  //     "balanceOf",
-  //     "allowance",
-  //     "ownerOf",
-  //     "name",
-  //     "symbol",
-  //     "getCorgisByOwner",
-  //     "getCorgi",
-  //     "getSender"],
-  //   changeMethods: [
-  //     "init",
-  //     "transfer",
-  //     "approve",
-  //     "transferFrom",
-  //     "createRandomCorgi",
-  //     "takeOwnership",
-  //     "setCorgi",
-  //     "setCorgisByOwner",
-  //     "setBalance"],
-  //   sender: window.accountId
-  // });
+  window.contract = await near.loadContract(nearConfig.contractName, {
+    viewMethods: [
+      "totalSupply",
+      "balanceOf",
+      "allowance",
+      "ownerOf",
+      "name",
+      "symbol",
+      "getCorgisByOwner",
+      "getCorgi",
+      "getSender"],
+    changeMethods: [
+      "init",
+      "transfer",
+      "approve",
+      "transferFrom",
+      "createRandomCorgi",
+      "takeOwnership",
+      "setCorgi",
+      "setCorgisByOwner",
+      "setBalance"],
+    sender: window.accountId
+  });
 }
 
 function sleep(time) {
@@ -57,7 +56,7 @@ function sleep(time) {
 }
 
 window.nearInitPromise = doInitContract().then(()=>{
-  ReactDOM.render( <Tokens contract={contract} wallet={walletAccount} /> ,
-    document.getElementById('tokens')
+  ReactDOM.render( <App contract={contract} wallet={walletAccount} /> ,
+    document.getElementById('container')
   );
 }).catch(console.error)
