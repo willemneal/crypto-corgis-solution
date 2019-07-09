@@ -5,7 +5,7 @@
 
 .speaking {
     position: relative;
-    left: 50%;
-    top: 5%;
+    left: 100px;
+    top: 10px;
     z-index: 10;
 }

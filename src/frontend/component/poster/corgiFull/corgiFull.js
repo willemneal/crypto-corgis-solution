@@ -5,9 +5,9 @@ import './corgiFull.css';
 
 const CF = () => (
     <div className="corgiFull">
-        <Speaking className="speaking" />
-        <img className="img" src={corgifull} />
         
+        <img className="img" src={corgifull} />
+        <Speaking className="speaking" />
     </div>
 )
 
