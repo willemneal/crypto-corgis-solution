@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Tokens from '../component/tokens/corgi';
 import Logo from '../component/logo/logo';
 import Poster from '../component/poster/poster';
+import Footer from '../component/footer/footer';
 import './App.css';
 
 export default class App extends Component {
@@ -14,6 +14,7 @@ export default class App extends Component {
             <div className="App">
                 <Logo />
                 <Poster contract={this.props.contract} wallet={this.props.wallet} />
+                <Footer />
             </div>
         )
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Speaking = ({
-    width = "30%",
-    height = "30%",
+    width = "20%",
+    height = "20%",
     viewBox = "0 0 156 67"
 }) => (
         <svg width={width} height={height} viewBox={viewBox} version="1.1" xmlns="http://www.w3.org/2000/svg" >
