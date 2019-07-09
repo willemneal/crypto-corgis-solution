@@ -5,9 +5,10 @@ import './corgiFull.css';
 
 const CF = () => (
     <div className="corgiFull">
-        
         <img className="img" src={corgifull} />
-        <Speaking className="speaking" />
+        <div className="svg">
+            <Speaking className="speaking" />
+        </div>
     </div>
 )
 
