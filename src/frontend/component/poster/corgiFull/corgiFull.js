@@ -1,10 +1,11 @@
 import React from 'react';
 import corgifull from '../../../../assets/corgi-full.png';
+import './corgiFull.css';
 
-const CI = () => (
-    <div className="Corgi">
+const CF = () => (
+    <div className="corgiFull">
         <img className="img" src={corgifull} />
     </div>
 )
 
-export default CI
+export default CF

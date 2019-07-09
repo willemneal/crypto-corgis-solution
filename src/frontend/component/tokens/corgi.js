@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import './corgi.css';
+import './corgi.css';
 
 export default class Tokens extends Component {
   constructor(props) {
@@ -164,7 +164,11 @@ function CorgiComponents(props) {
 
 function Button(props) {
   return(
-    <button onClick={props.action}>{props.description}</button>
+    <button 
+      className="Button"
+      onClick={props.action}>
+        {props.description}
+    </button>
   )
 }
 

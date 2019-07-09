@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
-import Tokens from '../tokens/corgi.jsx';
-import CI from './corgiFull/corgiFull';
+import Tokens from '../tokens/corgi';
+import CF from './corgiFull/corgiFull';
 import "./poster.css";
 
 export default class Poster extends Component {
@@ -11,13 +11,13 @@ export default class Poster extends Component {
     render(){
         return (
             <div className="backup">
-                <div className="text-poster" >
+                <div className="textPoster" >
                     <p className="text1">Create your own one-of-the-kind Corgi today</p>
                     <p className="text2">create, collect, send, or trade</p>
                     <Tokens contract={this.props.contract} wallet={this.props.wallet}/>
                 </div>
-                <div className="image-poster">
-                    <CI />
+                <div className="imagePoster">
+                    <CF />
                 </div>
             </div>
         )

@@ -4,7 +4,7 @@ body {
 }
 
 li {
-  list-style:none;
+  list-style: none;
 }
 
 .fuwa {
@@ -21,7 +21,7 @@ li {
   }
 
   100% {
-    transform: translate(0, 0)rotate(0deg);
+    transform: translate(0, 0) rotate(0deg);
   }
 }
 
@@ -36,7 +36,7 @@ li {
 }
 
 .brown {
-  background: #fcd677
+  background: #fcd677;
 }
 
 .white {
@@ -130,7 +130,7 @@ li {
 
 .ear-right {
   position: absolute;
-  background: #DA9217;
+  background: #da9217;
   top: -32px;
   left: -10px;
   width: 40px;
@@ -151,7 +151,7 @@ li {
   }
 
   100% {
-    transform: translate(1px, 0)rotate(-20deg);
+    transform: translate(1px, 0) rotate(-20deg);
   }
 }
 
@@ -177,7 +177,7 @@ li {
   }
 
   100% {
-    transform: translate(2px, 0)rotate(20deg);
+    transform: translate(2px, 0) rotate(20deg);
   }
 }
 
@@ -283,14 +283,14 @@ li {
 
 .corgi_hip_after {
   display: block;
-  background: #E89C18;
+  background: #e89c18;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   position: absolute;
   top: -4px;
   right: -4px;
-  animation: furu .5s infinite linear alternate;
+  animation: furu 0.5s infinite linear alternate;
 }
 
 @keyframes furu {
@@ -303,7 +303,7 @@ li {
   }
 
   100% {
-    transform: translate(2px, 0)rotate(5deg);
+    transform: translate(2px, 0) rotate(5deg);
   }
 }
 
@@ -357,4 +357,11 @@ li {
   font-size: 10px;
   color: #333333;
   letter-spacing: 0.15rem;
+}
+
+.Button {
+  background: #fbb040;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  color: #fff;
 }
