@@ -2,23 +2,30 @@
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
     background-color: #f8f8f8;
     width: 96vw;
     font-size: 0.7rem;
-    text-align: center;
     margin: auto;
     margin-top: 5vh;
 }
 
-.text {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
+.footer p {
+    margin:0;
 }
 
-.text p {
-    margin:0;
+.left {
+    text-align: start;
+    margin-left: 0;
+    display: inline-flex;
+    justify-content: start;
+}
+
+.right {
+    position: absolute;
+    display: block;
+    text-align: end;
+    margin-right: 0;
+    right: 3vw;
 }
 
 .blue {

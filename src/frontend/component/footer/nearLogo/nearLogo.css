@@ -1,9 +1,10 @@
 .nearlogo {
     width: 5vw;
-    height: 15vh;
+    height: 8vh;
     color: black;
     padding: auto;
     margin: auto;
+    margin-left: 5vh;
 }
 
 .imgnear {
