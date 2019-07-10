@@ -3,10 +3,9 @@
     display: flex;
     flex-flow: row wrap;
     background-color: #f8f8f8;
-    width: 96vw;
+    width: 100%;
     font-size: 0.7rem;
-    margin: 3%;
-    /* margin-top: 5vh; */
+    margin: 3% 1%;
     padding: 3vh auto;
 }
 

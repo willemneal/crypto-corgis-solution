@@ -1,11 +1,12 @@
 import React from 'react';
-import Creation from './creation/creation';
-import './creaions.css';
+import Creation from './creationDisplay/creation';
 
 const Creations = () => (
-    <div>
+    <div className="creations">
 
     </div>
 )
 
 export default Creations
+
+// Future Work to create real Corgi display

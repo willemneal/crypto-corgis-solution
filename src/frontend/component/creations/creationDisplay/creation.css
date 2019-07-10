@@ -1,0 +1,35 @@
+.creation {
+    margin: 2% auto;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    display: block;
+}
+
+.author {
+    text-align: left;
+    font-size: 1rem;
+    margin: 0;
+    margin-top: 1%;
+}
+
+.address {
+    text-align: left;
+    font-size: 0.7rem;
+    margin: 0
+}
+
+.orange {
+    color: orange;
+}
+
+.dialogue {
+    position: relative;
+    left: 30%;
+    bottom: -30%;
+}

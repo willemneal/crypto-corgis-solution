@@ -1,4 +1,6 @@
 .App {
-    margin-top: 5vh;
+    margin: 3% auto;
     display: grid;
+    text-align: center;
+    width: 96%;
 }
