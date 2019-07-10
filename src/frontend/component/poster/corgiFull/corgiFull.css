@@ -11,7 +11,7 @@
 
 .svg {
     position: relative;
-    left: 30%;
-    bottom: -12vh;
+    /* left: 20%; */
+    bottom: -10vh;
     z-index: 10;
 }

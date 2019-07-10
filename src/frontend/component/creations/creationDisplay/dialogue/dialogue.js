@@ -2,8 +2,8 @@ import React from 'react';
 
 const Dialogue = (props) => {
     let style = {
-        width: "30%",
-        height: "30%",
+        width: "40%",
+        height: "40%",
         viewBox: "0 0 211 44"
     }
     return (

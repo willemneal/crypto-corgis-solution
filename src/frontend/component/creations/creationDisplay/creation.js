@@ -48,9 +48,9 @@ const Creation = () => {
                     width: "30%",
                     height: "15%",
                     padding: "2%",
-                    margin: "2%"
+                    margin: "1%"
                 }}>
-                    <Dialogue className="dialogue" des1="I like a lot of things about a lot of " des2="subjects and things about things..." />
+                    <Dialogue className="dialogue" des1="I like a lot of things " des2="subjects and things about things..." />
                     <DogOrange />
                     <p className="author">Long John</p>
                     <p className="address">Created by <span className="orange">@loaded.potato</span></p>
