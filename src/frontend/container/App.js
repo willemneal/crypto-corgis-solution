@@ -4,6 +4,7 @@ import Poster from '../component/poster/poster';
 import Footer from '../component/footer/footer';
 import './App.css';
 
+
 export default class App extends Component {
     constructor(props) {
         super(props);

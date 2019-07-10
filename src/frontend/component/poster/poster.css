@@ -1,23 +1,25 @@
 .backup {
-  height: 40vh;
-  width: 96vw;
+  height: 90%;
+  width: 96%;
   background: rgba(251, 176, 64, 0.5);
   border-radius: 10px;
   display: grid;
-  grid-template-rows: 2fr 3fr;
+  grid-template-areas: "text text image image image";
   grid-row-gap: 2vw;
-  margin: auto;
+  margin: 2% auto;
   padding: 2%;
   justify-items: center;
   align-items: center;
 }
 
 .textPoster {
-  margin-top: 3vh;
+  grid-area: text;
+  margin-top: 1vh;
+  margin-left: 3%;
 }
 
 .text1 {
-  margin: 5% 5% 5%;
+  /* margin: 5% 5% 5%; */
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   font-weight: bolder;
@@ -27,7 +29,7 @@
 }
 
 .text2 {
-  margin-left: 5%;
+  /* margin-left: 5%; */
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: lighter;
@@ -38,11 +40,18 @@
 
 .imagePoster {
   margin-top: -10%;
+  grid-area: image;
 }
 
-@media all and (min-width: 410px) {
+@media all and (max-width: 410px) {
   .backup {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "text"
+                        "image";
+  }
+
+  .imagePoster {
+    margin-top: 2%;
+    grid-area: image;
   }
 }
