@@ -2,10 +2,6 @@ li {
   list-style: none;
 }
 
-.brown {
-  background: #fcd677;
-}
-
 .white {
   background: #fff;
 }
@@ -13,7 +9,8 @@ li {
 .note {
   text-align: center;
   margin: 40px 0;
-  font-size: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
   color: #333333;
   letter-spacing: 0.15rem;
 }
@@ -25,4 +22,29 @@ li {
   color: #fff;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
+  margin: auto;
+}
+
+.corgi {
+  display: flex;
+  height: 40%;
+  width: 40%;
+}
+
+.head, 
+.tail,
+.body {
+  margin: 1% 0;
+  height: 100%;
+  width: 100%;
+}
+
+.body {
+  position: relative;
+  bottom: -79px;
+}
+
+.tail {
+  position: relative;
+  bottom: -11px;
 }

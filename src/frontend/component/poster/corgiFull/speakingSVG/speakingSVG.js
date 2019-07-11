@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Speaking = ({
-    width = "20%",
-    height = "20%",
+    width = "25%",
+    height = "25%",
     viewBox = "0 0 156 67"
 }) => (
 
@@ -13,7 +13,7 @@ const Speaking = ({
                         <polygon id="Path" fill="#FFFFFF" points="23.6894531 43.4980469 6 69.4960938 52.3398438 51.796875"></polygon>
                         <rect id="Rectangle" fill="#FFFFFF" x="0" y="3" width="156" height="53" rx="26.5"></rect>
                         <text id="ARRRFFF!" font-family=".SFNSDisplay, .SF NS Display" font-size="24" font-weight="normal" line-spacing="54" fill="#A87C50">
-                            <tspan x="25" y="23">ARRRFFF!</tspan>
+                            <tspan x="25" y="33">ARRRFFF!</tspan>
                         </text>
                     </g>
                 </g>
