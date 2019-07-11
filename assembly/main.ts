@@ -136,15 +136,17 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 export function createRandomCorgi(name: string, seed: i32): Corgi {
   let randDna = generateRandomDna();
   let color = generateRandomColorHex(seed);
-  return _createCorgi(name, randDna, color);
+  let sausage = generateRandomLength();
+  return _createCorgi(name, randDna, color, sausage);
 }
 
-function _createCorgi(name: string, dna: string, color: string): Corgi {
+function _createCorgi(name: string, dna: string, color: string, sausage: string): Corgi {
   let corgi = new Corgi();
   corgi.owner = context.sender;
   corgi.dna = dna;
   corgi.name = name;
   corgi.color = color
+  corgi.sausage = sausage;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
   return corgi;
@@ -174,6 +176,12 @@ function generateRandomColorHex(int: i32): string {
   let rand = Math.floor(Math.random() * 16777215) as u32;
   let hex = intToHex(rand);
   return "#" + hex;
+}
+
+function generateRandomLength() : string {
+  let l = Math.floor(Math.random() * 100) + 10;
+  let sausage = min(l, 100);
+  return sausage.toString() + "%";
 }
 
 

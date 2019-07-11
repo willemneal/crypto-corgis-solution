@@ -3,6 +3,7 @@ export class Corgi {
   name: string;
   dna: string;
   color:string;
+  sausage : string;
   level: i32;
   metadata: CorgiMetaData;
 }

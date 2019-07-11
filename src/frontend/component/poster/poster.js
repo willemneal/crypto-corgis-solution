@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import Tokens from '../tokens/corgi';
+import Tokens from '../tokens/token';
 import CF from './corgiFull/corgiFull';
 import "./poster.css";
 

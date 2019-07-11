@@ -22,7 +22,7 @@ li {
   color: #fff;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
-  margin: auto;
+  margin: 3% auto;
 }
 
 .corgi {
@@ -42,6 +42,7 @@ li {
 .body {
   position: relative;
   bottom: -79px;
+  left: -1px;
 }
 
 .tail {
