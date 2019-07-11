@@ -157,7 +157,8 @@ function CorgiComponents(props) {
                     contract={props.contract}
                     dna={corgi.dna}
                     name={corgi.name}
-                    color={corgi.color} />
+                    color={corgi.color}
+                    sausage={corgi.sausage} />
             </div>
         )
     })

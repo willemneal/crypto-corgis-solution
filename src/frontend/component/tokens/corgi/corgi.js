@@ -11,7 +11,7 @@ class Corgi extends Component {
             <CorgiHead color={this.props.color}/>
           </div>
           <div className="body">
-            <CorgiBody color={this.props.color}/>
+            <CorgiBody color={this.props.color} sausage={this.props.sausage}/>
           </div>
           <div className="tail">
             <CorgiTail color={this.props.color}/>
@@ -156,16 +156,18 @@ const CorgiHead = (props) => (
 )
 
 const CorgiBody = (props) => (
-<svg width="32px" height="134px" viewBox="0 0 32 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<svg width={props.sausage} height="134px" viewBox="0 0 ${props.sausage} 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsxlink="http://www.w3.org/1999/xlink">
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="corgi-mid" fill-rule="nonzero">
-            <polygon id="Path" fill="#FFFFFF" points="32 0.6 0 0.6 0 105 32 105"></polygon>
-            <polygon id="Path" fill="#231F20" opacity="0.15" points="32 97.076 0 97.076 0 105 32 105"></polygon>
-            <rect id="Rectangle" fill="#231F20" opacity="0.2" x="0" y="119.4" width="32" height="14.4"></rect>
-            <path d="M0,80.2 L32,80.2" id="Path" fill={props.color}></path>
-            <polygon id="Path" fill={props.color} points="32 0.6 0 0.6 0 80.2 32 80.2"></polygon>
-            <rect id="Rectangle" fill="#231F20" x="0" y="0" width="32" height="1.2"></rect>
-            <rect id="Rectangle" fill="#231F20" x="0" y="104.4" width="32" height="1.2"></rect>
+        <g id="home" transform="translate(-460.000000, -1239.000000)" fill-rule="nonzero">
+            <g id="corgi-mid" transform="translate(460.000000, 1239.000000)">
+                <polygon id="Path" fill="#FFFFFF" points="900 1 0 1 0 105 900 105"></polygon>
+                <polygon id="Path" fill="#231F20" opacity="0.15" points="900 97 0 97 0 105 900 105"></polygon>
+                <rect id="Rectangle" fill="#231F20" opacity="0.2" x="0" y="120" width="900" height="14"></rect>
+                <path d="M0,80 L900,80" id="Path" fill={props.color}></path>
+                <polygon id="Path" fill={props.color} points="900 0 0 0 0 80 900 80"></polygon>
+                <rect id="Rectangle" fill="#231F20" x="0" y="0" width="900" height="1"></rect>
+                <rect id="Rectangle" fill="#231F20" x="0" y="105" width="900" height="1"></rect>
+            </g>
         </g>
     </g>
 </svg>

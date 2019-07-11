@@ -179,9 +179,9 @@ function generateRandomColorHex(int: i32): string {
 }
 
 function generateRandomLength() : string {
-  let l = Math.floor(Math.random() * 100) + 10;
-  let sausage = min(l, 100);
-  return sausage.toString() + "%";
+  let l = Math.floor(Math.random() * 400) + 10;
+  let sausage = min(l, 400);
+  return sausage.toString() ;
 }
 
 
