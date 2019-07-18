@@ -4,7 +4,7 @@ import './nearLogo.css';
 
 const NearLogo = () => (
     <div className="nearlogo">
-        <img src={nearlogo}  className="imgnear"/>
+        <img style={{width: "100%", height: "100%"}} src={nearlogo} />
     </div>
 )
 

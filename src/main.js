@@ -7,8 +7,8 @@ import "./config.js"
 
 async function doInitContract() {
   // window.near = await nearlib.dev.connect(nearConfig);
-  nearConfig.nodeUrl = 'https://studio.nearprotocol.com/devnet';
-  nearConfig.helperUrl = 'https://studio.nearprotocol.com/contract-api';
+  nearConfig.nodeUrl = 'https://rpc.nearprotocol.com';
+  nearConfig.helperUrl = 'https://near-contract-helper.onrender.com';
   console.log("nearConfig", nearConfig);
 
   const walletBaseUrl = 'https://wallet.nearprotocol.com';

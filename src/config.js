@@ -1,5 +1,5 @@
 (function() {
-    const ACCOUNT_ID = 'yifangtest10'; /* TODO: fill this in! */
+    const ACCOUNT_ID = 'sushi'; /* TODO: fill this in! */
     const DEFAULT_ENV = 'local';
     const APP_NAME = "Crypto Corgis";
 
@@ -8,8 +8,8 @@
             case 'production':
             case 'development':
                 return {
-                    nodeUrl: 'https://studio.nearprotocol.com/devnet',
-                    helperUrl: 'https://studio.nearprotocol.com/contract-api',
+                    nodeUrl: 'https://rpc.nearprotocol.com',
+                    helperUrl: 'https://near-contract-helper.onrender.com',
                     contractName: ACCOUNT_ID,
                     appName: APP_NAME
                 };

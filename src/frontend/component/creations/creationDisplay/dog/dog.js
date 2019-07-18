@@ -5,7 +5,7 @@ import './dog.css';
 const DogGreen = () => {
     return (
         <div className="dog">
-            <img src={dogGreen} />
+            <img style={{width: '100%',height: '100%'}} src={dogGreen} />
         </div>
     )
 } 

@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import Tokens from '../tokens/token';
-import CF from './corgiFull/corgiFull';
+import CorgiPosterImage from './corgiFull/corgiFull';
 import "./poster.css";
 
 export default class Poster extends Component {
@@ -17,7 +17,7 @@ export default class Poster extends Component {
                     <Tokens contract={this.props.contract} wallet={this.props.wallet}/>
                 </div>
                 <div className="imagePoster">
-                    <CF />
+                    <CorgiPosterImage />
                 </div>
             </div>
         )

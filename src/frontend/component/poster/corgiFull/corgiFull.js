@@ -3,14 +3,17 @@ import corgifull from '../../../../assets/corgi-full.png';
 import Speaking from './speakingSVG/speakingSVG';
 import './corgiFull.css';
 
-const CF = () => (
+const CorgiPosterImage = () => (
     <div className="corgiFull">
         <div className="svg">
             <Speaking className="speaking" />
         </div>
-        <img className="img" src={corgifull} />
-        
+        <img style={{
+            width: '100%',
+            height: '100%'
+            }} src={corgifull} />
+
     </div>
 )
 
-export default CF
+export default CorgiPosterImage
