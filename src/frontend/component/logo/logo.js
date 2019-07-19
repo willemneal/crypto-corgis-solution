@@ -1,10 +1,13 @@
 import React from 'react';
 import logo from '../../../assets/logo.png';
+import ImageLoader from '../component/ImageLoad/ImageLoad';
+
+import logo from '../../assets/logo.png';
 import './logo.css';
 
 const Logo = () => (
     <div className="Logo">
-        <img className="img" src={logo} />
+        <ImageLoader image={logo} />
     </div>
 )
 

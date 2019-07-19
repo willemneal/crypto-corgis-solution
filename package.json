@@ -40,6 +40,7 @@
     "icon": "typescript-lang-file-icon"
   },
   "dependencies": {
+    "babel-plugin-react-html-attrs": "^2.1.0",
     "babel-polyfill": "^6.26.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

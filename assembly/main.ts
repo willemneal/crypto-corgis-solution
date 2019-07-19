@@ -1,4 +1,4 @@
-import "allocator/arena";
+// import "allocator/arena";
 import { context, storage, near, collections, base64 } from "./near";
 import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
 
