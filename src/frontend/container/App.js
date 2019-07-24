@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { ConnectedRouter } from 'connected-react-router'
+// import { ConnectedRouter } from 'connected-react-router'
 
 import Logo from '../component/logo/logo';
 import Footer from '../component/footer/footer';
