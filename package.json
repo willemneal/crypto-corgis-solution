@@ -42,8 +42,12 @@
   "dependencies": {
     "babel-plugin-react-html-attrs": "^2.1.0",
     "babel-polyfill": "^6.26.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
     "script-loader": "^0.7.2",
     "ts-node": "^8.3.0"
   }
