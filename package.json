@@ -18,6 +18,7 @@
     "assemblyscript-json": "github:nearprotocol/assemblyscript-json",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-regenerator": "^6.26.0",
+    "bignum": "github:MaxGraey/bignum.wasm",
     "css-loader": "^2.1.1",
     "file-loader": "^4.1.0",
     "gh-pages": "^2.0.1",
@@ -31,8 +32,7 @@
     "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2",
-    "webpack-stream": "^5.2.1",
-    "bignum": "github:MaxGraey/bignum.wasm"
+    "webpack-stream": "^5.2.1"
   },
   "wasmStudio": {
     "name": "Hello World Example",
@@ -42,6 +42,7 @@
   "dependencies": {
     "babel-plugin-react-html-attrs": "^2.1.0",
     "babel-polyfill": "^6.26.0",
+    "connected-react-router": "^6.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -1,24 +1,42 @@
 (function() {
-    const ACCOUNT_ID = 'sushi'; /* TODO: fill this in! */
-    const DEFAULT_ENV = 'local';
-    const APP_NAME = "Crypto Corgis";
+    const CONTRACT_NAME = 'sushitest1'; /* TODO: fill this in! */
+    const DEFAULT_ENV = 'development';
 
     function getConfig(env) {
         switch (env) {
             case 'production':
             case 'development':
                 return {
+                    networkId: 'default',
                     nodeUrl: 'https://rpc.nearprotocol.com',
-                    helperUrl: 'https://near-contract-helper.onrender.com',
-                    contractName: ACCOUNT_ID,
-                    appName: APP_NAME
+                    contractName: CONTRACT_NAME,
+                    walletUrl: 'https://wallet.nearprotocol.com',
+                    initialBalance: 100000000,
                 };
             case 'local':
+                return {
+                    networkId: 'local',
+                    nodeUrl: 'http://localhost:3030',
+                    keyPath: '~/.near/validator_key.json',
+                    contractName: CONTRACT_NAME,
+                    initialBalance: 100000000,
+                };
             case 'test':
                 return {
+                    networkId: 'local',
                     nodeUrl: 'http://localhost:3030',
-                    contractName: ACCOUNT_ID,
-                    appName: APP_NAME
+                    contractName: CONTRACT_NAME,
+                    masterAccount: 'test.near',
+                    initialBalance: 100000000,
+                };
+            case 'test-remote':
+            case 'ci':
+                return {
+                    networkId: 'shared-test',
+                    nodeUrl: 'http://shared-test.nearprotocol.com:3030',
+                    contractName: CONTRACT_NAME,
+                    masterAccount: 'test.near',
+                    initialBalance: 100000000,
                 };
             default:
                 throw Error(`Unconfigured environment '${env}'. Can be configured in src/config.js.`);
