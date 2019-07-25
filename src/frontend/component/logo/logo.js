@@ -1,13 +1,27 @@
-import React from 'react';
-import logo from '../../../assets/logo.png';
+import React from './node_modules/react';
+
 import ImageLoader from '../ImageLoad/ImageLoad';
+import Button from '../Button/Button';
+
+import logo from '../../../assets/logo.png';
+import Account from './account';
+
 
 import './logo.css';
 
-const Logo = () => (
-    <div className="Logo">
-        <ImageLoader image={logo} />
-    </div>
-)
+//state login
+//dispatch change login true false
+
+const Logo = () => {
+    return (
+        <div className="Logo">
+            <ImageLoader image={logo} style={{ width: "20%" }} />
+            <Account />
+            <Button description="Get Started" />
+
+        </div>
+    )
+
+}
 
 export default Logo

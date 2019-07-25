@@ -1,11 +1,12 @@
 import React from 'react';
-import NearLogo from './nearLogo/nearLogo';
+import ImageLoad from '../ImageLoad/ImageLoad'
+import nearLogo from '../../../assets/near_logo_stack.png'
 import './footer.css';
 
 const Footer = () => (
     <div className="footer">
         <div className="left">
-            <NearLogo />
+            <ImageLoad image={nearLogo} style={{width: "5em"}} />
             <div className="text">
                 <p>Crypto Corgis was created to demonstrate the NFT</p>
                 <p>capabilities of NEAR Protocol. </p>

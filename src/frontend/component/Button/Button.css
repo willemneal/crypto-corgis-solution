@@ -1,0 +1,9 @@
+.Button {
+    background: #fbb040;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    margin: 3% auto;
+  }

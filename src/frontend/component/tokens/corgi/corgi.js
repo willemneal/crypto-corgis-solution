@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from '../Button/Button';
+import Button from '../../Button/Button';
 import './corgi.css';
 
 class Corgi extends Component {

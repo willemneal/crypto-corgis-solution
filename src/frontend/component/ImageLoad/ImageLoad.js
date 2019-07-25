@@ -1,9 +1,7 @@
 import React from 'react';
 
 const ImageLoader = (props) => (
-    <div>
-        <img style={{width: '100%', height:'100%'}} src={props.image} />
-    </div>
+    <img src={props.image} style={props.style}/>
 )
 
 export default ImageLoader
