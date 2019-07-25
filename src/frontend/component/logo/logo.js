@@ -1,10 +1,10 @@
-import React from './node_modules/react';
+import React from 'react';
 
 import ImageLoader from '../ImageLoad/ImageLoad';
 import Button from '../Button/Button';
 
 import logo from '../../../assets/logo.png';
-import Account from './account';
+import Account from './accountSVG/';
 
 
 import './logo.css';
