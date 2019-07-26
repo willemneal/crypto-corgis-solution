@@ -1,88 +1,26 @@
 import React, { Component } from 'react';
-import Button from '../../Button/Button';
 import './corgi.css';
 
-class Corgi extends Component {
-  render() {
-    return (
-      <div id={this.props.dna}>
-        <div className="corgi">
-          <div className="head">
-            <CorgiHead color={this.props.color}/>
-          </div>
-          <div className="body">
-            <CorgiBody color={this.props.color} sausage={this.props.sausage}/>
-          </div>
-          <div className="tail">
-            <CorgiTail color={this.props.color}/>
-          </div>
-        </div>
-        <div className="note">{this.props.name}</div>
-        <div>
-          <TransferCorgi
-            trigger={this.props.trigger}
-            contract={this.props.contract}
-            corgiDNA={this.props.dna}
-            handleChange={this.handleChange} />
-        </div>
-      </div>
-      
-    )
-  }
-}
-
-export default Corgi
-
-class TransferCorgi extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recipient: "",
-      loading: false
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.transferCorgi = this.transferCorgi.bind(this);
-  }
-
-  transferCorgi(e) {
-    e.preventDefault();
-    this.setState({ loading: true });
-    console.log(this.props.corgiDNA, this.state.recipient);
-    this.props.contract.transfer({
-      to: this.state.recipient,
-      tokenId: this.props.corgiDNA
-    })
-      .then(res => {
-        this.props.trigger();
-        this.setState({ loading: false });
-      }).catch(err => {
-        console.log(err);
-      })
-  }
-
-  handleChange(e) {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
-  }
-
-  render() {
+const Corgi = (props) => {
     return (
       <div>
-        {!this.state.loading ?
-          <React.Fragment>
-            <input id="recipient"
-              type="text"
-              placeholder="Corgi recipient"
-              onChange={this.handleChange}
-              value={this.state.recipient} />
-            <Button action={this.transferCorgi} description="Transfer" />
-          </React.Fragment>
-          : "Loading..."}
+        <div className="corgi">
+          <div className="head">
+            <CorgiHead color={props.color}/>
+          </div>
+          <div className="body">
+            <CorgiBody color={props.color} sausage={props.sausage}/>
+          </div>
+          <div className="tail">
+            <CorgiTail color={props.color}/>
+          </div>
+        </div>
       </div>
     )
-  }
 }
+
+
+export default Corgi
 
 const CorgiHead = (props) => (
 <svg width="129px" height="213px" viewBox="0 0 129 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">

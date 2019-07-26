@@ -3,6 +3,7 @@ import "babel-polyfill";
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router} from 'react-router-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
@@ -78,7 +79,10 @@ window.nearInitPromise = doInitContract().then(() => {
   ReactDOM.render(
     // <Provider store={store}>
     // </Provider>
-    <App contract={contract} wallet={walletAccount} />,
+    <Router>
+      <App contract={contract} wallet={walletAccount} />
+    </Router>
+    ,
     document.getElementById('container')
   );
 }).catch(console.error)

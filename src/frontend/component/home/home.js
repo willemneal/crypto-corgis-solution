@@ -1,14 +1,10 @@
-import React from 'react'
+import React , {Component} from 'react'
 
-import Logo from '../component/logo/logo';
-import Poster from '../component/poster/poster';
-import Creation from '../component/creations/creationDisplay/creation';
-import Footer from '../component/footer/footer';
+import Poster from './poster/poster'
+import Creations from './creations/creations'
 
 import './home.css';
-
-
-export default class App extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
     }
@@ -16,9 +12,11 @@ export default class App extends Component {
     render(){
         return (
             <div className="home">
-                <Poster contract={this.props.contract} wallet={this.props.wallet} />
-                <Creation />
+                <Poster />
+                <Creations />
             </div>
         )
     }
 }
+
+export default Home

@@ -153,9 +153,6 @@ function CorgiComponents(props) {
         return (
             <div className="corgibox" key={corgi.dna}>
                 <Corgi
-                    trigger={props.trigger}
-                    contract={props.contract}
-                    dna={corgi.dna}
                     name={corgi.name}
                     color={corgi.color}
                     sausage={corgi.sausage} />

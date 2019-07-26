@@ -4,12 +4,13 @@
     font-weight: lighter;
     color: #4A4F54;
     display: flex;
-    flex-flow: row wrap;
+    justify-content: space-between;
     background-color: #f8f8f8;
     width: 100%;
     margin-top: 3%;
     padding: 3%;
     vertical-align: middle;
+    margin-bottom: 0;
 }
 
 .footer p {
@@ -28,11 +29,9 @@
 }
 
 .right {
-    position: absolute;
     display: block;
     text-align: end;
-    margin-right: 0;
-    right: 3%;
+    margin-right: 15px;
     padding-top: 10px;
 }
 

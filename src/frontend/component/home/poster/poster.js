@@ -1,9 +1,12 @@
-import React, { Component} from 'react';
-import Tokens from '../tokens/token';
-import CorgiPosterImage from './corgiFull/corgiFull';
+import React, { Component } from 'react';
+
+import Button from '../../Button/Button'
+import ImageLoader from '../../ImageLoad/ImageLoad'
+
+import corgiFull from '../../../../assets/corgi-full.png'
 import "./poster.css";
 
-export default class Poster extends Component {
+class Poster extends Component {
     constructor(props){
         super(props)
     }
@@ -14,12 +17,14 @@ export default class Poster extends Component {
                 <div className="textPoster" >
                     <p className="text1">Create your own one-of-the-kind Corgi today</p>
                     <p className="text2">create, collect, send, or trade</p>
-                    <Tokens contract={this.props.contract} wallet={this.props.wallet}/>
+                    <Button description="Login with NEAR" />
                 </div>
                 <div className="imagePoster">
-                    <CorgiPosterImage />
+                    <ImageLoader image={corgiFull} style={{width:'100%'}} />
                 </div>
             </div>
         )
     }
 }
+
+export default Poster
