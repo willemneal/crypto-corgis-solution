@@ -4,8 +4,8 @@
   background: rgba(251, 176, 64, 0.5);
   border-radius: 10px;
   display: grid;
-  grid-template-areas: "text  image image";
-  grid-row-gap: 2vw;
+  grid-template-areas: "text  image";
+  grid-row-gap: 2%;
   margin: 2% auto;
   padding: 2%;
   justify-items: center;
@@ -14,21 +14,19 @@
 
 .textPoster {
   grid-area: text;
-  margin-top: 1vh;
+  margin-top: 1%;
   margin-left: 3%;
   text-align: left;
 }
 
 .text1 {
-  font-family: 'Poppins', sans-serif;
+  font-weight: bolder;
   font-size: 2em;
-  font-weight: 1200;
   color: #24272a;
   letter-spacing: 0;
 }
 
 .text2 {
-  font-family: 'Poppins', sans-serif;
   font-size: 1em;
   font-weight: 100;
   color: #24272a;

@@ -1,29 +1,22 @@
 .creation {
-    margin: 2% auto;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: space-between;
-    width: 96%;
+    padding:1%;
+    margin: 1%;
 }
 
-.title {
-    font-weight: bolder;
-    font-size: 1.5rem;
-    display: block;
-}
-
-.author {
+.dogname {
     text-align: left;
     font-size: 1rem;
-    margin: 0;
+    margin-left: 1%;
     margin-top: 1%;
+    display: block;
 }
 
 .address {
     text-align: left;
     font-size: 0.7rem;
-    margin: 0;
+    margin-left: 1%;
     font-weight: lighter;
+    display: block;
 }
 
 .orange {
@@ -33,5 +26,5 @@
 .dialogue {
     position: relative;
     left: 30%;
-    bottom: -30%;
+    bottom: -40%;
 }

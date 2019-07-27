@@ -1,8 +1,9 @@
 (function() {
-    const CONTRACT_NAME = 'sushitest1'; /* TODO: fill this in! */
+    const CONTRACT_NAME = 'sushi'; /* TODO: fill this in! */
     const DEFAULT_ENV = 'development';
 
     function getConfig(env) {
+        let env = "local"
         switch (env) {
             case 'production':
             case 'development':

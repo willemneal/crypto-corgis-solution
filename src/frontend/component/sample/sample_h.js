@@ -2,7 +2,7 @@ import React from 'react'
 
 const SampleH = () => {
     let style = {
-        width: "100%",
+        width: "50%",
         height: "100%"
     }
     return (

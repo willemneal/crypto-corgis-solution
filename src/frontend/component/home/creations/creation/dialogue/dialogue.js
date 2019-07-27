@@ -12,8 +12,8 @@ const Dialogue = (props) => {
                 <g id="home" transform="translate(-149.000000, -841.000000)">
                     <g id="Group-2" transform="translate(149.000000, 841.000000)">
                         <rect id="Rectangle" fill="#FFFFFF" x="30" y="0" width="181" height="44" rx="22"></rect>
-                        <text id="Does-this-color-make" font-family=".AppleSystemUIFont" font-size="14" font-weight="normal" line-spacing="14" fill="#2BB673" display="inline">
-                            <tspan>{props.des}</tspan>
+                        <text id="Does-this-color-make" font-family=".AppleSystemUIFont" font-size="14" font-weight="normal" line-spacing="14" fill={props.color} display="inline">
+                            <tspan x="48" y="21">{props.des}</tspan>
                         </text>
                         <circle id="Oval" fill="#FFFFFF" cx="19" cy="28" r="6"></circle>
                         <circle id="Oval-Copy" fill="#FFFFFF" cx="4.5" cy="33.5" r="4.5"></circle>

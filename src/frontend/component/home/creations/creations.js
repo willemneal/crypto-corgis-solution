@@ -1,6 +1,7 @@
 import React from 'react';
 import Creation from './creation/creation';
 import SampleH from '../../sample/sample_h';
+import './creations.css'
 
 // fake creation
 const BACKGROUNDCOLOR = {
@@ -18,21 +19,21 @@ const COLOR = {
 let corgiArray = [{
     backColor: BACKGROUNDCOLOR.green,
     color: COLOR.green,
-    sausage: "120px",
+    sausage: "70px",
     corgiName: "J.Corg",
     accountName: "jstutz",
     des: "Does this color make me look fat?"
 }, {
     backColor: BACKGROUNDCOLOR.purple,
     color: COLOR.blue,
-    sausage: "70px",
+    sausage: "10px",
     corgiName: "Squatty Blu Doggy",
     accountName: "icerove",
     des: "I like a lot of things subjects and things about things..."
 }, {
     backColor: BACKGROUNDCOLOR.blue,
     color: COLOR.orange,
-    sausage: "200px",
+    sausage: "180px",
     corgiName: "Squatty Blu Doggy",
     accountName: "icerove",
     des: "I like you!"
@@ -49,12 +50,13 @@ const Creations = () => {
             des={corgi.des} />)
     })
     return (
-        <div className="creations">
+        <div>
             <div>
                 <h2 className="title">Latest Creations</h2>
                 <SampleH />
             </div>
-            {Corgis}
+            <div className="creations" >{Corgis}</div>
+            
         </div>)
 }
 
