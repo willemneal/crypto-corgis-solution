@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Button from '../../common/Button/Button'
 {/* <TransferCorgi
   trigger={this.props.trigger}
   contract={this.props.contract}

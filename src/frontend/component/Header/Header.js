@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ImageLoader from '../ImageLoad/ImageLoad';
-import Button from '../Button/Button';
+import ImageLoader from '../common/ImageLoad/ImageLoad';
+import Button from '../common/Button/Button';
 
 import logo from '../../../assets/logo.png';
 import Account from './accountSVG/accountSVG';

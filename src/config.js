@@ -3,7 +3,6 @@
     const DEFAULT_ENV = 'development';
 
     function getConfig(env) {
-        let env = "local"
         switch (env) {
             case 'production':
             case 'development':
@@ -18,7 +17,7 @@
                 return {
                     networkId: 'local',
                     nodeUrl: 'http://localhost:3030',
-                    keyPath: '~/.near/validator_key.json',
+                    keyPath: `${process.env.HOME}/.near/validator_key.json`,
                     contractName: CONTRACT_NAME,
                     initialBalance: 100000000,
                 };
@@ -51,3 +50,8 @@
         window.nearConfig =  cookieConfig && cookieConfig.nearPages ? cookieConfig : getConfig(DEFAULT_ENV);
     }
 })();
+
+// Local environment:
+// nearcore + cmake + protobuf + rustup
+// python ./scripts/start_localnet.py --local
+// NODE_ENV=local npm run start

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Corgi from './corgi/corgi';
-import Button from '../Button/Button';
+import Button from '../common/Button/Button';
 
 class Tokens extends Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Creation from './creation/creation';
-import SampleH from '../../sample/sample_h';
+import SampleH from '../../common/sample/sample_h';
 import './creations.css'
 
 // fake creation

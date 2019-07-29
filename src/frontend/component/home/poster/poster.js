@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Button from '../../Button/Button'
-import ImageLoader from '../../ImageLoad/ImageLoad'
+import Button from '../../common/Button/Button'
+import ImageLoader from '../../common/ImageLoad/ImageLoad'
 
 import corgiFull from '../../../../assets/corgi-full.png'
 import "./poster.css";
