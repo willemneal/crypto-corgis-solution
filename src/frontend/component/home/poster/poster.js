@@ -15,9 +15,9 @@ class Poster extends Component {
         return (
             <div className="backup">
                 <div className="textPoster" >
-                    <h3 className="text1">Create your own </h3>
-                    <h3 className="text1">one-of-the-kind</h3>
-                    <h3 className="text1">Corgi today</h3>
+                    <h2 className="text1">Create your own </h2>
+                    <h2 className="text1">one-of-the-kind</h2>
+                    <h2 className="text1">Corgi today</h2>
                     <p className="text2">create, collect, send, or trade</p>
                     <Button description="Login with NEAR" />
                 </div>

@@ -2,8 +2,19 @@
     margin: 2% auto;
 }
 
+.pop {
+    margin-left: 5%;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
 .title {
     font-weight: bolder;
     font-size: 1.5rem;
-    display: block;
+    display: inline;
+}
+
+.sample {
+    display: inline;
 }

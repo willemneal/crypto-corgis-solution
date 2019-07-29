@@ -50,12 +50,12 @@ const Creations = () => {
             des={corgi.des} />)
     })
     return (
-        <div>
-            <div>
+        <div className="creations">
+            <div className="pop">
                 <h2 className="title">Latest Creations</h2>
-                <SampleH />
+                <SampleH className="sample"/>
             </div>
-            <div className="creations" >{Corgis}</div>
+            <div>{Corgis}</div> 
             
         </div>)
 }

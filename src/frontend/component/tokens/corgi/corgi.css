@@ -1,5 +1,6 @@
 .corgi {
-  display: inline-flex;
+  display: flex;
+  width: 100%;
 }
 
 .white {
@@ -10,7 +11,7 @@
 .tail,
 .body {
   margin: 1% 0;
-  display: inline;
+  display: inline-block;
 }
 
 .body {

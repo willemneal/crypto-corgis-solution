@@ -1,6 +1,7 @@
 .creation {
     padding:1%;
     margin: 1%;
+    display: inline-block;
 }
 
 .dogname {
@@ -25,6 +26,6 @@
 
 .dialogue {
     position: relative;
-    left: 30%;
-    bottom: -40%;
+    left: 50px;
+    bottom: -100px;
 }

@@ -19,8 +19,8 @@ const Account = (props) => {
                             <tspan x="12" y="31">@{props.accountName}</tspan>
                         </text>
                         <text id="Corgis-(3)-|-Profile" font-family=".AppleSystemUIFont" font-size="18" font-weight="normal" line-spacing="24">
-                            <tspan x="13" y="55" fill="#0072CE">Corgis ({props.number})</tspan>
-                            <tspan x="94" y="55" fill="#999999">  | </tspan>
+                            <tspan x="13" y="55" fill="#0072CE">Corgis ({props.number}) </tspan>
+                            <tspan x="94" y="55" fill="#999999"> | </tspan>
                             <tspan x="113.511719" y="55" fill="#0072CE">  Profile</tspan>
                         </text>
                         <g id="Group-7" transform="translate(239.000000, 9.000000)">

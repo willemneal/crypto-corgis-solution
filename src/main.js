@@ -4,12 +4,6 @@ import "babel-polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router} from 'react-router-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { createBrowserHistory } from 'history'
-
-import createRootReducer from './reducers'
-import createMiddleware from './middleware'
 
 import App from "./frontend/container/App";
 import "./config.js"
@@ -77,8 +71,7 @@ function sleep(time) {
 
 window.nearInitPromise = doInitContract().then(() => {
   ReactDOM.render(
-    // <Provider store={store}>
-    // </Provider>
+
     <Router>
       <App contract={contract} wallet={walletAccount} />
     </Router>

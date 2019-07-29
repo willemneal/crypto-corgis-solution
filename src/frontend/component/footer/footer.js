@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageLoad from '../ImageLoad/ImageLoad'
+import ImageLoad from '../common/ImageLoad/ImageLoad'
 import nearLogo from '../../../assets/near_logo_stack.png'
 import './footer.css';
 
