@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Corgi from '../../../tokens/corgi/corgi';
+import Corgi from '../corgi/corgi';
 import Dialogue from './dialogue/dialogue';
 import './creation.css';
 

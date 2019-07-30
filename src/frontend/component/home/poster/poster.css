@@ -4,8 +4,8 @@
   background: rgba(251, 176, 64, 0.5);
   border-radius: 10px;
   display: grid;
-  grid-template-areas: "text  image";
-  grid-row-gap: 2%;
+  grid-template-areas: "text image";
+  grid-column-gap: 2%;
   margin: 2% auto;
   padding: 2%;
   justify-items: center;
@@ -20,7 +20,7 @@
 }
 
 .text1 {
-  font-weight: bolder;
+  font-weight: 600;
   font-size: 2em;
   color: #24272a;
   letter-spacing: 0;

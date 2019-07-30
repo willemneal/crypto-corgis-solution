@@ -1,0 +1,17 @@
+.result {
+  background: #f15b28;
+  border: 2px solid #24272a;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+#color-picker {
+  display: none;
+}
+
+.select {
+  cursor: pointer;
+  position: relative;
+  left: 65px;
+  top: 27px;
+}

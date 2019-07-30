@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Corgi from './corgi/corgi';
+import Corgi from '../../component/corgi/corgi';
 import Button from '../common/Button/Button';
 
 class Tokens extends Component {

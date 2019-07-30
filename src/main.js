@@ -1,11 +1,10 @@
 // Loads nearlib and this contract into window scope.
 import "babel-polyfill";
 
-import React from "react";
+import React from 'react'
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router} from 'react-router-dom'
 
-import App from "./frontend/container/App";
+import AppBuilder from './frontend/container/index'
 import "./config.js"
 
 async function doInitContract() {
@@ -70,12 +69,7 @@ function sleep(time) {
 // const store = createStore(createRootReducer(history), createMiddleware(history))
 
 window.nearInitPromise = doInitContract().then(() => {
-  ReactDOM.render(
-
-    <Router>
-      <App contract={contract} wallet={walletAccount} />
-    </Router>
-    ,
+  ReactDOM.render(<AppBuilder />,
     document.getElementById('container')
   );
 }).catch(console.error)

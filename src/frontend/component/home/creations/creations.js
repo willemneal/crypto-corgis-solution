@@ -1,5 +1,5 @@
 import React from 'react';
-import Creation from './creation/creation';
+import Creation from '../../creation/creation';
 import SampleH from '../../common/sample/sample_h';
 import './creations.css'
 
