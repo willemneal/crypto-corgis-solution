@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 
+import './colorpicker.css'
 class ColorPicker extends Component {
-    constructor() {
-        super();
-        this.state = {
-            color: []
-        };
-        this.ItemChecked.bind(this)
+    state = {
+        colorPick: null
     }
 
-    ItemChecked(e) {
-        let tValue = e.target.value;
-        this.setState({ color: tValue });
+    ItemChecked = (event,{name, value}) => {
+        this.setState({colorPick : value})
+        console.log("[colorPicker.js] color, ", this.props.color)
+        console.log("[colorPicker.js] colorick, ", this.state.colorPick)
+        this.props.handleChange(event,{name: 'color', value})
     }
 
     render() {
         const arrow = (
-            <div >
-                <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <div>
+                <svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="create" transform="translate(-110.000000, -548.000000)" fill="#24272A">
                             <polygon id="Fill-1-Copy" points="128 548 110 566 128 566"></polygon>
@@ -26,16 +25,24 @@ class ColorPicker extends Component {
                 </svg>
             </div>
         )
+        let colorSet = this.props.color ? this.props.color: "#fff"
         return (
-            <div>
+            <div className="colorpicker">
                 <label>
-                    <div className="result" style={{ backgroundColor: this.state.color }}></div>
-                    <input type="color" id="color-picker" ref="color-value" onChange={this.ItemChecked} />
-                    <span className="select">{arrow}</span>
+                    <div className="result" style={{ backgroundColor: colorSet }}></div>
+                    <input name="color" type="color" id="color-picker" ref="color-value" onChange={this.ItemChecked}/>
+                    <div className="select">{arrow}</div>
                 </label>
+                <div>
+                    <p style={{marginBottom: "0", fontWeight: "medium"}}>{this.props.des}</p>
+                    <p style={{marginBottom: "0"}}>{colorSet}</p>
+                </div>
+
             </div>
         );
     }
 }
 
-render(<App />, document.getElementById('root'));
+export default ColorPicker
+
+// color and background color should be stored in redux 

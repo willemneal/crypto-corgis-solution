@@ -1,3 +1,10 @@
-.head {
-    font-weight: 600;
+.generation {
+  width: 96%;
+  text-align: center;
+  margin: auto;
 }
+
+.head {
+  font-weight: 600;
+}
+
