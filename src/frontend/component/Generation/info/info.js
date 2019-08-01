@@ -8,10 +8,11 @@ class Info extends Component {
         Name: ''
     }
 
-    handleNameChange = (event,{name,value})=>{
-        this.setState({Name:value})
-        console.log("[info.js] name,", this.state.Name)
-        this.props.handleChange(event,{name: "newCorgiName",value})
+    handleNameChange = (event) => {
+        let value = event.target.value;
+        console.log("[info.js] name,", value)
+        this.setState({ Name: value})
+        this.props.handleChange({ name: "newCorgiName", value })
     }
     render() {
         return (
@@ -29,7 +30,6 @@ class Info extends Component {
                 <p className="title">Colors</p>
                 <form>
                     <ColorPicker color={this.props.color} des="Corgi" handleChange={this.props.handleChange}/>
-                    {/* <ColorPicker color={this.props.backgroundColor} des="Background" handleChange={this.props.handleChange}/> */}
                     <Button description="Generate Corgi" />
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and

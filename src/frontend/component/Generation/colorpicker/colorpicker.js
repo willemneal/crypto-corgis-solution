@@ -6,11 +6,10 @@ class ColorPicker extends Component {
         colorPick: null
     }
 
-    ItemChecked = (event,{name, value}) => {
-        this.setState({colorPick : value})
-        console.log("[colorPicker.js] color, ", this.props.color)
-        console.log("[colorPicker.js] colorick, ", this.state.colorPick)
-        this.props.handleChange(event,{name: 'color', value})
+    handleColorChange = (event) => {
+        let value = event.target.value;
+        console.log("[colorpicker.js] color,", this.props.color)
+        this.props.handleChange({ name: "color", value })
     }
 
     render() {
@@ -30,7 +29,7 @@ class ColorPicker extends Component {
             <div className="colorpicker">
                 <label>
                     <div className="result" style={{ backgroundColor: colorSet }}></div>
-                    <input name="color" type="color" id="color-picker" ref="color-value" onChange={this.ItemChecked}/>
+                    <input name="color" type="color" id="color-picker" ref="color-value" onChange={this.handleColorChange}/>
                     <div className="select">{arrow}</div>
                 </label>
                 <div>

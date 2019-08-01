@@ -5,6 +5,7 @@ import Header from '../../component/Header/Header';
 import Footer from '../../component/Footer/footer';
 import Home from '../../component/home/home'
 import Generation from '../../component/Generation/generation'
+import Account from '../../component/Account/account'
 
 import './App.css';
 class App extends Component {
@@ -13,8 +14,9 @@ class App extends Component {
             <div className="App">
                 <Header login="true"/>
                 <Switch>
-                    <Route exact path="/home" component={Home} />
-                    <Route path="/" component={Generation} />
+                    <Route exact path="/" component={Home} />
+                    <Route path="/generation" component={Generation} />
+                    <Route path="/account" component={Account} />
                 </Switch>
                 <Footer />
             </div>

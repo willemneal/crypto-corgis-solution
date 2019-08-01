@@ -12,7 +12,7 @@ class Generation extends Component {
     };
 
 
-    handleChange = (event,{ name, value } ) => {
+    handleChange = ({ name, value } ) => {
         this.setState({
             [name]: value
          })
