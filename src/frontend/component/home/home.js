@@ -9,11 +9,10 @@ class Home extends Component {
     constructor(props) {
         super(props);
     }
-    
 
     render(){
 
-        if (true) { return <Redirect to="/account" /> }
+        // if (true) { return <Redirect to="/account" /> }
         return (
             <div className="home">
                 <Poster />
