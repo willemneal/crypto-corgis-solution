@@ -1,12 +1,9 @@
 import React from 'react'
 
 const SampleH = () => {
-    let style = {
-        width: "50%",
-        height: "100%"
-    }
     return (
-        <svg width={style.width} height={style.height} viewBox="0 0 872 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        <div>
+        <svg width="95%" height="48" viewBox="0 0 872 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="home" transform="translate(-515.000000, -780.000000)">
                     <g id="Group" transform="translate(514.999918, 780.000000)">
@@ -38,6 +35,7 @@ const SampleH = () => {
                 </g>
             </g>
         </svg>
+        </div>
     )
 }
 

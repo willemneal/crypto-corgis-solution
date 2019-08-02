@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import SampleH from '../../common/sample/sample_h'
-
+import './screen.css'
 class Screen extends Component {
 
     render() {
+        // change to real one
         let corgiEgg = (
-            <div>
+            <div style={{width: "65%", height: "65%", margin: "auto",position: "relative", zIndex:"10",}}>
                 <svg width="218px" height="217px" viewBox="0 0 218 217" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="create" transform="translate(-801.000000, -508.000000)">
@@ -13,17 +14,35 @@ class Screen extends Component {
                         </g>
                     </g>
                 </svg >
-            </div>)
+            </div>
+        )
+        let shadow = (
+            <div style={{width: "65%", position: "relative", top: "-10px", margin: "auto"}}>
+            <svg width="200px" height="25px" viewBox="0 0 200 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.2">
+                    <g id="create" transform="translate(-801.000000, -709.000000)" fill="#000000">
+                        <ellipse id="Oval" cx="901" cy="721.048193" rx="100" ry="12.0481928"></ellipse>
+                    </g>
+                </g>
+            </svg>
+            </div>
+        )
+
+        let { color, backgroundColor } = this.props
+        let style = {
+            backgroundColor,
+            borderRadius: "10px",
+            padding: "5%",
+            marginBottom: "5%",
+            textAlign: "center"
+        }
         return (
-            <div>
-                <div style={{
-                    display: "inline",
-                    backgroundColor: this.props.backgroundColor,
-                    borderRadius: "10px"
-                }}>
-                    <p style={{ color: "#fff" }}>All corgis come equipped with built-in cuteness and an unlimited capacity to love.</p>
-                    <p style={{ color: "#fff" }}>Just choose a name and a few colors and we’ll do the rest.</p>
+            <div className="board">
+                <div style={style}>
+                    <p className="white bold">All corgis come equipped with built-in cuteness and an unlimited capacity to love.</p>
+                    <p className="white bold marginB">Just choose a name and a few colors and we’ll do the rest.</p>
                     {corgiEgg}
+                    {shadow}
                 </div>
                 <SampleH />
             </div>

@@ -17,18 +17,15 @@ class Generation extends Component {
         this.setState({
             [name]: value
         })
-        console.log("[generation.js] color, ", this.state.color)
-        console.log("[generation.js] backcolor, ", this.state.backgroundColor)
-        console.log("[generation.js] name, ", this.state.newCorgiName)
     }
 
     render() {
         return (
             <div className="generation">
-                <h2 className="head">Create a Corgi</h2>
-                <div className="screen">
-                    <Info className="info" handleChange={this.handleChange} {...this.state} />
-                    <Screen className="scr" {...this.state} />
+                <h1 className="head">Create a Corgi</h1>
+                <div className="content">
+                    <Info handleChange={this.handleChange} {...this.state} />
+                    <Screen {...this.state} />
                 </div>
             </div>
         )

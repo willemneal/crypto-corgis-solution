@@ -49,7 +49,7 @@ class ColorPicker extends Component {
                         <div className="select">{arrow}</div>
                     </label>
                     <div>
-                        <p style={{ marginBottom: "0", fontWeight: "medium" }}>BackGround</p>
+                        <p style={{ marginBottom: "0", fontWeight: "600" }}>BackGround</p>
                         <p style={{ marginBottom: "0" }}>{backColorSet}</p>
                     </div>
                 </div>
