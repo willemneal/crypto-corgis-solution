@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 
 import './colorpicker.css'
 class ColorPicker extends Component {
-    state = {
-        colorPick: null
-    }
-
     handleColorChange = (event) => {
         let value = event.target.value;
         console.log("[colorpicker.js] color,", this.props.color)
         this.props.handleChange({ name: "color", value })
+    }
+
+    handleBackGroundColorChange = (event) => {
+        let value = event.target.value;
+        console.log("[colorpicker.js] backcolor,", this.props.backgroundColor)
+        this.props.handleChange({ name: "backgroundColor", value })
     }
 
     render() {
@@ -24,19 +26,33 @@ class ColorPicker extends Component {
                 </svg>
             </div>
         )
-        let colorSet = this.props.color ? this.props.color: "#fff"
+        let {color, backgroundColor } = this.props
+        let colorSet = color ? color : "#fff"
+        let backColorSet = backgroundColor ? backgroundColor : "#fff" 
         return (
-            <div className="colorpicker">
-                <label>
-                    <div className="result" style={{ backgroundColor: colorSet }}></div>
-                    <input name="color" type="color" id="color-picker" ref="color-value" onChange={this.handleColorChange}/>
-                    <div className="select">{arrow}</div>
-                </label>
-                <div>
-                    <p style={{marginBottom: "0", fontWeight: "medium"}}>{this.props.des}</p>
-                    <p style={{marginBottom: "0"}}>{colorSet}</p>
+            <div>
+                <div className="colorpicker">
+                    <label>
+                        <div className="result" style={{ backgroundColor: colorSet }}></div>
+                        <input name="color" type="color" id="color-picker" ref="color-value" onChange={this.handleColorChange} />
+                        <div className="select">{arrow}</div>
+                    </label>
+                    <div>
+                        <p style={{ marginBottom: "0", fontWeight: "600" }}>Corgi</p>
+                        <p style={{ marginBottom: "0" }}>{colorSet}</p>
+                    </div>
                 </div>
-
+                <div className="colorpicker">
+                    <label>
+                        <div className="result" style={{ backgroundColor: backColorSet }}></div>
+                        <input name="backgroundColor" type="color" id="color-picker" ref="color-value" onChange={this.handleBackGroundColorChange} />
+                        <div className="select">{arrow}</div>
+                    </label>
+                    <div>
+                        <p style={{ marginBottom: "0", fontWeight: "medium" }}>BackGround</p>
+                        <p style={{ marginBottom: "0" }}>{backColorSet}</p>
+                    </div>
+                </div>
             </div>
         );
     }

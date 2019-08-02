@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Info from './info/info'
+import Screen from './screen/screen'
 
 import './generation.css'
 
@@ -12,11 +13,12 @@ class Generation extends Component {
     };
 
 
-    handleChange = ({ name, value } ) => {
+    handleChange = ({ name, value }) => {
         this.setState({
             [name]: value
-         })
+        })
         console.log("[generation.js] color, ", this.state.color)
+        console.log("[generation.js] backcolor, ", this.state.backgroundColor)
         console.log("[generation.js] name, ", this.state.newCorgiName)
     }
 
@@ -24,7 +26,10 @@ class Generation extends Component {
         return (
             <div className="generation">
                 <h2 className="head">Create a Corgi</h2>
-                <Info handleChange={this.handleChange} {...this.state} />
+                <div className="screen">
+                    <Info className="info" handleChange={this.handleChange} {...this.state} />
+                    <Screen className="scr" {...this.state} />
+                </div>
             </div>
         )
     }

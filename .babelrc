@@ -12,9 +12,7 @@
       "@babel/preset-react"
   ],
   "plugins": [
-      [
-        "react-html-attrs",
-        "@babel/plugin-proposal-class-properties"
-      ]
+    "react-html-attrs",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

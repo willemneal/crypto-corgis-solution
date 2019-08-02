@@ -19,7 +19,7 @@ const COLOR = {
 let corgiArray = [{
     backColor: BACKGROUNDCOLOR.green,
     color: COLOR.green,
-    sausage: "70px",
+    sausage: "20px",
     corgiName: "J.Corg",
     accountName: "jstutz",
     des: "Does this color make me look fat?"
@@ -33,7 +33,7 @@ let corgiArray = [{
 }, {
     backColor: BACKGROUNDCOLOR.blue,
     color: COLOR.orange,
-    sausage: "180px",
+    sausage: "50px",
     corgiName: "Squatty Blu Doggy",
     accountName: "icerove",
     des: "I like you!"
@@ -55,7 +55,7 @@ const Creations = () => {
                 <h2 className="title">Latest Creations</h2>
                 <SampleH className="sample"/>
             </div>
-            <div>{Corgis}</div> 
+            <div style={{width: "100%"}}>{Corgis}</div> 
             
         </div>)
 }

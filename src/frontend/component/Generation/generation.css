@@ -8,3 +8,15 @@
   font-weight: 600;
 }
 
+.sreen {
+  display: grid;
+  grid-template-areas:"info scr scr src";
+}
+
+.info {
+  grid-area: info;
+}
+
+.scr {
+  grid-area: scr;
+}

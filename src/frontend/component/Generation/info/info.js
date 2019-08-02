@@ -14,6 +14,7 @@ class Info extends Component {
         this.setState({ Name: value})
         this.props.handleChange({ name: "newCorgiName", value })
     }
+    
     render() {
         return (
             <div className="inputboard">
@@ -29,7 +30,10 @@ class Info extends Component {
                 </form>
                 <p className="title">Colors</p>
                 <form>
-                    <ColorPicker color={this.props.color} des="Corgi" handleChange={this.props.handleChange}/>
+                    <ColorPicker 
+                        color={this.props.color} 
+                        handleChange={this.props.handleChange}
+                        backgroundColor={this.props.backgroundColor} />
                     <Button description="Generate Corgi" />
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and
