@@ -6,16 +6,12 @@ import Creations from './creations/creations'
 
 import './home.css';
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render(){
-
-        // if (true) { return <Redirect to="/account" /> }
+        let {login,load,requestSignIn} = this.props
+        if (login && load) { return <Redirect to="/account" /> }
         return (
             <div className="home">
-                <Poster />
+                <Poster requestSignIn={requestSignIn} load={load}/>
                 <Creations />
             </div>
         )

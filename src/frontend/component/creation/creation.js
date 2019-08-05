@@ -5,7 +5,6 @@ import Dialogue from './dialogue/dialogue';
 import './creation.css';
 
 const Creation = (props) => {
-    let des = <div style={{display: "inline"}}>{props.des}</div>
     return (
         <div className="creation">
             <div style={{

@@ -69,7 +69,7 @@ function sleep(time) {
 // const store = createStore(createRootReducer(history), createMiddleware(history))
 
 window.nearInitPromise = doInitContract().then(() => {
-  ReactDOM.render(<AppBuilder />,
+  ReactDOM.render(<AppBuilder contract={contract} wallet={walletAccount}/>,
     document.getElementById('container')
   );
 }).catch(console.error)

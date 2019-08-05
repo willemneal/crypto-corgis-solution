@@ -12,12 +12,19 @@ import './Header.css';
 //state login
 //dispatch change login true false
 
-class Header extends Component {
+class Header extends Component {    
     render() {
+        let { login, load, requestSignIn } = this.props
+        let show = "loading"
+        if (login && load) {
+            show = <Account accountName="loaded.potato" number="5" />
+        } else if (load) {
+            show = <Button description="Get Started" action={requestSignIn} />
+        }
         return (
             <div className="header">
                 <ImageLoader image={logo} style={{ width: "25%", height: "100%" }} />
-                {this.props.login ? <Account accountName="loaded.potato" number="5" /> : <Button description="Get Started" />}
+                {show}
             </div>
         )
     }

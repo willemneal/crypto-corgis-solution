@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom';
+import Button from '../common/Button/Button';
+import 'account.css';
 
 class Account extends Component {
     componentDidMount(){
         console.log("account sucess!")
+
     }
     render(){
         return(
