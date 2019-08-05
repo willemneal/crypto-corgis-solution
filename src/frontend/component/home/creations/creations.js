@@ -36,7 +36,14 @@ let corgiArray = [{
     sausage: "50px",
     corgiName: "Squatty Blu Doggy",
     accountName: "icerove",
-    des: "I like you!"
+    des: "We know what we are, but know not what we may be"
+},{
+    backColor: BACKGROUNDCOLOR.blue,
+    color: COLOR.orange,
+    sausage: "50px",
+    corgiName: "Squatty Blu Doggy",
+    accountName: "icerove",
+    des: "test,test,test"
 }]
 
 const Creations = () => {

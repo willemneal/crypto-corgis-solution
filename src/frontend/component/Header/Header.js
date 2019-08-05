@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import ImageLoader from '../common/ImageLoad/ImageLoad';
 import Button from '../common/Button/Button';
@@ -9,15 +10,28 @@ import Account from './accountSVG/accountSVG';
 
 import './Header.css';
 
-//state login
-//dispatch change login true false
-
 class Header extends Component {    
+    clickToAccountHandler = () => {
+        this.props.history.push('/account')
+    }
+
+    clickToGenerationHandler = () => {
+        this.props.history.push('./generation')
+    }
+
+    componentDidMount() {
+        console.log(this.props)
+    }
+
     render() {
-        let { login, load, requestSignIn } = this.props
+        let { login, load, requestSignIn, accountId, length } = this.props
         let show = "loading"
         if (login && load) {
-            show = <Account accountName="loaded.potato" number="5" />
+            show = <Account  
+                        accountName={accountId} 
+                        number={length}  
+                        toAccount={this.clickToAccountHandler}
+                        toGeneration={this.clickToGenerationHandler} />
         } else if (load) {
             show = <Button description="Get Started" action={requestSignIn} />
         }
@@ -31,4 +45,4 @@ class Header extends Component {
 
 }
 
-export default Header
+export default withRouter(Header)

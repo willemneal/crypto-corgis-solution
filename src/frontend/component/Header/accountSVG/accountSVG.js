@@ -14,7 +14,7 @@ const Account = (props) => {
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="create" transform="translate(-1049.000000, -82.000000)">
                     <g id="Group-8" transform="translate(1049.000000, 82.000000)">
-                        <rect id="Rectangle" fill="#F8F8F8" x="0" y="0" width="301" height="72" rx="5"></rect>
+                        <rect id="Rectangle" fill="#F8F8F8" x="0" y="0" width="301" height="72" rx="5" onClick={props.toAccount}></rect>
                         <text id="@loaded.potato" font-family=".SFNSDisplay, .SF NS Display" font-size="24" font-weight="normal" line-spacing="24" fill="#24272A">
                             <tspan x="12" y="31">@{props.accountName}</tspan>
                         </text>
@@ -28,7 +28,7 @@ const Account = (props) => {
                                 <g id="Group">
                                     <g id="Group-3">
                                         <mask id="mask-2" fill="white">
-                                            <use href="#path-1"></use>
+                                            <use href="#path-1" onClick={props.toGeneration}></use>
                                         </mask>
                                         <g id="Clip-2"></g>
                                         <path d="M51.6647219,26.1677 C51.6647219,40.4343875 40.0991906,51.9999188 25.8325031,51.9999188 C11.5654094,51.9999188 -0.000121875,40.4343875 -0.000121875,26.1677 C-0.000121875,11.9006063 11.5654094,0.33548125 25.8325031,0.33548125 C40.0991906,0.33548125 51.6647219,11.9006063 51.6647219,26.1677" id="Fill-1" fill="#FBB040" mask="url(#mask-2)"></path>
@@ -37,7 +37,7 @@ const Account = (props) => {
                                 </g>
                             </g>
                             <text id="+" font-family=".SFNSDisplay, .SF NS Display" font-size="36" font-weight="normal" line-spacing="24" fill="#FFFFFF">
-                                <tspan x="8" y="50">+</tspan>
+                                <tspan x="15" y="40">+</tspan>
                             </text>
                         </g>
                     </g>

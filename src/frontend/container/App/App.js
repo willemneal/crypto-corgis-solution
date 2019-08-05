@@ -14,7 +14,8 @@ class App extends Component {
         this.state = {
             loaded: false,
             loggedIn: false,
-            corgis: []
+            corgis: [],
+            accountId: ''
         }
         this.getCorgis = this.getCorgis.bind(this);
         this.checkLoggedIn = this.checkLoggedIn.bind(this);
@@ -50,7 +51,8 @@ class App extends Component {
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
             this.setState({
-                loggedIn: true
+                loggedIn: true,
+                accountId
             });
             if (res == null || res.corgis.length < 1 || res.corgis == null) {
                 this.setState({
@@ -82,10 +84,10 @@ class App extends Component {
     }
 
     render() {
-        let { loggedIn, loaded, corgis } = this.state
+        let { loggedIn, loaded, corgis, accountId } = this.state
         return (
             <div className="App">
-                <Header login={loggedIn} load={loaded} requestSignIn={this.requestSignIn} />
+                <Header login={loggedIn} load={loaded} requestSignIn={this.requestSignIn} accountId={accountId} length={corgis.length}/>
                 <Switch>
                     <Route
                         exact
