@@ -1,24 +1,42 @@
 (function() {
-    const ACCOUNT_ID = 'one.taters'; /* TODO: fill this in! */
-    const DEFAULT_ENV = 'local';
-    const APP_NAME = "Crypto Corgis";
+    const CONTRACT_NAME = 'sushitest1'; /* TODO: fill this in! */
+    const DEFAULT_ENV = 'development';
 
     function getConfig(env) {
         switch (env) {
             case 'production':
             case 'development':
                 return {
-                    nodeUrl: 'https://studio.nearprotocol.com/devnet',
-                    helperUrl: 'https://studio.nearprotocol.com/contract-api',
-                    contractName: ACCOUNT_ID,
-                    appName: APP_NAME
+                    networkId: 'default',
+                    nodeUrl: 'https://rpc.nearprotocol.com',
+                    contractName: CONTRACT_NAME,
+                    walletUrl: 'https://wallet.nearprotocol.com',
+                    initialBalance: 100000000,
                 };
             case 'local':
+                return {
+                    networkId: 'local',
+                    nodeUrl: 'http://localhost:3030',
+                    keyPath: `${process.env.HOME}/.near/validator_key.json`,
+                    contractName: CONTRACT_NAME,
+                    initialBalance: 100000000,
+                };
             case 'test':
                 return {
+                    networkId: 'local',
                     nodeUrl: 'http://localhost:3030',
-                    contractName: ACCOUNT_ID,
-                    appName: APP_NAME
+                    contractName: CONTRACT_NAME,
+                    masterAccount: 'test.near',
+                    initialBalance: 100000000,
+                };
+            case 'test-remote':
+            case 'ci':
+                return {
+                    networkId: 'shared-test',
+                    nodeUrl: 'http://shared-test.nearprotocol.com:3030',
+                    contractName: CONTRACT_NAME,
+                    masterAccount: 'test.near',
+                    initialBalance: 100000000,
                 };
             default:
                 throw Error(`Unconfigured environment '${env}'. Can be configured in src/config.js.`);
@@ -32,3 +50,8 @@
         window.nearConfig =  cookieConfig && cookieConfig.nearPages ? cookieConfig : getConfig(DEFAULT_ENV);
     }
 })();
+
+// Local environment:
+// nearcore + cmake + protobuf + rustup
+// python ./scripts/start_localnet.py --local
+// NODE_ENV=local npm run start

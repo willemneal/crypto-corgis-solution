@@ -1,0 +1,16 @@
+.board {
+    width: 72%;
+    margin: 1% 1%;
+}
+
+.white {
+    color: #fff;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.marginB {
+    margin-bottom: 30px;
+}

@@ -19,7 +19,16 @@ module.exports = {
       {
         test: /config\.js$/,
         use: ['script-loader']
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
     ]
   },
   output: {

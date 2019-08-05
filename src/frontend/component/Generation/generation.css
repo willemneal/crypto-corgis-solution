@@ -1,0 +1,13 @@
+.generation {
+  width: 96%;
+  text-align: center;
+  margin: auto;
+}
+
+.head {
+  font-weight: 600;
+}
+
+.content {
+  display: flex;
+}

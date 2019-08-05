@@ -1,0 +1,25 @@
+.creation {
+    padding:1%;
+    margin: 1%;
+    display: inline-block;
+}
+
+.dogname {
+    text-align: left;
+    font-size: 1rem;
+    margin-left: 1%;
+    margin-top: 1%;
+    display: block;
+}
+
+.address {
+    text-align: left;
+    font-size: 0.7rem;
+    margin-left: 1%;
+    font-weight: lighter;
+    display: block;
+}
+
+.orange {
+    color: orange;
+}

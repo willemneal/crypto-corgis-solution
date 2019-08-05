@@ -1,0 +1,53 @@
+.backup {
+  height: 90%;
+  width: 96%;
+  background: rgba(251, 176, 64, 0.5);
+  border-radius: 10px;
+  display: grid;
+  grid-template-areas: "text image";
+  grid-column-gap: 2%;
+  margin: 2% auto;
+  padding: 2%;
+  justify-items: center;
+  align-items: center;
+}
+
+.textPoster {
+  grid-area: text;
+  margin-top: 1%;
+  margin-left: 3%;
+  text-align: left;
+}
+
+.text1 {
+  font-weight: 600;
+  font-size: 2em;
+  color: #24272a;
+  letter-spacing: 0;
+  line-height: 90%;
+}
+
+.text2 {
+  font-size: 1em;
+  font-weight: 100;
+  color: #24272a;
+  letter-spacing: 0;
+}
+
+.imagePoster {
+  margin-top: -10%;
+  grid-area: image;
+}
+
+@media all and (max-width: 410px) {
+  .backup {
+    display: grid;
+    grid-template-areas: "text"
+                        "image";
+  }
+
+  .imagePoster {
+    margin-top: 2%;
+    grid-area: image;
+  }
+}
