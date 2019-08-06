@@ -10,15 +10,7 @@ import Account from './accountSVG/accountSVG';
 
 import './Header.css';
 
-class Header extends Component {    
-    clickToAccountHandler = () => {
-        this.props.history.push('/account')
-    }
-
-    clickToGenerationHandler = () => {
-        this.props.history.push('./generation')
-    }
-
+class Header extends Component {
     componentDidMount() {
         console.log(this.props)
     }

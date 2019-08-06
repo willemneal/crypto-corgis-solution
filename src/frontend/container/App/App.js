@@ -35,6 +35,7 @@ class App extends Component {
         } else {
             this.signedOutFlow();
         }
+        console.log(this.props.history)
     }
 
     signedOutFlow() {
@@ -91,7 +92,7 @@ class App extends Component {
     }
 
     handleSubmit(e) {
-        let {name, color, backgroundColor,quote,loaded} = this.state
+        let {name, color, backgroundColor,quote,loaded, loggedIn} = this.state
         e.preventDefault();
         this.setState({ loaded: false });
         console.log("handle submit load", loaded)
@@ -111,7 +112,7 @@ class App extends Component {
                     corgis: corgis
                 }
             })
-            this.props.history.push("/account")
+            console.log("[App.js] login ",loggedIn,"load ", loaded)
         }).catch(err => {
             console.log(err);
         })
