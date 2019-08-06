@@ -133,20 +133,20 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 }
 
 // Create unique Corgi
-export function createRandomCorgi(name: string, color: string, backColor: string, quote: string): Corgi {
+export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
   let randDna = generateRandomDna();
-  let sausage = generateRandomLength();
-  return _createCorgi(name, randDna, color, sausage, backColor, quote);
+  let sausage = "40";
+  return _createCorgi(name, randDna, color, sausage, backgroundColor, quote);
 }
 
-function _createCorgi(name: string, dna: string, color: string, sausage: string, backColor: string,quote: string): Corgi {
+function _createCorgi(name: string, dna: string, color: string, sausage: string, backgroundColor: string,quote: string): Corgi {
   let corgi = new Corgi();
   corgi.owner = context.sender;
   corgi.dna = dna;
   corgi.name = name;
   corgi.color = color
   corgi.sausage = sausage;
-  corgi.backColor = backColor;
+  corgi.backgroundColor = backgroundColor;
   corgi.quote = quote;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
@@ -160,11 +160,18 @@ function generateRandomDna(): string {
   return b64;
 }
 
-function generateRandomLength() : string {
-  let l = Math.floor(Math.random() * 400) + 10;
-  let sausage = min(l, 400);
-  return sausage.toString() ;
-}
+
+// random is not working
+// function generateRandomLength() : string {
+//   near.log("1");
+//   Math.seedRandom(0);
+//   near.log("2");
+//   let l = Math.floor(Math.random() * 400) + 10;
+//   near.log("3");
+//   let sausage = min(l, 400);
+//   near.log(sausage.toString());
+//   return sausage.toString() ;
+// }
 
 function intToHex(integer: u32): string {
   let res = new Array<string>();
@@ -178,12 +185,12 @@ function intToHex(integer: u32): string {
   return hex.length % 2 ? "0" + hex : hex;
 }
 
-function generateRandomColorHex(int: i32): string {
-  Math.seedRandom(int);
-  let rand = Math.floor(Math.random() * 16777215) as u32;
-  let hex = intToHex(rand);
-  return "#" + hex;
-}
+// function generateRandomColorHex(int: i32): string {
+//   Math.seedRandom(int);
+//   let rand = Math.floor(Math.random() * 16777215) as u32;
+//   let hex = intToHex(rand);
+//   return "#" + hex;
+// }
 
 //ERROR handling
 function _corgiDNEError(corgi: Corgi): bool {

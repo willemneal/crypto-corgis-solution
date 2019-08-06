@@ -94,33 +94,33 @@ class App extends Component {
     handleSubmit(e) {
         let {name, color, backgroundColor,quote,loaded, loggedIn} = this.state
         e.preventDefault();
-        return false
-        // this.setState({ loaded: false });
-        // console.log("handle submit load", loaded)
-        // this.props.contract.createRandomCorgi({
-        //     backColor: backgroundColor,
-        //     name,
-        //     color,
-        //     quote
-        // }).then(res => {
-        //     // set the returned corgi to display in the frontend
-        //     let corgi = res.lastResult;
-        //     this.setState(state => {
-        //         let corgis = state.corgis.concat(corgi);
-        //         return {
-        //             newCorgiName: "",
-        //             loaded: true,
-        //             corgis: corgis
-        //         }
-        //     })
-        //     console.log("[App.js] login ",loggedIn,"load ", loaded)
-        // }).catch(err => {
-        //     console.log(err);
-        // })
+        this.setState({ loaded: false });
+        console.log("handle submit load", loaded)
+        this.props.contract.createRandomCorgi({
+            backgroundColor,
+            name,
+            color,
+            quote
+        }).then(res => {
+            // set the returned corgi to display in the frontend
+            let corgi = res.lastResult;
+            this.setState(state => {
+                let corgis = state.corgis.concat(corgi);
+                return {
+                    newCorgiName: "",
+                    loaded: true,
+                    corgis
+                }
+            })
+            console.log("[App.js] login ",loggedIn,"load ", loaded)
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
         let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote } = this.state
+        let {contract} = this.props
         return (
             <div className="App">
                 <Header
@@ -143,8 +143,9 @@ class App extends Component {
                         backgroundColor={backgroundColor}
                         newCorgiName={newCorgiName}
                         quote={quote}
-                        handleSubmit={this.handleSubmit}
-                        handleChange={this.handleChange} />} />
+                        handleChange={this.handleChange}
+                        contract={contract}
+                        corgis={corgis} />} />
                     <Route exact path="/account" render={() => <Account
                         login={loggedIn}
                         load={loaded}

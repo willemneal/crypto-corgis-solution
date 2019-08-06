@@ -13,12 +13,32 @@ class Info extends Component {
         this.setState({ Name: value})
         this.props.handleChange({ name: "newCorgiName", value })
     }
+
+    handleSubmit = (e) => {
+        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, loaded, loggedIn} = this.props
+        e.preventDefault()
+        console.log("[info.js] works well")
+        handleChange({name: "loaded", value: "false"})
+        console.log("[info.js] handle submit load", loaded)
+        contract.createRandomCorgi({
+            backgroundColor, name:newCorgiName, quote, color
+        }).then(response => {
+            let corgi = response.lastResult
+            let newCorgis = this.props.corgis.concat(corgi)
+            handleChange({name:"newCorgiName",value:""})
+            handleChange({name:"loaded",value:"true"})
+            handleChange({name:"corgis",value:newCorgis})
+            console.log("[Info.js] afterset login ",loggedIn,"load ", loaded)
+        }).catch(err => {
+            console.log(err);
+        })
+    }
     
     render() {
         return (
             <div className="inputboard">
                 <p className="title">My Corgi is called</p>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         className="inputname"
                         name="Name"
@@ -32,7 +52,8 @@ class Info extends Component {
                         color={this.props.color} 
                         handleChange={this.props.handleChange}
                         backgroundColor={this.props.backgroundColor} />
-                    <Button description="Generate Corgi" />
+                    {/* <Button description="Generate Corgi" onSubmit={this.props.handleSubmit}/> */}
+                    <button type="submit">Generate</button>
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and
                     thought process. The size it grows to will untimately determine it’s value

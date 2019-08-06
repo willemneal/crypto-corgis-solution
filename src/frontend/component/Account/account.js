@@ -68,10 +68,10 @@ class Account extends Component {
             Corgis = corgis.map(corgi => {
                     return (<CreationAccount
                         id={corgi.dna}
-                        backColor={corgi.backColor}
+                        backgroundColor={corgi.backgroundColor}
                         color={corgi.color}
                         sausage={corgi.sausage}
-                        corgiName={corgi.corgiName}
+                        corgiName={corgi.name}
                         des={corgi.quote}
                         rate="this is the fake rate" />)
                 })

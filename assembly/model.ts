@@ -3,7 +3,7 @@ export class Corgi {
   dna: string;
   name: string;
   color:string;
-  backColor: string;
+  backgroundColor: string;
   sausage : string;
   quote: string;
   level: i32;

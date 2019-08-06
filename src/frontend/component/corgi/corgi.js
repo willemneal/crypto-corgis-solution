@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './corgi.css';
 
 const Corgi = (props) => {

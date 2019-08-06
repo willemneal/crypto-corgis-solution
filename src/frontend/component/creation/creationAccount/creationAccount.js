@@ -9,7 +9,7 @@ const CreationAccount = (props) => {
     return (
         <div className="creation">
             <div style={{
-                backgroundColor: props.backColor,
+                backgroundColor: props.backgroundColor,
                 borderRadius: "10px",
                 padding: "20px",
                 display: "inline-block"

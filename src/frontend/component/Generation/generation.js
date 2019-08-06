@@ -13,7 +13,7 @@ class Generation extends Component {
     };
 
     render() {
-        let {color, backgroundColor, newCorgiName, quote, handleChange, handleSubmit} = this.props
+        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis} = this.props
         return (
             <div className="generation">
                 <h1 className="head">Create a Corgi</h1>
