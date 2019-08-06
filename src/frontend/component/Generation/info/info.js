@@ -10,7 +10,6 @@ class Info extends Component {
 
     handleNameChange = (event) => {
         let value = event.target.value;
-        console.log("[info.js] name,", value)
         this.setState({ Name: value})
         this.props.handleChange({ name: "newCorgiName", value })
     }
@@ -35,7 +34,7 @@ class Info extends Component {
                         color={this.props.color} 
                         handleChange={this.props.handleChange}
                         backgroundColor={this.props.backgroundColor} />
-                    <Button description="Generate Corgi" action={this.props.handleSubmit}/>
+                    <Button description="Generate Corgi" />
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and
                     thought process. The size it grows to will untimately determine it’s value

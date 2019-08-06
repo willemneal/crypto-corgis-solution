@@ -94,28 +94,29 @@ class App extends Component {
     handleSubmit(e) {
         let {name, color, backgroundColor,quote,loaded, loggedIn} = this.state
         e.preventDefault();
-        this.setState({ loaded: false });
-        console.log("handle submit load", loaded)
-        this.props.contract.createRandomCorgi({
-            backColor: backgroundColor,
-            name,
-            color,
-            quote
-        }).then(res => {
-            // set the returned corgi to display in the frontend
-            let corgi = res.lastResult;
-            this.setState(state => {
-                let corgis = state.corgis.concat(corgi);
-                return {
-                    newCorgiName: "",
-                    loaded: true,
-                    corgis: corgis
-                }
-            })
-            console.log("[App.js] login ",loggedIn,"load ", loaded)
-        }).catch(err => {
-            console.log(err);
-        })
+        return false
+        // this.setState({ loaded: false });
+        // console.log("handle submit load", loaded)
+        // this.props.contract.createRandomCorgi({
+        //     backColor: backgroundColor,
+        //     name,
+        //     color,
+        //     quote
+        // }).then(res => {
+        //     // set the returned corgi to display in the frontend
+        //     let corgi = res.lastResult;
+        //     this.setState(state => {
+        //         let corgis = state.corgis.concat(corgi);
+        //         return {
+        //             newCorgiName: "",
+        //             loaded: true,
+        //             corgis: corgis
+        //         }
+        //     })
+        //     console.log("[App.js] login ",loggedIn,"load ", loaded)
+        // }).catch(err => {
+        //     console.log(err);
+        // })
     }
 
     render() {
