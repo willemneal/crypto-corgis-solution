@@ -31,7 +31,8 @@ class Header extends Component {
                         accountName={accountId} 
                         number={length}  
                         toAccount={this.clickToAccountHandler}
-                        toGeneration={this.clickToGenerationHandler} />
+                        toGeneration={this.clickToGenerationHandler}
+                        onClick={this.clickToGenerationHandler} />
         } else if (load) {
             show = <Button description="Get Started" action={requestSignIn} />
         }

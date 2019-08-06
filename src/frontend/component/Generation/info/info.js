@@ -26,7 +26,8 @@ class Info extends Component {
                         type="text"
                         placeholder="Corgi name"
                         onChange={this.handleNameChange}
-                        value={this.state.Name} />
+                        value={this.state.Name}
+                        required />
                 </form>
                 <p className="title">Colors</p>
                 <form>
@@ -34,7 +35,7 @@ class Info extends Component {
                         color={this.props.color} 
                         handleChange={this.props.handleChange}
                         backgroundColor={this.props.backgroundColor} />
-                    <Button description="Generate Corgi" />
+                    <Button description="Generate Corgi" action={this.props.handleSubmit}/>
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and
                     thought process. The size it grows to will untimately determine it’s value

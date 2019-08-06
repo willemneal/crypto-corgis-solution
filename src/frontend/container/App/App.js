@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Header from '../../component/Header/Header';
 import Footer from '../../component/Footer/footer';
@@ -15,7 +15,11 @@ class App extends Component {
             loaded: false,
             loggedIn: false,
             corgis: [],
-            accountId: ''
+            accountId: '',
+            color: "#EF4F24",
+            backgroundColor: "#84D0B5",
+            newCorgiName: '',
+            quote: "this is the fake quote"
         }
         this.getCorgis = this.getCorgis.bind(this);
         this.checkLoggedIn = this.checkLoggedIn.bind(this);
@@ -25,9 +29,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // This is where we get into trouble with global vars
-        // TODO: add same state management and dependency injection
-        // This is more dependable than using the async 
         let loggedIn = window.walletAccount.isSignedIn();
         if (loggedIn) {
             this.signedInFlow();
@@ -83,19 +84,69 @@ class App extends Component {
         this.signedOutFlow();
     }
 
+    handleChange = ({ name, value }) => {
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleSubmit(e) {
+        let {name, color, backgroundColor,quote,loaded} = this.state
+        e.preventDefault();
+        this.setState({ loaded: false });
+        console.log("handle submit load", loaded)
+        this.props.contract.createRandomCorgi({
+            backColor: backgroundColor,
+            name,
+            color,
+            quote
+        }).then(res => {
+            // set the returned corgi to display in the frontend
+            let corgi = res.lastResult;
+            this.setState(state => {
+                let corgis = state.corgis.concat(corgi);
+                return {
+                    newCorgiName: "",
+                    loaded: true,
+                    corgis: corgis
+                }
+            })
+            this.props.history.push("/account")
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     render() {
-        let { loggedIn, loaded, corgis, accountId } = this.state
+        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote } = this.state
         return (
             <div className="App">
-                <Header login={loggedIn} load={loaded} requestSignIn={this.requestSignIn} accountId={accountId} length={corgis.length}/>
+                <Header
+                    login={loggedIn}
+                    load={loaded}
+                    requestSignIn={this.requestSignIn}
+                    accountId={accountId}
+                    length={corgis.length} />
                 <Switch>
                     <Route
                         exact
                         path="/"
-                        render={() => <Home login={loggedIn} load={loaded} requestSignIn={this.requestSignIn} />}
+                        render={() => <Home
+                            login={loggedIn}
+                            load={loaded}
+                            requestSignIn={this.requestSignIn} />}
                     />
-                    <Route path="/generation" component={Generation} />
-                    <Route path="/account" render={() => <Account login={loggedIn} load={loaded} corgis={corgis}/>} />
+                    <Route exact path="/generation" render={()=><Generation 
+                        color={color}
+                        backgroundColor={backgroundColor}
+                        newCorgiName={newCorgiName}
+                        quote={quote}
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange} />} />
+                    <Route exact path="/account" render={() => <Account
+                        login={loggedIn}
+                        load={loaded}
+                        corgis={corgis} />} />
                 </Switch>
                 <Footer />
             </div>
@@ -103,4 +154,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default withRouter(App)

@@ -16,6 +16,11 @@ class TransferCorgi extends Component {
       this.handleChange = this.handleChange.bind(this);
       this.transferCorgi = this.transferCorgi.bind(this);
     }
+
+
+    getCorgi(tokenId) {
+      return this.props.contract.getCorgi({ tokenId: tokenId })
+  }
   
     transferCorgi(e) {
       e.preventDefault();

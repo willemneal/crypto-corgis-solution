@@ -1,9 +1,11 @@
 export class Corgi {
   owner: string;
-  name: string;
   dna: string;
+  name: string;
   color:string;
+  backColor: string;
   sausage : string;
+  quote: string;
   level: i32;
   metadata: CorgiMetaData;
 }

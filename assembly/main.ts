@@ -133,20 +133,21 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 }
 
 // Create unique Corgi
-export function createRandomCorgi(name: string, seed: i32): Corgi {
+export function createRandomCorgi(name: string, color: string, backColor: string, quote: string): Corgi {
   let randDna = generateRandomDna();
-  let color = generateRandomColorHex(seed);
   let sausage = generateRandomLength();
-  return _createCorgi(name, randDna, color, sausage);
+  return _createCorgi(name, randDna, color, sausage, backColor, quote);
 }
 
-function _createCorgi(name: string, dna: string, color: string, sausage: string): Corgi {
+function _createCorgi(name: string, dna: string, color: string, sausage: string, backColor: string,quote: string): Corgi {
   let corgi = new Corgi();
   corgi.owner = context.sender;
   corgi.dna = dna;
   corgi.name = name;
   corgi.color = color
   corgi.sausage = sausage;
+  corgi.backColor = backColor;
+  corgi.quote = quote;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
   return corgi;
@@ -157,6 +158,12 @@ function generateRandomDna(): string {
   let b64 = base64.encode(buf);
   near.log(b64);
   return b64;
+}
+
+function generateRandomLength() : string {
+  let l = Math.floor(Math.random() * 400) + 10;
+  let sausage = min(l, 400);
+  return sausage.toString() ;
 }
 
 function intToHex(integer: u32): string {
@@ -177,13 +184,6 @@ function generateRandomColorHex(int: i32): string {
   let hex = intToHex(rand);
   return "#" + hex;
 }
-
-function generateRandomLength() : string {
-  let l = Math.floor(Math.random() * 400) + 10;
-  let sausage = min(l, 400);
-  return sausage.toString() ;
-}
-
 
 //ERROR handling
 function _corgiDNEError(corgi: Corgi): bool {
