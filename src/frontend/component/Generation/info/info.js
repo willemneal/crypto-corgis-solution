@@ -27,9 +27,7 @@ class Info extends Component {
                         onChange={this.handleNameChange}
                         value={this.state.Name}
                         required />
-                </form>
                 <p className="title">Colors</p>
-                <form>
                     <ColorPicker 
                         color={this.props.color} 
                         handleChange={this.props.handleChange}
