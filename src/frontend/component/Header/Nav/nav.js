@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../../common/Button/Button'
 import { NavLink, Redirect } from 'react-router-dom';
-import ImageLoader from '../../common/ImageLoad/ImageLoad';
-
-import arrow from '../../../../assets/arrow.png'
 
 import './nav.css'
 
@@ -14,7 +11,7 @@ class Nav extends Component {
         if (!login) {return <Redirect push to="/" />}
         return (
             <div className="wrap">
-                <NavLink to="/account" ><Button description={des} /></NavLink>
+                <NavLink to="/account" ><Button description={des} style={{boxShadow: "none"}}/></NavLink>
                 <Card accountName={accountName} requestSignOut={requestSignOut}/>
                 <NavLink to="/generation"><AddCorgi /></NavLink>
             </div>
@@ -31,9 +28,10 @@ const Card = ({ accountName, requestSignOut }) => {
         padding: "auto",
         color: "#01c9fd"
     }
+    let name = "@"+accountName+"▾"
     return (
         <div className="dropdown">
-            <button className="menutop"><p>@{accountName}  <ImageLoader image={arrow} style={{ float: "right" }} /></p></button>
+            <button className="menutop">{name}</button>
             <div className="dropdown-content">
                 <ul>
                     <li style={style}><NavLink to="/profile">Edit Profile</NavLink></li>
@@ -45,7 +43,7 @@ const Card = ({ accountName, requestSignOut }) => {
 }
 
 const AddCorgi = () => (
-    <div style={{width: "70%"}}>
+    <div style={{width: "10px"}}>
         <svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="create" transform="translate(-1047.000000, -1249.000000)" fill-rule="nonzero">

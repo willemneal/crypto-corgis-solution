@@ -36,7 +36,6 @@ class App extends Component {
         } else {
             this.signedOutFlow();
         }
-        console.log("[app.js] loggedin", this.state.loggedIn)
     }
 
     signedOutFlow() {
@@ -79,6 +78,7 @@ class App extends Component {
             window.nearConfig.contractName,
             window.nearConfig.appName
         )
+        console.log("[app.js] sign in login",this.state.loggedIn)
     }
 
     requestSignOut() {

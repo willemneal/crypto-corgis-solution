@@ -23,7 +23,7 @@ class Header extends Component {
                         login={login} 
                          />
         } else if (load) {
-            show = <Button description="Get Started" action={requestSignIn} />
+            show = <Button description="Get Started" action={requestSignIn}/>
         }
         return (
             <div className="header">

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
-import Button from '../common/Button/Button';
 import CreationAccount from '../creation/creationAccount/creationAccount'
 import './account.css';
 
@@ -12,8 +11,12 @@ const RATE = {
     veryRare: "VERYRARE"
 }
 class Account extends Component {
+    componentDidMount(){
+        console.log("[account.js] login",this.props.login)
+    }
     render(){
-        let { corgis } = this.props
+        let { corgis, login } = this.props
+        if(!login) {return <Redirect t0="/" />}
         let Corgis = 'loading'
         if (corgis && corgis.length === 0) { return <Redirect to="/generation" /> } 
         if (corgis.length > 0 ) {
