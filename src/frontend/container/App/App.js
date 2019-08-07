@@ -6,6 +6,7 @@ import Footer from '../../component/Footer/footer';
 import Home from '../../component/home/home'
 import Generation from '../../component/Generation/generation'
 import Account from '../../component/Account/account'
+import Profile from '../../component/Profile/profile'
 
 import './App.css';
 class App extends Component {
@@ -35,7 +36,6 @@ class App extends Component {
         } else {
             this.signedOutFlow();
         }
-        console.log(this.props.history)
     }
 
     signedOutFlow() {
@@ -91,36 +91,9 @@ class App extends Component {
         })
     }
 
-    handleSubmit(e) {
-        let {name, color, backgroundColor,quote,loaded, loggedIn} = this.state
-        e.preventDefault();
-        this.setState({ loaded: false });
-        console.log("handle submit load", loaded)
-        this.props.contract.createRandomCorgi({
-            backgroundColor,
-            name,
-            color,
-            quote
-        }).then(res => {
-            // set the returned corgi to display in the frontend
-            let corgi = res.lastResult;
-            this.setState(state => {
-                let corgis = state.corgis.concat(corgi);
-                return {
-                    newCorgiName: "",
-                    loaded: true,
-                    corgis
-                }
-            })
-            console.log("[App.js] login ",loggedIn,"load ", loaded)
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-
     render() {
         let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote } = this.state
-        let {contract} = this.props
+        let { contract } = this.props
         return (
             <div className="App">
                 <Header
@@ -138,7 +111,7 @@ class App extends Component {
                             load={loaded}
                             requestSignIn={this.requestSignIn} />}
                     />
-                    <Route exact path="/generation" render={()=><Generation 
+                    <Route exact path="/generation" render={() => <Generation
                         color={color}
                         backgroundColor={backgroundColor}
                         newCorgiName={newCorgiName}
@@ -147,6 +120,10 @@ class App extends Component {
                         contract={contract}
                         corgis={corgis} />} />
                     <Route exact path="/account" render={() => <Account
+                        login={loggedIn}
+                        load={loaded}
+                        corgis={corgis} />} />
+                    <Route exact path="/profile" render={() => <Profile
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis} />} />

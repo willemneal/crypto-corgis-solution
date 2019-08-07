@@ -3,5 +3,5 @@
     padding: auto;
     display: flex;
     justify-content: space-between;
-    align-content: middle;
+    align-items: center;
 }

@@ -162,16 +162,13 @@ function generateRandomDna(): string {
 
 
 // random is not working
-// function generateRandomLength() : string {
-//   near.log("1");
-//   Math.seedRandom(0);
-//   near.log("2");
-//   let l = Math.floor(Math.random() * 400) + 10;
-//   near.log("3");
-//   let sausage = min(l, 400);
-//   near.log(sausage.toString());
-//   return sausage.toString() ;
-// }
+function generateRandomLength() : string {
+  Math.seedRandom(12345);
+  let l = Math.floor(Math.random() * 400) + 10;
+  let sausage = min(l, 400);
+  near.log(sausage.toString());
+  return sausage.toString() ;
+}
 
 function intToHex(integer: u32): string {
   let res = new Array<string>();

@@ -3,28 +3,23 @@ import { withRouter } from 'react-router-dom';
 
 import ImageLoader from '../common/ImageLoad/ImageLoad';
 import Button from '../common/Button/Button';
+import Nav from './Nav/nav'
 
 import logo from '../../../assets/logo.png';
-import Account from './accountSVG/accountSVG';
+
 
 
 import './Header.css';
 
 class Header extends Component {
-    componentDidMount() {
-        console.log(this.props)
-    }
-
     render() {
         let { login, load, requestSignIn, accountId, length } = this.props
         let show = "loading"
         if (login && load) {
-            show = <Account  
+            show = <Nav  
                         accountName={accountId} 
                         number={length}  
-                        toAccount={this.clickToAccountHandler}
-                        toGeneration={this.clickToGenerationHandler}
-                        onClick={this.clickToGenerationHandler} />
+                         />
         } else if (load) {
             show = <Button description="Get Started" action={requestSignIn} />
         }
