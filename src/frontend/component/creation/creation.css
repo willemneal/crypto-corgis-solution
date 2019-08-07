@@ -6,7 +6,7 @@
 
 .dogname {
     text-align: left;
-    font-size: 1rem;
+    font-size: 1em;
     margin-left: 1%;
     margin-top: 1%;
     margin-bottom: 0;
@@ -15,7 +15,7 @@
 
 .address {
     text-align: left;
-    font-size: 0.7rem;
+    font-size: 0.7em;
     margin-left: 1%;
     font-weight: lighter;
     display: block;

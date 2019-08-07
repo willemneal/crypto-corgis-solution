@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import ImageLoader from '../common/ImageLoad/ImageLoad';
 import Button from '../common/Button/Button';
@@ -13,19 +13,21 @@ import './Header.css';
 
 class Header extends Component {
     render() {
-        let { login, load, requestSignIn, accountId, length } = this.props
+        let { login, load, requestSignIn, requestSignOut ,accountId, length } = this.props
         let show = "loading"
         if (login && load) {
             show = <Nav  
                         accountName={accountId} 
-                        number={length}  
+                        number={length} 
+                        requestSignOut={requestSignOut}
+                        login={login} 
                          />
         } else if (load) {
             show = <Button description="Get Started" action={requestSignIn} />
         }
         return (
             <div className="header">
-                <ImageLoader image={logo} style={{ width: "25%", height: "100%" }} />
+                <NavLink exact to="/" style={{textAlign: "left"}}><ImageLoader image={logo} style={{ width: "50%", height: "100%" }} /></NavLink>
                 {show}
             </div>
         )
@@ -33,4 +35,4 @@ class Header extends Component {
 
 }
 
-export default withRouter(Header)
+export default Header

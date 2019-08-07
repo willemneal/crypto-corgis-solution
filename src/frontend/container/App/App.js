@@ -36,6 +36,7 @@ class App extends Component {
         } else {
             this.signedOutFlow();
         }
+        console.log("[app.js] loggedin", this.state.loggedIn)
     }
 
     signedOutFlow() {
@@ -81,8 +82,11 @@ class App extends Component {
     }
 
     requestSignOut() {
+        console.log("[app.js] arrive in requestout",this.state.loggedIn)
         this.props.wallet.signOut();
+        console.log("[app.js] arrive in SignOUT",this.state.loggedIn)
         this.signedOutFlow();
+        console.log("[app.js] after signout",this.state.loggedIn)
     }
 
     handleChange = ({ name, value }) => {
@@ -100,6 +104,7 @@ class App extends Component {
                     login={loggedIn}
                     load={loaded}
                     requestSignIn={this.requestSignIn}
+                    requestSignOut={this.requestSignOut}
                     accountId={accountId}
                     length={corgis.length} />
                 <Switch>
