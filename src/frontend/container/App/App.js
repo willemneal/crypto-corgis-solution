@@ -3,10 +3,11 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Header from '../../component/Header/Header';
 import Footer from '../../component/Footer/footer';
-import Home from '../../component/home/home'
-import Generation from '../../component/Generation/generation'
-import Account from '../../component/Account/account'
-import Profile from '../../component/Profile/profile'
+import Home from '../../component/home/home';
+import Generation from '../../component/Generation/generation';
+import Account from '../../component/Account/account';
+import Profile from '../../component/Profile/profile';
+import Single from '../../component/SinglePage/single';
 
 import './App.css';
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
             color: "#EF4F24",
             backgroundColor: "#84D0B5",
             newCorgiName: '',
-            quote: "this is the fake quote"
+            quote: "this is the fake quote",
         }
         this.getCorgis = this.getCorgis.bind(this);
         this.checkLoggedIn = this.checkLoggedIn.bind(this);
@@ -78,15 +79,11 @@ class App extends Component {
             window.nearConfig.contractName,
             window.nearConfig.appName
         )
-        console.log("[app.js] sign in login",this.state.loggedIn)
     }
 
     requestSignOut() {
-        console.log("[app.js] arrive in requestout",this.state.loggedIn)
         this.props.wallet.signOut();
-        console.log("[app.js] arrive in SignOUT",this.state.loggedIn)
         this.signedOutFlow();
-        console.log("[app.js] after signout",this.state.loggedIn)
     }
 
     handleChange = ({ name, value }) => {
@@ -96,7 +93,7 @@ class App extends Component {
     }
 
     render() {
-        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote } = this.state
+        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote,id } = this.state
         let { contract } = this.props
         return (
             <div className="App">
@@ -117,6 +114,7 @@ class App extends Component {
                             requestSignIn={this.requestSignIn} />}
                     />
                     <Route exact path="/generation" render={() => <Generation
+                        login={loggedIn}
                         color={color}
                         backgroundColor={backgroundColor}
                         newCorgiName={newCorgiName}
@@ -127,11 +125,17 @@ class App extends Component {
                     <Route exact path="/account" render={() => <Account
                         login={loggedIn}
                         load={loaded}
-                        corgis={corgis} />} />
+                        corgis={corgis}
+                        />} />
                     <Route exact path="/profile" render={() => <Profile
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis} />} />
+                    <Route path="/corgi/:name" render={() => <Single
+                        login={loggedIn}
+                        load={loaded}
+                        corgis={corgis}
+                        />} />
                 </Switch>
                 <Footer />
             </div>

@@ -16,6 +16,13 @@ const SYMBOL: string = "CORG"
 const TOTAL_SUPPLY: u64 = 420;
 const DNA_DIGITS: u32 = 16;
 const HEX_ALPHABET: string = '0123456789abcdef';
+// const RARITY: string = {
+//   common: "COMMON",
+//   uncommon: "UNCOMMON",
+//   rare: "RARE",
+//   veryRare: "VERY RARE",
+//   ultraRare: "ULTRA RARE"
+// }
 
 // Collections where we store data
 let balances = collections.map<string, u64>("b");
@@ -135,7 +142,7 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 // Create unique Corgi
 export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
   let randDna = generateRandomDna();
-  let sausage = "40";
+  let sausage = generateRandomLength();
   return _createCorgi(name, randDna, color, sausage, backgroundColor, quote);
 }
 
@@ -160,13 +167,17 @@ function generateRandomDna(): string {
   return b64;
 }
 
+function generateRandomrate(): string {
+  Math.seedRandom(12345)
+  let n =  Math.random()
+  return n
+}
 
 // random is not working
 function generateRandomLength() : string {
   Math.seedRandom(12345);
   let l = Math.floor(Math.random() * 400) + 10;
   let sausage = min(l, 400);
-  near.log(sausage.toString());
   return sausage.toString() ;
 }
 

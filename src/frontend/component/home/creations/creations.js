@@ -17,28 +17,28 @@ const COLOR = {
 }
 
 let corgiArray = [{
-    backColor: BACKGROUNDCOLOR.green,
+    backgroundColor: BACKGROUNDCOLOR.green,
     color: COLOR.green,
     sausage: "20px",
     corgiName: "J.Corg",
     accountName: "jstutz",
     des: "Does this color make me look fat?"
 }, {
-    backColor: BACKGROUNDCOLOR.purple,
+    backgroundColor: BACKGROUNDCOLOR.purple,
     color: COLOR.blue,
     sausage: "10px",
     corgiName: "Squatty Blu Doggy",
     accountName: "icerove",
     des: "I like a lot of things subjects and things about things..."
 }, {
-    backColor: BACKGROUNDCOLOR.blue,
+    backgroundColor: BACKGROUNDCOLOR.blue,
     color: COLOR.orange,
     sausage: "50px",
     corgiName: "Squatty Blu Doggy",
     accountName: "icerove",
     des: "We know what we are, but know not what we may be"
 },{
-    backColor: BACKGROUNDCOLOR.blue,
+    backgroundColor: BACKGROUNDCOLOR.blue,
     color: COLOR.orange,
     sausage: "50px",
     corgiName: "Squatty Blu Doggy",
@@ -49,7 +49,7 @@ let corgiArray = [{
 const Creations = () => {
     let Corgis = corgiArray.map(corgi => {
         return (<Creation
-            backColor={corgi.backColor}
+            backgroundColor={corgi.backgroundColor}
             color={corgi.color}
             sausage={corgi.sausage}
             corgiName={corgi.corgiName}

@@ -17,9 +17,7 @@ class Info extends Component {
     handleSubmit = (e) => {
         let {color, backgroundColor, newCorgiName, quote, handleChange, contract, loaded, loggedIn} = this.props
         e.preventDefault()
-        console.log("[info.js] works well")
         handleChange({name: "loaded", value: "false"})
-        console.log("[info.js] handle submit load", loaded)
         contract.createRandomCorgi({
             backgroundColor, name:newCorgiName, quote, color
         }).then(response => {
@@ -28,7 +26,6 @@ class Info extends Component {
             handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
             handleChange({name:"corgis",value:newCorgis})
-            console.log("[Info.js] afterset login ",loggedIn,"load ", loaded)
         }).catch(err => {
             console.log(err);
         })
@@ -52,8 +49,8 @@ class Info extends Component {
                         color={this.props.color} 
                         handleChange={this.props.handleChange}
                         backgroundColor={this.props.backgroundColor} />
-                    {/* <Button description="Generate Corgi" onSubmit={this.props.handleSubmit}/> */}
-                    <button type="submit">Generate</button>
+                    <Button description="Generate Corgi"/>
+                    {/* <button type="submit">Generate</button> */}
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and
                     thought process. The size it grows to will untimately determine it’s value

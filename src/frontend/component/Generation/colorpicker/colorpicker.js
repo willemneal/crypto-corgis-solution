@@ -4,13 +4,11 @@ import './colorpicker.css'
 class ColorPicker extends Component {
     handleColorChange = (event) => {
         let value = event.target.value;
-        console.log("[colorpicker.js] color,", this.props.color)
         this.props.handleChange({ name: "color", value })
     }
 
     handleBackGroundColorChange = (event) => {
         let value = event.target.value;
-        console.log("[colorpicker.js] backcolor,", this.props.backgroundColor)
         this.props.handleChange({ name: "backgroundColor", value })
     }
 

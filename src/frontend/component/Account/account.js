@@ -1,34 +1,27 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import CreationAccount from '../creation/creationAccount/creationAccount'
 import './account.css';
 
-
-const RATE = {
-    common: "COMMON",
-    uncommon: "UNCOMMON",
-    rare: "RARE",
-    veryRare: "VERYRARE"
-}
 class Account extends Component {
     componentDidMount(){
-        console.log("[account.js] login",this.props.login)
+        console.log(this.props.match)
     }
     render(){
         let { corgis, login } = this.props
-        if(!login) {return <Redirect t0="/" />}
+        if(!login) {return <Redirect to="/" />}
         let Corgis = 'loading'
         if (corgis && corgis.length === 0) { return <Redirect to="/generation" /> } 
         if (corgis.length > 0 ) {
-            Corgis = corgis.map(corgi => {
-                    return (<CreationAccount
-                        id={corgi.dna}
+            Corgis = corgis.map((corgi,index) => {
+                    return (
+                    <Link to={"/corgi/"+ corgi.name} key={index}> <CreationAccount
                         backgroundColor={corgi.backgroundColor}
                         color={corgi.color}
                         sausage={corgi.sausage}
                         corgiName={corgi.name}
                         des={corgi.quote}
-                        rate="this is the fake rate" />)
+                        rate="this is the fake rate" /></Link>)
                 })
         }
         return(

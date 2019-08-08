@@ -42,3 +42,8 @@
 li.active {
   background: #dddddd;
 }
+
+.orange {
+  color: #fbb040;
+  display: inline;
+}

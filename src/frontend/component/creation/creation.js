@@ -8,12 +8,12 @@ const Creation = (props) => {
     return (
         <div className="creation">
             <div style={{
-                backgroundColor: props.backColor,
+                backgroundColor: props.backgroundColor,
                 borderRadius: "10px",
                 padding: "20px",
                 display: "inline-block"
             }}>
-                <Dialogue className="dialogue" des={props.des} color={props.color} />
+                <Dialogue des={props.des} color={props.color} />
                 <Corgi 
                     color={props.color} 
                     sausage={props.sausage} />
