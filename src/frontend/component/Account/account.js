@@ -4,9 +4,6 @@ import CreationAccount from '../creation/creationAccount/creationAccount'
 import './account.css';
 
 class Account extends Component {
-    componentDidMount(){
-        console.log(this.props.match)
-    }
     render(){
         let { corgis, login } = this.props
         if(!login) {return <Redirect to="/" />}
@@ -15,7 +12,8 @@ class Account extends Component {
         if (corgis.length > 0 ) {
             Corgis = corgis.map((corgi,index) => {
                     return (
-                    <Link to={"/corgi/"+ corgi.name} key={index}> <CreationAccount
+                    <Link to={{pathname:"/corgi/"+ corgi.name,
+                                hash: index.toString()}} key={index}> <CreationAccount
                         backgroundColor={corgi.backgroundColor}
                         color={corgi.color}
                         sausage={corgi.sausage}

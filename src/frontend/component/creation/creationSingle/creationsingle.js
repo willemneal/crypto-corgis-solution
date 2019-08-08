@@ -3,18 +3,18 @@ import React from 'react';
 import Corgi from '../../corgi/corgi';
 import Dialogue from '../dialogue/dialogue';
 
-const CreationSingle = (props) => {
+const CreationSingle = ({backgroundColor,color,des,sausage}) => {
     return (
         <div style={{
-            backgroundColor: props.backgroundColor,
+            backgroundColor: backgroundColor,
             borderRadius: "10px",
             padding: "20px",
             display: "inline-block"
         }}>
-            <Dialogue des={props.des} color={props.color} />
+            <Dialogue des={des} color={color} />
             <Corgi
-                color={props.color}
-                sausage={props.sausage} />
+                color={color}
+                sausage={sausage} />
         </div>
     )
 }

@@ -131,10 +131,11 @@ class App extends Component {
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis} />} />
-                    <Route path="/corgi/:name" render={() => <Single
+                    <Route path="/corgi/:name" render={(props) => <Single
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis}
+                        {...this.props}
                         />} />
                 </Switch>
                 <Footer />
