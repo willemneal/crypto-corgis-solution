@@ -107,7 +107,7 @@ const SendAndShare = (props) => {
 
 const Send = () => {
     let send = (
-        <svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <linearGradient x1="0%" y1="50.0039354%" x2="100%" y2="50.0039354%" id="linearGradient-1">
                     <stop stop-color="#231F20" offset="0%"></stop>

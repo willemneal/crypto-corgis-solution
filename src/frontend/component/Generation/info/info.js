@@ -26,6 +26,7 @@ class Info extends Component {
             handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
             handleChange({name:"corgis",value:newCorgis})
+            console.log(corgi)
         }).catch(err => {
             console.log(err);
         })

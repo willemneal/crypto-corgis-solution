@@ -8,6 +8,7 @@ import Generation from '../../component/Generation/generation';
 import Account from '../../component/Account/account';
 import Profile from '../../component/Profile/profile';
 import Single from '../../component/SinglePage/single';
+import Animation from '../../component/Generation/animation/animation'
 
 import './App.css';
 class App extends Component {
