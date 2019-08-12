@@ -43,7 +43,7 @@ const Card = ({ accountName, requestSignOut }) => {
 }
 
 const AddCorgi = () => (
-    <div>
+    <div style={{boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.5)", borderRadius:"50%"}}>
         <svg width="40px" height="40px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="create" transform="translate(-1047.000000, -1249.000000)" fillRule="nonzero">

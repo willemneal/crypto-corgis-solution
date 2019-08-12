@@ -42,7 +42,7 @@ async function doInitContract() {
       "symbol",
       "getCorgisByOwner",
       "getCorgi",
-      "getSender"],
+      "getSender" ],
     changeMethods: [
       "init",
       "transfer",

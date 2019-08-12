@@ -110,6 +110,8 @@ export function getSender(): string {
   return context.sender;
 }
 
+// export function getLastCorgi(ind: i32): Corgi {}
+
 // Transfornation between users
 export function transfer(to: string, tokenId: string): void {
   let corgi = getCorgi(tokenId);
@@ -157,8 +159,7 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string,
   corgi.quote = quote;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
-  // let newCorgi = getCorgi(dna);
-  // return newCorgi;
+  near.log(corgi.toString())
   return corgi;
 }
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
 
 import ColorPicker from '../colorpicker/colorpicker';
 import Button from '../../common/Button/Button'
@@ -23,12 +22,11 @@ class Info extends Component {
         contract.createRandomCorgi({
             backgroundColor, name:newCorgiName, quote, color
         }).then(response => {
-            // let corgi = response.lastResult
-            // let newCorgis = corgis.concat(corgi)
+            let corgi = JSON.parse(response.logs[0].lines[0].slice(4,))
+            let newCorgis = corgis.concat(corgi)
             handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
-            // handleChange({name:"corgis",value:newCorgis})
-            console.log("[info.js]",this.props.history)
+            handleChange({name:"corgis",value:newCorgis})
             history.push("/generating")
         }).catch(err => {
             console.log(err);

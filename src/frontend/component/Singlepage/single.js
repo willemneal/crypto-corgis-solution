@@ -9,7 +9,6 @@ class Single extends Component {
         let { corgis } = this.props
         let loc = Number(this.props.location.hash.slice(1))
         let corgi = corgis.filter((corgi, index) => index === loc)
-        console.log(loc, corgi[0])
     }
     render() {
         let { corgis, login } = this.props
@@ -110,40 +109,40 @@ const Send = () => {
         <svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <linearGradient x1="0%" y1="50.0039354%" x2="100%" y2="50.0039354%" id="linearGradient-1">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="0%" y1="50%" x2="100.023603%" y2="50%" id="linearGradient-2">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="21.5871069%" y1="85.701459%" x2="87.6046989%" y2="13.1537598%" id="linearGradient-3">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="31.8198269%" y1="64.2873176%" x2="56.5588545%" y2="35.7126824%" id="linearGradient-4">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="2.05564263%" y1="76.1278208%" x2="67.3611401%" y2="23.872154%" id="linearGradient-5">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="32.6666644%" y1="76.1390585%" x2="97.9722153%" y2="23.8609415%" id="linearGradient-6">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="34.3379522%" y1="57.3383119%" x2="64.49544%" y2="44.0499278%" id="linearGradient-7">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="65.6725365%" y1="57.3340525%" x2="35.5242604%" y2="44.0536113%" id="linearGradient-8">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
                 <linearGradient x1="9.16666667%" y1="90.8888889%" x2="90.8888889%" y2="9.11111111%" id="linearGradient-9">
-                    <stop stop-color="#231F20" offset="0%"></stop>
-                    <stop stop-color="#FF595A" offset="100%"></stop>
+                    <stop stopColor="#231F20" offset="0%"></stop>
+                    <stop stopColor="#FF595A" offset="100%"></stop>
                 </linearGradient>
             </defs>
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
