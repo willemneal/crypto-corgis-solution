@@ -94,7 +94,7 @@ class App extends Component {
     }
 
     render() {
-        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote,id } = this.state
+        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote } = this.state
         let { contract } = this.props
         return (
             <div className="App">
@@ -114,7 +114,8 @@ class App extends Component {
                             load={loaded}
                             requestSignIn={this.requestSignIn} />}
                     />
-                    <Route exact path="/generation" render={() => <Generation
+                    <Route exact path="/generation" render={(props) => <Generation
+                        load={loaded}
                         login={loggedIn}
                         color={color}
                         backgroundColor={backgroundColor}
@@ -122,12 +123,13 @@ class App extends Component {
                         quote={quote}
                         handleChange={this.handleChange}
                         contract={contract}
-                        corgis={corgis} />} />
+                        corgis={corgis}
+                        {...this.props} />} />
                     <Route exact path="/account" render={() => <Account
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis}
-                        />} />
+                    />} />
                     <Route exact path="/profile" render={() => <Profile
                         login={loggedIn}
                         load={loaded}
@@ -137,7 +139,11 @@ class App extends Component {
                         load={loaded}
                         corgis={corgis}
                         {...this.props}
-                        />} />
+                    />} />
+                    <Route path="/generating" render={(props) => <Animation
+                        color={color}
+                        backgroundColor={backgroundColor}
+                    />} />
                 </Switch>
                 <Footer />
             </div>

@@ -9,7 +9,7 @@ import './generation.css'
 class Generation extends Component {
 
     render() {
-        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis, login} = this.props
+        let {login} = this.props
         if(!login) {return <Redirect to="/" />}
         return (
             <div className="generation">

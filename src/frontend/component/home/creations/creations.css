@@ -18,3 +18,8 @@
 .sample {
     display: inline;
 }
+
+.borad {
+    display: flex;
+    flex-flow: row wrap;
+}

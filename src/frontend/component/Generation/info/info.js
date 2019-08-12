@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
+
 import ColorPicker from '../colorpicker/colorpicker';
 import Button from '../../common/Button/Button'
 
@@ -15,18 +17,19 @@ class Info extends Component {
     }
 
     handleSubmit = (e) => {
-        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, loaded, loggedIn} = this.props
+        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis, history} = this.props
         e.preventDefault()
         handleChange({name: "loaded", value: "false"})
         contract.createRandomCorgi({
             backgroundColor, name:newCorgiName, quote, color
         }).then(response => {
-            let corgi = response.lastResult
-            let newCorgis = this.props.corgis.concat(corgi)
+            // let corgi = response.lastResult
+            // let newCorgis = corgis.concat(corgi)
             handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
-            handleChange({name:"corgis",value:newCorgis})
-            console.log(corgi)
+            // handleChange({name:"corgis",value:newCorgis})
+            console.log("[info.js]",this.props.history)
+            history.push("/generating")
         }).catch(err => {
             console.log(err);
         })
@@ -51,7 +54,6 @@ class Info extends Component {
                         handleChange={this.props.handleChange}
                         backgroundColor={this.props.backgroundColor} />
                     <Button description="Generate Corgi"/>
-                    {/* <button type="submit">Generate</button> */}
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and
                     thought process. The size it grows to will untimately determine it’s value

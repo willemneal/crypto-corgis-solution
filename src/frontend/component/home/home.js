@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Keyframes, Frame } from 'react-keyframes';
-
 
 import Poster from './poster/poster'
 import Creations from './creations/creations'
@@ -15,10 +13,6 @@ class Home extends Component {
             <div className="home">
                 <Poster requestSignIn={requestSignIn} load={load} />
                 <Creations />
-                <Keyframes component="pre" delay={0} loop={1} className="animation-test">
-                    <Frame>foo</Frame>
-                    <Frame>bar</Frame>
-                </Keyframes>
             </div>
         )
     }

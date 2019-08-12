@@ -157,13 +157,14 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string,
   corgi.quote = quote;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
+  // let newCorgi = getCorgi(dna);
+  // return newCorgi;
   return corgi;
 }
 
 function generateRandomDna(): string {
   let buf = near.randomBuffer(DNA_DIGITS);
   let b64 = base64.encode(buf);
-  near.log(b64);
   return b64;
 }
 
@@ -178,7 +179,7 @@ function generateRandomLength() : string {
   Math.seedRandom(12345);
   let l = Math.floor(Math.random() * 400) + 10;
   let sausage = min(l, 400);
-  return sausage.toString() ;
+  return sausage.toString()
 }
 
 function intToHex(integer: u32): string {
