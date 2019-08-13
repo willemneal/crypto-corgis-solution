@@ -4,8 +4,9 @@
   border-radius: 5px;
   display: flex;
   flex-direction: row;
-  margin: auto;
+  margin: 2%;
   width: 70%;
+  text-align: start;
 }
 
 .cardChar {
@@ -13,6 +14,3 @@
   letter-spacing: 0;
 }
 
-.left {
-  text-align: left;
-}

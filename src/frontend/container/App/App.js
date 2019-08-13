@@ -143,6 +143,7 @@ class App extends Component {
                     <Route path="/generating" render={(props) => <Animation
                         color={color}
                         backgroundColor={backgroundColor}
+                        newCorgiName={newCorgiName}
                     />} />
                 </Switch>
                 <Footer />

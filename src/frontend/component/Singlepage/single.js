@@ -19,7 +19,7 @@ class Single extends Component {
             <div>
                 <div>
                     <h1>Meet {corgi.name}!</h1>
-                    <div style={{margin: "3%"}}>
+                    <div style={{ margin: "3%" }}>
                         <CreationSingle
                             backgroundColor={corgi.backgroundColor}
                             color={corgi.color}
@@ -162,13 +162,14 @@ const Send = () => {
                     </g>
                 </g>
             </g>
-        </svg>)
+        </svg>
+        )
     return (
         <div className="card">
             {send}
             <div>
-                <h3 className="cardChar left">Send as a gift</h3>
-                <p className="left">The perfect gift for any occasion</p>
+                <h3 className="cardChar">Send as a gift</h3>
+                <p>The perfect gift for any occasion</p>
             </div>
         </div>
     )
@@ -186,14 +187,13 @@ const Share = () => {
                     </g>
                 </g>
             </g>
-        </svg>
-    )
+        </svg>)
     return (
         <div className="card">
             {share}
-            <div style={{marginLeft:"10px"}}>
-                <h3 className="cardChar left">Share on Social</h3>
-                <p className="left">Got something rare? It is time to brag a bit.</p>
+            <div style={{ marginLeft: "10px" }}>
+                <h3 className="cardChar">Share on Social</h3>
+                <p>Got something rare? It is time to brag a bit.</p>
             </div>
         </div>
     )
