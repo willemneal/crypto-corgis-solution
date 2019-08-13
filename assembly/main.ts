@@ -77,7 +77,7 @@ export function totalSupply(): string {
   return TOTAL_SUPPLY.toString();
 }
 
-// Methods for Corgi
+//Methods for owner NEED TO CHANGE TOOOOOOT
 export function getCorgisByOwner(owner: string): CorgiArray {
   return corgisByOwner.get(owner);
 }
@@ -98,6 +98,7 @@ export function setCorgisByOwner(corgi: Corgi): void {
   corgisByOwner.set(corgi.owner, ca);
 }
 
+// Methods for Corgi
 export function getCorgi(tokenId: string): Corgi {
   return corgis.get(tokenId);
 }
@@ -109,8 +110,6 @@ export function setCorgi(corgi: Corgi): void {
 export function getSender(): string {
   return context.sender;
 }
-
-// export function getLastCorgi(ind: i32): Corgi {}
 
 // Transfornation between users
 export function transfer(to: string, tokenId: string): void {
@@ -143,23 +142,32 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 
 // Create unique Corgi
 export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
+  near.log("createRandomCorgi");
   let randDna = generateRandomDna();
+  near.log("createRandomCorgi 0"); 
   let sausage = generateRandomLength();
+  near.log("createRandomCorgi 1"); 
   return _createCorgi(name, randDna, color, sausage, backgroundColor, quote);
+
+  //return {}; //{ name: 'whatever' };
 }
 
-function _createCorgi(name: string, dna: string, color: string, sausage: string, backgroundColor: string,quote: string): Corgi {
+function _createCorgi(name: string, dna: string, color: string, sausage: string, backgroundColor: string, quote: string): Corgi {
+  near.log('_createCorgi 1')
   let corgi = new Corgi();
   corgi.owner = context.sender;
   corgi.dna = dna;
   corgi.name = name;
+
   corgi.color = color
   corgi.sausage = sausage;
   corgi.backgroundColor = backgroundColor;
   corgi.quote = quote;
+
+  near.log('_createCorgi 2');
   setCorgi(corgi);
-  setCorgisByOwner(corgi);
-  near.log(corgi.toString())
+  // setCorgisByOwner(corgi);
+  near.log('_createCorgi 3')
   return corgi;
 }
 
@@ -171,12 +179,12 @@ function generateRandomDna(): string {
 
 function generateRandomrate(): string {
   Math.seedRandom(12345)
-  let n =  Math.random()
+  let n = Math.random()
   return n
 }
 
 // random is not working
-function generateRandomLength() : string {
+function generateRandomLength(): string {
   Math.seedRandom(12345);
   let l = Math.floor(Math.random() * 400) + 10;
   let sausage = min(l, 400);

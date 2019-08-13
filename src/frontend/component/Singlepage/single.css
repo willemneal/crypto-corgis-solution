@@ -7,10 +7,19 @@
   margin: 2%;
   width: 70%;
   text-align: start;
+  padding: 2%;
 }
 
 .cardChar {
   color: #0072ce;
   letter-spacing: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 80%;
+  justify-content: space-between;
 }
 

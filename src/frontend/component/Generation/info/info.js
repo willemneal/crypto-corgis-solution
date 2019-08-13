@@ -22,7 +22,7 @@ class Info extends Component {
         contract.createRandomCorgi({
             backgroundColor, name:newCorgiName, quote, color
         }).then(response => {
-            let corgi = JSON.parse(response.logs[0].lines[0].slice(4,))
+            let corgi = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'));
             let newCorgis = corgis.concat(corgi)
             handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
