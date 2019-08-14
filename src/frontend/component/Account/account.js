@@ -13,7 +13,7 @@ class Account extends Component {
             Corgis = corgis.map(corgi => {
                     return (
                     <Link to={{pathname:"/corgi/"+ corgi.name,
-                                hash: corgi.dna}} key={corgi.dna}> <CreationAccount
+                                hash: "what id wrong here?"}} key={corgi.dna}> <CreationAccount
                         backgroundColor={corgi.backgroundColor}
                         color={corgi.color}
                         sausage={corgi.sausage}

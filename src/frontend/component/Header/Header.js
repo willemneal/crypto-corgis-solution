@@ -13,7 +13,7 @@ import './Header.css';
 
 class Header extends Component {
     render() {
-        let { login, load, requestSignIn, requestSignOut ,accountId, length } = this.props
+        let { login, load, requestSignIn, requestSignOut ,accountId, length, clicked } = this.props
         let show = "loading"
         if (login && load) {
             show = <Nav  
@@ -27,7 +27,7 @@ class Header extends Component {
         }
         return (
             <div className="header">
-                <NavLink exact to="/" style={{textAlign: "left"}}><ImageLoader image={logo} style={{ width: "70%", height: "100%" }} /></NavLink>
+                <NavLink exact to="/" style={{textAlign: "left"}} onClick={clicked}><ImageLoader image={logo} style={{ width: "70%", height: "100%" }} /></NavLink>
                 {show}
             </div>
         )

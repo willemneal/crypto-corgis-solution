@@ -23,7 +23,8 @@ class App extends Component {
             backgroundColor: "#84D0B5",
             newCorgiName: '',
             quote: "this is the fake quote",
-            backdrop: false
+            backDrop: false,
+            front: false
         }
         this.getCorgis = this.getCorgis.bind(this);
         this.checkLoggedIn = this.checkLoggedIn.bind(this);
@@ -44,7 +45,8 @@ class App extends Component {
     signedOutFlow() {
         this.setState({
             loggedIn: false,
-            loaded: true
+            loaded: true,
+            front: false
         });
     }
 
@@ -95,15 +97,19 @@ class App extends Component {
     }
 
     backdropShowHandler = () => {
-        this.setState({backdrop: true})
+        this.setState({backDrop: true})
     }
 
     backdropCancelHandler = () => {
-        this.setState({backdrop: false})
+        this.setState({backDrop: false})
+    }
+
+    homeFrontHandler = () => {
+        this.setState({front: true})
     }
 
     render() {
-        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote } = this.state
+        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote, backDrop, front } = this.state
         let { contract } = this.props
         return (
             <div className="App">
@@ -113,7 +119,8 @@ class App extends Component {
                     requestSignIn={this.requestSignIn}
                     requestSignOut={this.requestSignOut}
                     accountId={accountId}
-                    length={corgis.length} />
+                    length={corgis.length}
+                    clicked={this.homeFrontHandler} />
                 <Switch>
                     <Route
                         exact
@@ -122,6 +129,8 @@ class App extends Component {
                             login={loggedIn}
                             load={loaded}
                             requestSignIn={this.requestSignIn}
+                            front={front}
+                            accountId={accountId}
                             {...this.props} />}
                     />
                     <Route exact path="/generation" render={(props) => <Generation
@@ -139,6 +148,7 @@ class App extends Component {
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis}
+                        backDrop={backDrop}
                     />} />
                     <Route exact path="/profile" render={() => <Profile
                         login={loggedIn}
@@ -148,6 +158,7 @@ class App extends Component {
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis}
+                        backDrop={backDrop}
                         {...this.props}
                     />} />
                     <Route path="/generating" render={(props) => <Animation
