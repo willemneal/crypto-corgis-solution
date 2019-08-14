@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 import { Keyframes, Frame } from 'react-keyframes';
-import sampleH from '../../common/sample/sample_h'
+import SampleH from '../../common/sample/sample_h';
 
-import SampleH from '../../common/sample/sample_h'
+import './animation.css';
 class Animation extends Component {
+    state = {
+        running: true
+    }
     render() {
-        let { newCorginame, color, backgroundColor } = this.props
+        let { newCorgiName, color, backgroundColor } = this.props
         let shadow = (
             <div style={{ width: "100%", position: "relative", top: "50px", margin: "auto" }}>
                 <svg width="200px" height="25px" viewBox="0 0 200 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
@@ -19,7 +22,7 @@ class Animation extends Component {
             </div>
         )
         const corgiOne = () => (
-            <svg width="192px" height="191px" viewBox="0 0 192 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <svg className="spinning" width="192px" height="191px" viewBox="0 0 192 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-759.000000, -1100.000000)">
                         <g id="c-phase1-(1)" transform="translate(761.000000, 1102.000000)">
@@ -32,7 +35,7 @@ class Animation extends Component {
             </svg>
         )
         const corgiTwo = () => (
-            <svg width="199px" height="271px" viewBox="0 0 199 271" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <svg className="spinning" width="199px" height="271px" viewBox="0 0 199 271" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-745.000000, -1012.000000)">
                         <g id="c-phase2-(1)" transform="translate(845.500000, 1147.000000) rotate(-90.000000) translate(-845.500000, -1147.000000) translate(711.000000, 1048.000000)">
@@ -48,7 +51,7 @@ class Animation extends Component {
             </svg>
         )
         const corgiThree = () => (
-            <svg width="338px" height="257px" viewBox="0 0 338 257" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <svg className="spinning" width="338px" height="257px" viewBox="0 0 338 257" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-676.000000, -1020.000000)">
                         <g id="c-phase3-(1)" transform="translate(676.000000, 1020.000000)">
@@ -66,7 +69,7 @@ class Animation extends Component {
             </svg>
         )
         const corgiFour = () => (
-            <svg width="338px" height="284px" viewBox="0 0 338 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <svg className="spinning" width="338px" height="284px" viewBox="0 0 338 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-1012.000000, -1220.000000)">
                         <g id="c-phase4-(1)" transform="translate(1012.000000, 1220.000000)">
@@ -94,21 +97,16 @@ class Animation extends Component {
                 </g>
             </svg>
         )
-
-        // const corgiFive = () => ()
-
+        if (!this.state.running) {return <Redirect to={{pathname:"/corgi/"+ newCorgiName, hash:color}}/> }
         return (
             <div>
                 <h3>Generating...</h3>
                 <div style={{ background: backgroundColor, borderRadius: "10px", height: "50%", width: "90%", margin: "5%", padding: "10%"}}>
-                    <Keyframes onEnd={() => {
-                        return <Redirect to="/account" />
-                    }}>
-                        <Frame duration={1000} component={corgiOne} ></Frame>
-                        <Frame duration={500} component={corgiTwo}></Frame>
-                        <Frame duration={500} component={corgiThree}></Frame>
-                        <Frame duration={500} component={corgiFour}></Frame>
-                        {/* <Frame duration={500} component={corgiFive}></Frame> */}
+                    <Keyframes onEnd={() => {this.setState({running:false})}}>
+                        <Frame duration={500} component={corgiOne} ></Frame>
+                        <Frame duration={500} component={corgiTwo} ></Frame>
+                        <Frame duration={500} component={corgiThree} ></Frame>
+                        <Frame duration={500} component={corgiFour} ></Frame>
                     </Keyframes>
                     <div>{shadow}</div>
                 </div>

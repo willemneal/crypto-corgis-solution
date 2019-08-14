@@ -7,7 +7,6 @@ import Screen from './screen/screen'
 import './generation.css'
 
 class Generation extends Component {
-
     render() {
         let {login} = this.props
         if(!login) {return <Redirect to="/" />}

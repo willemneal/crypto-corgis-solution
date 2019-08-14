@@ -142,18 +142,12 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 
 // Create unique Corgi
 export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
-  near.log("createRandomCorgi");
   let randDna = generateRandomDna();
-  near.log("createRandomCorgi 0"); 
   let sausage = generateRandomLength();
-  near.log("createRandomCorgi 1"); 
   return _createCorgi(name, randDna, color, sausage, backgroundColor, quote);
-
-  //return {}; //{ name: 'whatever' };
 }
 
 function _createCorgi(name: string, dna: string, color: string, sausage: string, backgroundColor: string, quote: string): Corgi {
-  near.log('_createCorgi 1')
   let corgi = new Corgi();
   corgi.owner = context.sender;
   corgi.dna = dna;
@@ -163,11 +157,8 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string,
   corgi.sausage = sausage;
   corgi.backgroundColor = backgroundColor;
   corgi.quote = quote;
-
-  near.log('_createCorgi 2');
   setCorgi(corgi);
   // setCorgisByOwner(corgi);
-  near.log('_createCorgi 3')
   return corgi;
 }
 

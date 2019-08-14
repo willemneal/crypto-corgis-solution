@@ -24,11 +24,10 @@ class Info extends Component {
         }).then(response => {
             let corgi = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'));
             let newCorgis = corgis.concat(corgi)
-            handleChange({name:"newCorgiName",value:""})
+            // handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
             handleChange({name:"corgis",value:newCorgis})
-            // history.push("/generating")
-            console.log("[info.js] ", corgi)
+            history.push("/generating")
         }).catch(err => {
             console.log(err);
         })

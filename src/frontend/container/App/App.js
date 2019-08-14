@@ -23,6 +23,7 @@ class App extends Component {
             backgroundColor: "#84D0B5",
             newCorgiName: '',
             quote: "this is the fake quote",
+            backdrop: false
         }
         this.getCorgis = this.getCorgis.bind(this);
         this.checkLoggedIn = this.checkLoggedIn.bind(this);
@@ -93,6 +94,14 @@ class App extends Component {
         })
     }
 
+    backdropShowHandler = () => {
+        this.setState({backdrop: true})
+    }
+
+    backdropCancelHandler = () => {
+        this.setState({backdrop: false})
+    }
+
     render() {
         let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote } = this.state
         let { contract } = this.props
@@ -109,10 +118,11 @@ class App extends Component {
                     <Route
                         exact
                         path="/"
-                        render={() => <Home
+                        render={(props) => <Home
                             login={loggedIn}
                             load={loaded}
-                            requestSignIn={this.requestSignIn} />}
+                            requestSignIn={this.requestSignIn}
+                            {...this.props} />}
                     />
                     <Route exact path="/generation" render={(props) => <Generation
                         load={loaded}
@@ -144,6 +154,7 @@ class App extends Component {
                         color={color}
                         backgroundColor={backgroundColor}
                         newCorgiName={newCorgiName}
+                        {...this.props}
                     />} />
                 </Switch>
                 <Footer />
@@ -153,3 +164,4 @@ class App extends Component {
 }
 
 export default withRouter(App)
+

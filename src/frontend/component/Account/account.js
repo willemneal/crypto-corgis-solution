@@ -10,10 +10,10 @@ class Account extends Component {
         let Corgis = 'loading'
         if (corgis && corgis.length === 0) { return <Redirect to="/generation" /> } 
         if (corgis.length > 0 ) {
-            Corgis = corgis.map((corgi,index) => {
+            Corgis = corgis.map(corgi => {
                     return (
                     <Link to={{pathname:"/corgi/"+ corgi.name,
-                                hash: index.toString()}} key={index}> <CreationAccount
+                                hash: corgi.dna}} key={corgi.dna}> <CreationAccount
                         backgroundColor={corgi.backgroundColor}
                         color={corgi.color}
                         sausage={corgi.sausage}
