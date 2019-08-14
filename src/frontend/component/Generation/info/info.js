@@ -24,6 +24,7 @@ class Info extends Component {
         }).then(response => {
             let corgi = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'));
             let newCorgis = corgis.concat(corgi)
+            handleChange({name: "dna",value:corgi.dna})
             // handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
             handleChange({name:"corgis",value:newCorgis})

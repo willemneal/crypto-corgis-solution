@@ -1,5 +1,5 @@
 import React from 'react';
-import Creation from '../../creation/creation';
+import Creation from '../../creation/creationHome';
 import SampleH from '../../common/sample/sample_h';
 import './creations.css'
 
@@ -51,7 +51,7 @@ let corgiArray = [{
 const Creations = () => {
     let Corgis = corgiArray.map(corgi => {
         return (<Creation
-            key={corgi.color+corgi.backgroundColor}
+            key={corgi.dna}
             backgroundColor={corgi.backgroundColor}
             color={corgi.color}
             sausage={corgi.sausage}

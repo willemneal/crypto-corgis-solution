@@ -9,8 +9,11 @@ class Animation extends Component {
         running: true
     }
     render() {
-        let { newCorgiName, color, backgroundColor } = this.props
-        let shadow = (
+        let { corgis, dna, newCorgiName, login } = this.props
+        let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === newCorgiName )[0]
+        let color = corgi.color
+        let backgroundColor = corgi.backgroundColor
+        const shadow = (
             <div style={{ width: "100%", position: "relative", top: "50px", margin: "auto" }}>
                 <svg width="200px" height="25px" viewBox="0 0 200 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" fillOpacity="0.2">
@@ -97,7 +100,8 @@ class Animation extends Component {
                 </g>
             </svg>
         )
-        if (!this.state.running) {return <Redirect to={{pathname:"/corgi/"+ newCorgiName, hash:color}}/> }
+        if (!login) { return <Redirect to="/" /> }
+        if (!this.state.running) {return <Redirect to={{pathname:"/corgi/"+ newCorgiName, hash:corgi.dna}}/> }
         return (
             <div>
                 <h3>Generating...</h3>

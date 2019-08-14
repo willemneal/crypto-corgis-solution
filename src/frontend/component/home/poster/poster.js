@@ -7,9 +7,6 @@ import corgiFull from '../../../../assets/corgi-full.png';
 import "./poster.css";
 
 class Poster extends Component {
-    componentDidMount(){
-        console.log("[post.js] front", this.props.front)
-    }
     render(){
         let {requestSignIn,load, front, accountId} = this.props
         let showButton = "loading";
