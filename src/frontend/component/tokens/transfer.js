@@ -1,65 +1,68 @@
-import React from 'react'
-import Button from '../common/Button/Button'
+import React from 'react';
+import Button from '../common/Button/Button';
 {/* <TransferCorgi
-  trigger={this.props.trigger}
+  trigger={this.props.trigger} signin
   contract={this.props.contract}
   corgiDNA={this.props.dna}
   handleChange={this.handleChange} /> */}
 
+
+//message needs to be added
 class TransferCorgi extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        recipient: "",
-        loading: false
-      }
-      this.handleChange = this.handleChange.bind(this);
-      this.transferCorgi = this.transferCorgi.bind(this);
-    }
-
-
-    getCorgi(tokenId) {
-      return this.props.contract.getCorgi({ tokenId: tokenId })
+  state = {
+    recipient: "",
+    message: ""
   }
-  
-    transferCorgi(e) {
-      e.preventDefault();
-      this.setState({ loading: true });
-      console.log(this.props.corgiDNA, this.state.recipient);
-      this.props.contract.transfer({
-        to: this.state.recipient,
-        tokenId: this.props.corgiDNA
+
+  handleNameChange = (event) => {
+    let value = event.target.value;
+    this.setState({ recipient: value })
+  }
+
+  handleMessageChange = (event) => {
+    let value = event.target.value;
+    this.setState({ message: value })
+  }
+
+  transferCorgi = (e) => {
+    let { handleChange, contract,dna } = this.props
+    let { recipient } = this.state
+    e.preventDefault();
+    handleChange({ name: "loading", value: true })
+    console.log(dna, recipient);
+    contract.transfer({
+      to: recipient,
+      tokenId: dna
+    })
+      .then(res => {
+        handleChange({name:"loading", value: false})
+      }).catch(err => {
+        console.log(err);
       })
-        .then(res => {
-          this.props.trigger();
-          this.setState({ loading: false });
-        }).catch(err => {
-          console.log(err);
-        })
-    }
-  
-    handleChange(e) {
-      this.setState({
-        [e.target.id]: e.target.value
-      });
-    }
-  
-    render() {
-      return (
-        <div>
-          {!this.state.loading ?
-            <React.Fragment>
-              <input id="recipient"
-                type="text"
-                placeholder="Corgi recipient"
-                onChange={this.handleChange}
-                value={this.state.recipient} />
-              <Button action={this.transferCorgi} description="Transfer" />
-            </React.Fragment>
-            : "Loading..."}
-        </div>
-      )
-    }
   }
 
-  export default TransferCorgi
+  render() {
+    let { handleChange } = this.props
+    let { recipient, message } = this.state
+    return (
+      <div>
+        <lable>To:</lable>
+        <input id="recipient"
+          type="text"
+          placeholder="Corgi recipient"
+          onChange={this.handleNameChange}
+          value={recipient} />
+        {/* <lable>Message</lable>
+        <input
+          type="text"
+          placeholder="(Optional)Best wish to your friend  with corgi"
+          onChange={this.handleMessageChange}
+          value={message}
+        /> */}
+        <Button action={this.transferCorgi} description="Transfer" />
+      </div>
+    )
+  }
+}
+
+export default TransferCorgi

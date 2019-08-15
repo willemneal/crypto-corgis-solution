@@ -150,6 +150,8 @@ class App extends Component {
                         load={loaded}
                         corgis={corgis}
                         backDrop={backDrop}
+                        backdropShowHandler={this.backdropShowHandler}
+                        backdropCancelHandler={this.backdropCancelHandler}
                     />} />
                     <Route exact path="/profile" render={() => <Profile
                         login={loggedIn}
@@ -162,6 +164,8 @@ class App extends Component {
                         backDrop={backDrop}
                         dna={dna}
                         newCorgiName={newCorgiName}
+                        backdropShowHandler={this.backdropShowHandler}
+                        backdropCancelHandler={this.backdropCancelHandler}
                     />} />
                     <Route path="/generating" render={() => <Animation
                         login={loggedIn}
