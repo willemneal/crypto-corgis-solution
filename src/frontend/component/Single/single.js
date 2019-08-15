@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 
 import Corgi from '../creation/creationSingle/creationsingle';
 import SendPage from '../Send/send';
 
 import "./single.css"
 class Single extends Component {
-    componentDidMount(){
-        console.log(this.props.backDrop)
-    }
     render() {
-        let { corgis, login, contract, handleChange, backdropShowHandler, backdropCancelHandler, history  } = this.props
+        let { corgis, login, contract, handleChange, backdropShowHandler, backdropCancelHandler, history, backDrop, accountId } = this.props
         let dna = history.location.hash.slice(1,)
         let name = history.location.pathname.slice(7,)
         let corgi = corgis.filter((corgi) => dna === dna && corgi.name === name)[0]
@@ -18,7 +15,7 @@ class Single extends Component {
         return (
             <div>
                 <SendPage
-                    contract={contract}
+                    name={corgi.name}
                     dna={dna}
                     handleChange={handleChange}
                     backgroundColor={corgi.backgroundColor}
@@ -26,6 +23,10 @@ class Single extends Component {
                     sausage={corgi.sausage}
                     des={corgi.quote}
                     backdropCancelHandler={backdropCancelHandler}
+                    backDrop={backDrop}
+                    history={history}
+                    contract={contract}
+                    accountId={accountId}
                      />
                 <div>
                     <h1>Meet {corgi.name}!</h1>
@@ -47,7 +48,7 @@ class Single extends Component {
 
 }
 
-export default Single
+export default withRouter(Single)
 
 const Rate = (props) => {
     let common = (<div>

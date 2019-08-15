@@ -8,26 +8,33 @@ class SendPage extends Component {
     state = {
         loading: false
     }
+
+    loadingHandler = () => {
+        let state = this.state.loading
+        this.setState({loading: !state})
+    }
+
     render() {
-        let { contract, dna, handleChange, backgroundColor, color, sausage, des, backDrop, backdropCancelHandler } = this.props
+        let { contract,name, dna, backgroundColor, color, sausage, des, backDrop, backdropCancelHandler,accountId } = this.props
         return (
-            this.state.loading
-                ? <Modal backDrop={backDrop} backdropCancelHandler={backdropCancelHandler}>
-                    <h3>Send a Corgi</h3>
-                    <div>
-                        <Corgi
-                            backgroundColor={backgroundColor}
-                            color={color}
-                            sausage={sausage}
-                            des={des} />
-                        <p>Corgi Name</p>
-                        <hr />
-                        <p>RARITY</p>
-                        <p>LOGO</p>
+            <Modal backDrop={backDrop} backdropCancelHandler={backdropCancelHandler}>
+                {!this.state.loading
+                    ? <div>
+                        <h3>Send a Corgi</h3>
+                        <div>
+                            <Corgi
+                                backgroundColor={backgroundColor}
+                                color={color}
+                                sausage={sausage}
+                                des={des} />
+                            <p>{name}<span style={{color: "orange",marginLeft: "10em"}}>RARE</span></p>
+                            <hr />
+                            {/* <p>LOGO</p> */}
+                        </div>
+                        <Transfer contract={contract} dna={dna} loadingHandler={this.loadingHandler} accountId={accountId}/>
                     </div>
-                    <Transfer contract={contract} dna={dna} handleChange={handleChange} />
-                </Modal>
-                : "loading"
+                    : "loading"}
+            </Modal>
         )
     }
 }

@@ -1,11 +1,7 @@
-import React,{Component} from 'react';
-import Button from '../common/Button/Button';
-{/* <TransferCorgi
-  trigger={this.props.trigger} signin
-  contract={this.props.contract}
-  corgiDNA={this.props.dna}
-  handleChange={this.handleChange} /> */}
+import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 
+import Button from '../common/Button/Button';
 
 //message needs to be added
 class TransferCorgi extends Component {
@@ -25,18 +21,18 @@ class TransferCorgi extends Component {
   }
 
   transferCorgi = (e) => {
-    let { handleChange,contract,dna } = this.props
+    let { loadingHandler, contract, dna, history, accountId } = this.props
     let { recipient } = this.state
     e.preventDefault();
-    handleChange({ name: "loading", value: true })
-    console.log("[tranfer.js] dna and recipient",dna, recipient);
+    loadingHandler()
     contract.transfer({
       to: recipient,
       tokenId: dna
     })
       .then(res => {
-        console.log("[transfer].js response",res)
-        handleChange({name:"loading", value: false})
+        console.log("[transfer,js] response", res)
+        loadingHandler()
+        history.push("/account")
       }).catch(err => {
         console.log(err);
       })
@@ -46,13 +42,15 @@ class TransferCorgi extends Component {
     let { recipient, message } = this.state
     return (
       <div>
-        <lable>To:</lable>
-        <input id="recipient"
+        <label>To:</label>
+        <input
+          required
+          id="recipient"
           type="text"
           placeholder="Corgi recipient"
           onChange={this.handleNameChange}
           value={recipient} />
-        {/* <lable>Message</lable>
+        {/* <label>Message</label>
         <input
           type="text"
           placeholder="(Optional)Best wish to your friend  with corgi"
@@ -65,4 +63,4 @@ class TransferCorgi extends Component {
   }
 }
 
-export default TransferCorgi
+export default withRouter(TransferCorgi)

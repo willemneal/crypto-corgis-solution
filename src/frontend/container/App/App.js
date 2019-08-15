@@ -27,12 +27,12 @@ class App extends Component {
             quote: "this is the fake quote",
             dna: ''
         }
-        this.getCorgis = this.getCorgis.bind(this);
-        this.checkLoggedIn = this.checkLoggedIn.bind(this);
         this.signedInFlow = this.signedInFlow.bind(this);
         this.requestSignIn = this.requestSignIn.bind(this);
-        this.requestSignOut = this.requestSignOut.bind(this);
     }
+    // async checkLoggedIn() {
+    //     await this.props.wallet.isSignedIn();
+    // }
 
     componentDidMount() {
         let loggedIn = window.walletAccount.isSignedIn();
@@ -41,10 +41,9 @@ class App extends Component {
         } else {
             this.signedOutFlow();
         }
-        console.log(this.state.backDrop)
     }
 
-    signedOutFlow() {
+    signedOutFlow = () => {
         this.setState({
             loggedIn: false,
             loaded: true,
@@ -52,11 +51,11 @@ class App extends Component {
         });
     }
 
-    getCorgis(owner) {
+    getCorgis = (owner) => {
         return this.props.contract.getCorgisByOwner({ owner: owner });
     }
 
-    async signedInFlow() {
+    async signedInFlow(){
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
             this.setState({
@@ -76,10 +75,6 @@ class App extends Component {
         })
     }
 
-    async checkLoggedIn() {
-        await this.props.wallet.isSignedIn();
-    }
-
     async requestSignIn() {
         await this.props.wallet.requestSignIn(
             window.nearConfig.contractName,
@@ -87,7 +82,7 @@ class App extends Component {
         )
     }
 
-    requestSignOut() {
+    requestSignOut = () => {
         this.props.wallet.signOut();
         this.signedOutFlow();
     }
@@ -134,7 +129,7 @@ class App extends Component {
                             front={front}
                             accountId={accountId} />}
                     />
-                    <Route exact path="/generation" render={(props) => <Generation
+                    <Route exact path="/generation" render={() => <Generation
                         load={loaded}
                         login={loggedIn}
                         color={color}
@@ -142,9 +137,8 @@ class App extends Component {
                         newCorgiName={newCorgiName}
                         quote={quote}
                         handleChange={this.handleChange}
-                        contract={contract}
                         corgis={corgis}
-                        {...this.props} />} />
+                        contract={contract} />} />
                     <Route exact path="/account" render={() => <Account
                         login={loggedIn}
                         load={loaded}
@@ -157,9 +151,10 @@ class App extends Component {
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis} />} />
-                    <Route path="/corgi/:name" render={(props) => <Single
+                    <Route path="/corgi/:name" render={() => <Single
                         login={loggedIn}
                         load={loaded}
+                        contract={contract}
                         corgis={corgis}
                         backDrop={backDrop}
                         dna={dna}
@@ -167,9 +162,8 @@ class App extends Component {
                         backDrop={backDrop}
                         backdropShowHandler={this.backdropShowHandler}
                         backdropCancelHandler={this.backdropCancelHandler}
-                        contract={contract}
                         handleChange={this.handleChange}
-                        {...this.props}
+                        accountId={accountId}
                     />} />
                     <Route path="/generating" render={() => <Animation
                         login={loggedIn}

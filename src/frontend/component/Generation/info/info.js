@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 
 import ColorPicker from '../colorpicker/colorpicker';
 import Button from '../../common/Button/Button'
@@ -25,7 +26,6 @@ class Info extends Component {
             let corgi = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'));
             let newCorgis = corgis.concat(corgi)
             handleChange({name: "dna",value:corgi.dna})
-            // handleChange({name:"newCorgiName",value:""})
             handleChange({name:"loaded",value:"true"})
             handleChange({name:"corgis",value:newCorgis})
             history.push("/generating")
@@ -62,4 +62,4 @@ class Info extends Component {
     }
 }
 
-export default Info
+export default withRouter(Info)

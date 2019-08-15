@@ -1,6 +1,7 @@
 // import "allocator/arena";
 import { context, storage, near, collections, base64 } from "./near";
 import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
+import { CorgiArray } from "./model";
 
 // export { memory }
 
@@ -47,14 +48,7 @@ export function init(initialOwner: string): void {
   storage.setItem("init", "done");
 }
 
-// BAlance for owner
-// Get Owner
-export function ownerOf(tokenId: string): string {
-  let corgi = getCorgi(tokenId);
-  let owner = corgi.owner;
-  return owner;
-}
-
+// Balance for owner
 export function balanceOf(owner: string): u64 {
   return balances.get(owner);
 }
@@ -77,7 +71,13 @@ export function totalSupply(): string {
   return TOTAL_SUPPLY.toString();
 }
 
-//Methods for owner NEED TO CHANGE TOOOOOOT
+//Methods for owner
+
+export function ownerOf(tokenId: string): string {
+  let corgi = getCorgi(tokenId);
+  let owner = corgi.owner;
+  return owner;
+}
 export function getCorgisByOwner(owner: string): CorgiArray {
   return corgisByOwner.get(owner);
 }
@@ -111,12 +111,19 @@ export function getSender(): string {
   return context.sender;
 }
 
-// Transfornation between users
+function deleteCorgi(tokenId: string): void {
+  corgis.delete(tokenId)
+}
+
+// Transfer between users
 export function transfer(to: string, tokenId: string): void {
   let corgi = getCorgi(tokenId);
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
   incrementNewOwnerCorgis(to, tokenId);
+  near.log("1 increase correct ")
   decrementOldOwnerCorgis(corgi.owner, tokenId);
+  near.log("2 decrease correct")
+  // return getCorgisByOwner(corgi.owner)
 }
 
 function incrementNewOwnerCorgis(to: string, tokenId: string): void {
@@ -124,7 +131,9 @@ function incrementNewOwnerCorgis(to: string, tokenId: string): void {
   corgi.owner = to;
   near.log(to);
   setCorgisByOwner(corgi);
+  near.log("set bu owner")
   setCorgi(corgi);
+  near.log("set itself")
 }
 
 function decrementOldOwnerCorgis(from: string, tokenId: string): void {
@@ -138,6 +147,8 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
   let oca = new CorgiArray()
   oca.corgis = _corgis;
   corgisByOwner.set(from, oca);
+  deleteCorgi(tokenId)
+  near.log("delete corgi")
 }
 
 // Create unique Corgi
@@ -158,7 +169,7 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string,
   corgi.backgroundColor = backgroundColor;
   corgi.quote = quote;
   setCorgi(corgi);
-  // setCorgisByOwner(corgi);
+  setCorgisByOwner(corgi);
   return corgi;
 }
 
