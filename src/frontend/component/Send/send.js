@@ -9,20 +9,25 @@ class SendPage extends Component {
         loading: false
     }
     render() {
+        let { contract, dna, handleChange, backgroundColor, color, sausage, des, backDrop, backdropCancelHandler } = this.props
         return (
             this.state.loading
-                ? <Modal>
+                ? <Modal backDrop={backDrop} backdropCancelHandler={backdropCancelHandler}>
                     <h3>Send a Corgi</h3>
                     <div>
-                        <Corgi />
+                        <Corgi
+                            backgroundColor={backgroundColor}
+                            color={color}
+                            sausage={sausage}
+                            des={des} />
                         <p>Corgi Name</p>
                         <hr />
                         <p>RARITY</p>
                         <p>LOGO</p>
                     </div>
-                    <Transfer />
+                    <Transfer contract={contract} dna={dna} handleChange={handleChange} />
                 </Modal>
-                    : "loading"
+                : "loading"
         )
     }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Button from '../common/Button/Button';
 {/* <TransferCorgi
   trigger={this.props.trigger} signin
@@ -25,16 +25,17 @@ class TransferCorgi extends Component {
   }
 
   transferCorgi = (e) => {
-    let { handleChange, contract,dna } = this.props
+    let { handleChange,contract,dna } = this.props
     let { recipient } = this.state
     e.preventDefault();
     handleChange({ name: "loading", value: true })
-    console.log(dna, recipient);
+    console.log("[tranfer.js] dna and recipient",dna, recipient);
     contract.transfer({
       to: recipient,
       tokenId: dna
     })
       .then(res => {
+        console.log("[transfer].js response",res)
         handleChange({name:"loading", value: false})
       }).catch(err => {
         console.log(err);
@@ -42,7 +43,6 @@ class TransferCorgi extends Component {
   }
 
   render() {
-    let { handleChange } = this.props
     let { recipient, message } = this.state
     return (
       <div>

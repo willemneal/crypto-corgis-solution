@@ -51,7 +51,7 @@ let corgiArray = [{
 const Creations = () => {
     let Corgis = corgiArray.map(corgi => {
         return (<Creation
-            key={corgi.dna}
+            key={corgi.des}
             backgroundColor={corgi.backgroundColor}
             color={corgi.color}
             sausage={corgi.sausage}

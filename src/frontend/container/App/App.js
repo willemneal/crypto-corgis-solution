@@ -41,7 +41,7 @@ class App extends Component {
         } else {
             this.signedOutFlow();
         }
-        console.log("[app.js] name", this.state.newCorgiName)
+        console.log(this.state.backDrop)
     }
 
     signedOutFlow() {
@@ -157,15 +157,19 @@ class App extends Component {
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis} />} />
-                    <Route path="/corgi/:name" render={() => <Single
+                    <Route path="/corgi/:name" render={(props) => <Single
                         login={loggedIn}
                         load={loaded}
                         corgis={corgis}
                         backDrop={backDrop}
                         dna={dna}
                         newCorgiName={newCorgiName}
+                        backDrop={backDrop}
                         backdropShowHandler={this.backdropShowHandler}
                         backdropCancelHandler={this.backdropCancelHandler}
+                        contract={contract}
+                        handleChange={this.handleChange}
+                        {...this.props}
                     />} />
                     <Route path="/generating" render={() => <Animation
                         login={loggedIn}

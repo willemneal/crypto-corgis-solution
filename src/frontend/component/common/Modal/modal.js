@@ -5,10 +5,10 @@ import Backdrop from '../Backdrop/backDrop';
 
 class Modal extends Component {
     render () {
-        let { backDrop, modalClosed, children} = this.props
+        let { backDrop, backdropCancelHandler, children} = this.props
         return (
             <div>
-                <Backdrop backDrop={backDrop} clicked={modalClosed} />
+                <Backdrop backDrop={backDrop} clicked={backdropCancelHandler} />
                 <div
                     className="Modal"
                     style={{

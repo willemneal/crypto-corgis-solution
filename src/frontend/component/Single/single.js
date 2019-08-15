@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import CreationSingle from '../creation/creationSingle/creationsingle';
+import Corgi from '../creation/creationSingle/creationsingle';
+import SendPage from '../Send/send';
 
 import "./single.css"
 class Single extends Component {
+    componentDidMount(){
+        console.log(this.props.backDrop)
+    }
     render() {
-        let { corgis, login } = this.props
-        let dna = this.props.location.hash.slice(0,)
-        let name = this.props.location.pathname.slice(7,)
-        let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === name )[0]
+        let { corgis, login, contract, handleChange, backdropShowHandler, backdropCancelHandler, history  } = this.props
+        let dna = history.location.hash.slice(1,)
+        let name = history.location.pathname.slice(7,)
+        let corgi = corgis.filter((corgi) => dna === dna && corgi.name === name)[0]
         if (!login) { return <Redirect to="/" /> }
         return (
             <div>
+                <SendPage
+                    contract={contract}
+                    dna={dna}
+                    handleChange={handleChange}
+                    backgroundColor={corgi.backgroundColor}
+                    color={corgi.color}
+                    sausage={corgi.sausage}
+                    des={corgi.quote}
+                    backdropCancelHandler={backdropCancelHandler}
+                     />
                 <div>
                     <h1>Meet {corgi.name}!</h1>
                     <div style={{ margin: "3%" }}>
-                        <CreationSingle
+                        <Corgi
                             backgroundColor={corgi.backgroundColor}
                             color={corgi.color}
                             sausage={corgi.sausage}
@@ -24,7 +38,7 @@ class Single extends Component {
                     </div>
                     <div className="wrapper" >
                         <Rate />
-                        <SendAndShare />
+                        <SendAndShare backdropShowHandler={backdropShowHandler}/>
                     </div>
                 </div>
             </div>
@@ -76,7 +90,7 @@ const Rate = (props) => {
 
 
     return (
-        <div style={{textAlign:"start"}}>
+        <div>
             <h5>Congrats! Your corgi is...</h5>
             <div>
                 <div>{common}<span>Common</span></div>
@@ -88,19 +102,19 @@ const Rate = (props) => {
     )
 }
 
-const SendAndShare = (props) => {
+const SendAndShare = ({backdropShowHandler}) => {
     return (
-        <div style={{textAlign:"start"}}>
+        <div>
             <h5>What would you like to do with </h5>
             <div style={{ display: "flex", flexDirection: "column" }}>
-                <Send />
+                <Send clicked={backdropShowHandler}/>
                 <Share />
             </div>
         </div>
     )
 }
 
-const Send = () => {
+const Send = ({clicked}) => {
     let send = (
         <svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <defs>
@@ -159,15 +173,15 @@ const Send = () => {
                 </g>
             </g>
         </svg>
-        )
+    )
     return (
-        <div className="card">
+        <button className="card" onClick={clicked}>
             {send}
-            <div style={{ marginLeft: "10px" }}>
+            <div className="text">
                 <h4 className="cardChar">Send as a gift</h4>
                 <p>The perfect gift for any occasion</p>
             </div>
-        </div>
+        </button>
     )
 }
 
@@ -187,7 +201,7 @@ const Share = () => {
     return (
         <div className="card">
             {share}
-            <div style={{ marginLeft: "10px" }}>
+            <div className="text">
                 <h4 className="cardChar">Share on Social</h4>
                 <p>Got something rare? It is time to brag a bit.</p>
             </div>
