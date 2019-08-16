@@ -23,12 +23,14 @@ class Info extends Component {
         contract.createRandomCorgi({
             backgroundColor, name:newCorgiName, quote, color
         }).then(response => {
-            let corgi = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'));
-            let newCorgis = corgis.concat(corgi)
-            handleChange({name: "dna",value:corgi.dna})
-            handleChange({name:"loaded",value:"true"})
-            handleChange({name:"corgis",value:newCorgis})
-            history.push("/generating")
+            // let corgi = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'));
+            console.log(response)
+            // let newCorgis = corgis.concat(corgi)
+            // console.log("[single.js]",newCorgis)
+            // handleChange({name: "dna",value:corgi.dna})
+            // handleChange({name:"loaded",value:"true"})
+            // handleChange({name:"corgis",value:newCorgis})
+            // history.push("/generating")
         }).catch(err => {
             console.log(err);
         })

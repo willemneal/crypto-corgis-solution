@@ -1,8 +1,6 @@
 // import "allocator/arena";
 import { context, storage, near, collections, base64 } from "./near";
 import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
-import { CorgiArray } from "./model";
-
 // export { memory }
 
 // export { CorgiTokenMarket } ;
@@ -116,14 +114,13 @@ function deleteCorgi(tokenId: string): void {
 }
 
 // Transfer between users
-export function transfer(to: string, tokenId: string): void {
+export function transfer(to: string, tokenId: string): CorgiArray {
   let corgi = getCorgi(tokenId);
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
   incrementNewOwnerCorgis(to, tokenId);
-  near.log("1 increase correct ")
   decrementOldOwnerCorgis(corgi.owner, tokenId);
-  near.log("2 decrease correct")
-  // return getCorgisByOwner(corgi.owner)
+  let corgis = getCorgisByOwner(corgi.owner);
+  return corgis;
 }
 
 function incrementNewOwnerCorgis(to: string, tokenId: string): void {
@@ -131,9 +128,7 @@ function incrementNewOwnerCorgis(to: string, tokenId: string): void {
   corgi.owner = to;
   near.log(to);
   setCorgisByOwner(corgi);
-  near.log("set bu owner")
   setCorgi(corgi);
-  near.log("set itself")
 }
 
 function decrementOldOwnerCorgis(from: string, tokenId: string): void {
@@ -144,11 +139,10 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
       near.log("match");
     }
   }
-  let oca = new CorgiArray()
+  let oca = new CorgiArray();
   oca.corgis = _corgis;
   corgisByOwner.set(from, oca);
-  deleteCorgi(tokenId)
-  near.log("delete corgi")
+  deleteCorgi(tokenId);
 }
 
 // Create unique Corgi
@@ -170,6 +164,7 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string,
   corgi.quote = quote;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
+  near.log(corgi.toString())
   return corgi;
 }
 

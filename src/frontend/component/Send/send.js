@@ -11,13 +11,13 @@ class SendPage extends Component {
 
     loadingHandler = () => {
         let state = this.state.loading
-        this.setState({loading: !state})
+        this.setState({ loading: !state })
     }
 
     render() {
-        let { contract,name, dna, backgroundColor, color, sausage, des, backDrop, backdropCancelHandler,accountId } = this.props
+        let { contract, name, dna, backgroundColor, color, sausage, des, backDrop, backdropCancelHandler, handleChange } = this.props
         return (
-            <Modal backDrop={backDrop} backdropCancelHandler={backdropCancelHandler}>
+            <Modal show={backDrop} CancelHandler={backdropCancelHandler}>
                 {!this.state.loading
                     ? <div>
                         <h3>Send a Corgi</h3>
@@ -27,11 +27,15 @@ class SendPage extends Component {
                                 color={color}
                                 sausage={sausage}
                                 des={des} />
-                            <p>{name}<span style={{color: "orange",marginLeft: "10em"}}>RARE</span></p>
+                            <p>{name}<span style={{ color: "orange", marginLeft: "10em" }}>RARE</span></p>
                             <hr />
                             {/* <p>LOGO</p> */}
                         </div>
-                        <Transfer contract={contract} dna={dna} loadingHandler={this.loadingHandler} accountId={accountId}/>
+                        <Transfer
+                            contract={contract}
+                            dna={dna}
+                            loadingHandler={this.loadingHandler}
+                            handleChange={handleChange} />
                     </div>
                     : "loading"}
             </Modal>

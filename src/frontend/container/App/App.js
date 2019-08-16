@@ -18,6 +18,7 @@ class App extends Component {
             loaded: false,
             loggedIn: false,
             backDrop: false,
+            back: false,
             front: false,
             corgis: [],
             accountId: '',
@@ -101,12 +102,20 @@ class App extends Component {
         this.setState({ backDrop: false })
     }
 
+    backShowHandler = () => {
+        this.setState({ back: true })
+    }
+
+    backCancelHandler = () => {
+        this.setState({ back: false })
+    }
+
     homeFrontHandler = () => {
         this.setState({ front: true })
     }
 
     render() {
-        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote, backDrop, front, dna } = this.state
+        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote, backDrop, back, front, dna } = this.state
         let { contract } = this.props
         return (
             <div className="App">
@@ -160,10 +169,12 @@ class App extends Component {
                         dna={dna}
                         newCorgiName={newCorgiName}
                         backDrop={backDrop}
+                        back={back}
                         backdropShowHandler={this.backdropShowHandler}
                         backdropCancelHandler={this.backdropCancelHandler}
+                        backShowHandler={this.backShowHandler}
+                        backCancelHandler={this.backCancelHandler}
                         handleChange={this.handleChange}
-                        accountId={accountId}
                     />} />
                     <Route path="/generating" render={() => <Animation
                         login={loggedIn}

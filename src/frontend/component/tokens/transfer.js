@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Button from '../common/Button/Button';
 
@@ -21,7 +21,7 @@ class TransferCorgi extends Component {
   }
 
   transferCorgi = (e) => {
-    let { loadingHandler, contract, dna, history, accountId } = this.props
+    let { loadingHandler, contract, dna, history, handleChange } = this.props
     let { recipient } = this.state
     e.preventDefault();
     loadingHandler()
@@ -29,8 +29,10 @@ class TransferCorgi extends Component {
       to: recipient,
       tokenId: dna
     })
-      .then(res => {
-        console.log("[transfer,js] response", res)
+      .then(response => {
+        // let newCorgis = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'))
+        console.log("[transfer.js] corgis", response)
+        // handleChange({name:"corgis",value:newCorgis})
         loadingHandler()
         history.push("/account")
       }).catch(err => {
@@ -42,22 +44,24 @@ class TransferCorgi extends Component {
     let { recipient, message } = this.state
     return (
       <div>
-        <label>To:</label>
-        <input
-          required
-          id="recipient"
-          type="text"
-          placeholder="Corgi recipient"
-          onChange={this.handleNameChange}
-          value={recipient} />
-        {/* <label>Message</label>
+        <form>
+          <label>To:</label>
+          <input
+            required
+            id="recipient"
+            type="text"
+            placeholder="Corgi recipient"
+            onChange={this.handleNameChange}
+            value={recipient} />
+          {/* <label>Message</label>
         <input
           type="text"
           placeholder="(Optional)Best wish to your friend  with corgi"
           onChange={this.handleMessageChange}
           value={message}
         /> */}
-        <Button action={this.transferCorgi} description="Transfer" />
+          <Button action={this.transferCorgi} description="Transfer" />
+        </form>
       </div>
     )
   }

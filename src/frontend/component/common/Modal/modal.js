@@ -5,15 +5,15 @@ import Backdrop from '../Backdrop/backDrop';
 
 class Modal extends Component {
     render () {
-        let { backDrop, backdropCancelHandler, children} = this.props
+        let { show, CancelHandler, children} = this.props
         return (
             <div>
-                <Backdrop backDrop={backDrop} clicked={backdropCancelHandler} />
+                <Backdrop show={show} clicked={CancelHandler} />
                 <div
                     className="Modal"
                     style={{
-                        transform: backDrop ? 'translateY(0)' : 'translateY(-100vh)',
-                        opacity: backDrop ? '1' : '0'
+                        transform: show ? 'translateY(0)' : 'translateY(-100vh)',
+                        opacity: show ? '1' : '0'
                     }}>
                     {children}
                 </div>

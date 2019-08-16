@@ -3,13 +3,25 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 
 import Corgi from '../creation/creationSingle/creationsingle';
 import SendPage from '../Send/send';
+import SharePage from '../Share/share';
 
 import "./single.css"
 class Single extends Component {
     render() {
-        let { corgis, login, contract, handleChange, backdropShowHandler, backdropCancelHandler, history, backDrop, accountId } = this.props
-        let dna = history.location.hash.slice(1,)
-        let name = history.location.pathname.slice(7,)
+        let {
+            corgis,
+            login,
+            contract,
+            handleChange,
+            backdropShowHandler,
+            backdropCancelHandler,
+            history,
+            backDrop,
+            back,
+            backShowHandler,
+            backCancelHandler } = this.props
+        let dna = history.location.hash.slice(1)
+        let name = history.location.pathname.slice(7)
         let corgi = corgis.filter((corgi) => dna === dna && corgi.name === name)[0]
         if (!login) { return <Redirect to="/" /> }
         return (
@@ -17,17 +29,22 @@ class Single extends Component {
                 <SendPage
                     name={corgi.name}
                     dna={dna}
-                    handleChange={handleChange}
                     backgroundColor={corgi.backgroundColor}
                     color={corgi.color}
                     sausage={corgi.sausage}
                     des={corgi.quote}
+                    handleChange={handleChange}
                     backdropCancelHandler={backdropCancelHandler}
                     backDrop={backDrop}
-                    history={history}
-                    contract={contract}
-                    accountId={accountId}
-                     />
+                    contract={contract} />
+                <SharePage
+                    name={corgi.name}
+                    backgroundColor={corgi.backgroundColor}
+                    color={corgi.color}
+                    sausage={corgi.sausage}
+                    des={corgi.quote}
+                    backCancelHandler={backCancelHandler}
+                    back={back} /> 
                 <div>
                     <h1>Meet {corgi.name}!</h1>
                     <div style={{ margin: "3%" }}>
@@ -39,7 +56,9 @@ class Single extends Component {
                     </div>
                     <div className="wrapper" >
                         <Rate />
-                        <SendAndShare backdropShowHandler={backdropShowHandler}/>
+                        <SendAndShare 
+                            backdropShowHandler={backdropShowHandler} 
+                            backShowHandler={backShowHandler}/>
                     </div>
                 </div>
             </div>
@@ -103,19 +122,19 @@ const Rate = (props) => {
     )
 }
 
-const SendAndShare = ({backdropShowHandler}) => {
+const SendAndShare = ({ backdropShowHandler, backShowHandler }) => {
     return (
         <div>
             <h5>What would you like to do with </h5>
             <div style={{ display: "flex", flexDirection: "column" }}>
-                <Send clicked={backdropShowHandler}/>
-                <Share />
+                <Send clicked={backdropShowHandler} />
+                <Share clicked={backShowHandler}/>
             </div>
         </div>
     )
 }
 
-const Send = ({clicked}) => {
+const Send = ({ clicked }) => {
     let send = (
         <svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <defs>
@@ -186,7 +205,7 @@ const Send = ({clicked}) => {
     )
 }
 
-const Share = () => {
+const Share = ({clicked}) => {
     let share = (
         <svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -200,7 +219,7 @@ const Share = () => {
             </g>
         </svg>)
     return (
-        <div className="card">
+        <div className="card" onClick={clicked}>
             {share}
             <div className="text">
                 <h4 className="cardChar">Share on Social</h4>
