@@ -4,7 +4,7 @@ import { TiDelete } from "react-icons/ti";
 
 class CreationProfile extends Component {
     deleteCorgi = () => {
-        let { contract, corgi } = this.props
+        let { contract, corgi, handleChange } = this.props
         contract.deleteCorgiProfile({
             tokenId: corgi.dna
         }).then(response => {
@@ -27,8 +27,10 @@ class CreationProfile extends Component {
         </div>)
         return (
             <div>
-                <p><span>{uncommon}</span>{corgi.name}  <TiDelete onClick={this.deleteCorgi}/></p>
+                <span>{uncommon}</span>{corgi.name}  <TiDelete onClick={this.deleteCorgi}/>
             </div>
         )
     }
 }
+
+export default CreationProfile

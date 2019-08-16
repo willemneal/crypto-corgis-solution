@@ -5,6 +5,7 @@ import Corgi from '../creation/creationSingle/creationsingle';
 import Modal from '../common/Modal/modal';
 // handlechange dna contract
 class SharePage extends Component {
+    
     render() {
         let { name, backgroundColor, color, sausage, des, back, backCancelHandler,location } = this.props
         let address = "http://www.cryptocorgis.com" + location.pathname + location.hash

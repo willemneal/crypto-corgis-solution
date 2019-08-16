@@ -13,6 +13,7 @@
   ],
   "plugins": [
     "react-html-attrs",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-regenerator"
   ]
 }

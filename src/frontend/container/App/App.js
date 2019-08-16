@@ -1,3 +1,4 @@
+// import 'babel-polyfill';
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 
@@ -155,7 +156,7 @@ class App extends Component {
                         login={loggedIn}
                         corgis={corgis}
                         contract={contract}
-                        handleChange={this.handleChange />} />
+                        handleChange={this.handleChange} />} />
                     <Route path="/corgi/:name" render={() => <Single
                         login={loggedIn}
                         contract={contract}
