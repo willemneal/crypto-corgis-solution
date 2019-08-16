@@ -52,7 +52,8 @@ async function doInitContract() {
       "takeOwnership",
       "setCorgi",
       "setCorgisByOwner",
-      "setBalance"],
+      "setBalance",
+      "deleteCorgiProfile"],
     sender: window.accountId
   });
 }

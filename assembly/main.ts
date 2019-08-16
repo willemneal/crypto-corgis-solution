@@ -76,6 +76,7 @@ export function ownerOf(tokenId: string): string {
   let owner = corgi.owner;
   return owner;
 }
+
 export function getCorgisByOwner(owner: string): CorgiArray {
   return corgisByOwner.get(owner);
 }
@@ -113,14 +114,23 @@ function deleteCorgi(tokenId: string): void {
   corgis.delete(tokenId)
 }
 
+export function deleteCorgiProfile(tokenId: string): Array<Corgi> {
+  let corgi = getCorgi(tokenId)
+  decrementOldOwnerCorgis(corgi.owner, tokenId);
+  let leftCorgis = getCorgisByOwner(corgi.owner).corgis;
+  near.log("get corgis")
+  return leftCorgis;
+}
+
 // Transfer between users
-export function transfer(to: string, tokenId: string): CorgiArray {
+export function transfer(to: string, tokenId: string): Array<Corgi> {
   let corgi = getCorgi(tokenId);
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
   incrementNewOwnerCorgis(to, tokenId);
   decrementOldOwnerCorgis(corgi.owner, tokenId);
-  let corgis = getCorgisByOwner(corgi.owner);
-  return corgis;
+  let leftCorgis = getCorgisByOwner(corgi.owner).corgis;
+  near.log("get corgis")
+  return leftCorgis;
 }
 
 function incrementNewOwnerCorgis(to: string, tokenId: string): void {
@@ -157,14 +167,12 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string,
   corgi.owner = context.sender;
   corgi.dna = dna;
   corgi.name = name;
-
   corgi.color = color
   corgi.sausage = sausage;
   corgi.backgroundColor = backgroundColor;
   corgi.quote = quote;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
-  near.log(corgi.toString())
   return corgi;
 }
 

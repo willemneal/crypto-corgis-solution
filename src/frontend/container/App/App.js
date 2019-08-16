@@ -139,7 +139,6 @@ class App extends Component {
                             accountId={accountId} />}
                     />
                     <Route exact path="/generation" render={() => <Generation
-                        load={loaded}
                         login={loggedIn}
                         color={color}
                         backgroundColor={backgroundColor}
@@ -150,19 +149,15 @@ class App extends Component {
                         contract={contract} />} />
                     <Route exact path="/account" render={() => <Account
                         login={loggedIn}
-                        load={loaded}
                         corgis={corgis}
-                        backDrop={backDrop}
-                        backdropShowHandler={this.backdropShowHandler}
-                        backdropCancelHandler={this.backdropCancelHandler}
                     />} />
                     <Route exact path="/profile" render={() => <Profile
                         login={loggedIn}
-                        load={loaded}
-                        corgis={corgis} />} />
+                        corgis={corgis}
+                        contract={contract}
+                        handleChange={this.handleChange />} />
                     <Route path="/corgi/:name" render={() => <Single
                         login={loggedIn}
-                        load={loaded}
                         contract={contract}
                         corgis={corgis}
                         backDrop={backDrop}

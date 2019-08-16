@@ -30,9 +30,9 @@ class TransferCorgi extends Component {
       tokenId: dna
     })
       .then(response => {
-        // let newCorgis = JSON.parse(Buffer.from(response.logs[0].result).toString('utf8'))
-        console.log("[transfer.js] corgis", response)
-        // handleChange({name:"corgis",value:newCorgis})
+        console.log("[transfer.js] left", response)
+        let newCorgis = response
+        handleChange({name:"corgis",value:newCorgis})
         loadingHandler()
         history.push("/account")
       }).catch(err => {
@@ -44,7 +44,7 @@ class TransferCorgi extends Component {
     let { recipient, message } = this.state
     return (
       <div>
-        <form>
+        <form onSubmit={this.transferCorgi}>
           <label>To:</label>
           <input
             required
@@ -60,7 +60,7 @@ class TransferCorgi extends Component {
           onChange={this.handleMessageChange}
           value={message}
         /> */}
-          <Button action={this.transferCorgi} description="Transfer" />
+          <Button description="Transfer" />
         </form>
       </div>
     )

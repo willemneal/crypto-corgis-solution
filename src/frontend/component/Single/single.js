@@ -13,17 +13,19 @@ class Single extends Component {
             login,
             contract,
             handleChange,
+            history,
             backdropShowHandler,
             backdropCancelHandler,
-            history,
             backDrop,
             back,
             backShowHandler,
             backCancelHandler } = this.props
+        if (!login) { return <Redirect to="/" /> }
         let dna = history.location.hash.slice(1)
         let name = history.location.pathname.slice(7)
         let corgi = corgis.filter((corgi) => dna === dna && corgi.name === name)[0]
-        if (!login) { return <Redirect to="/" /> }
+        if (!corgi) { return <Redirect to="/account" />}
+
         return (
             <div>
                 <SendPage
@@ -44,7 +46,7 @@ class Single extends Component {
                     sausage={corgi.sausage}
                     des={corgi.quote}
                     backCancelHandler={backCancelHandler}
-                    back={back} /> 
+                    back={back} />
                 <div>
                     <h1>Meet {corgi.name}!</h1>
                     <div style={{ margin: "3%" }}>
@@ -56,9 +58,9 @@ class Single extends Component {
                     </div>
                     <div className="wrapper" >
                         <Rate />
-                        <SendAndShare 
-                            backdropShowHandler={backdropShowHandler} 
-                            backShowHandler={backShowHandler}/>
+                        <SendAndShare
+                            backdropShowHandler={backdropShowHandler}
+                            backShowHandler={backShowHandler} />
                     </div>
                 </div>
             </div>
@@ -128,7 +130,7 @@ const SendAndShare = ({ backdropShowHandler, backShowHandler }) => {
             <h5>What would you like to do with </h5>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <Send clicked={backdropShowHandler} />
-                <Share clicked={backShowHandler}/>
+                <Share clicked={backShowHandler} />
             </div>
         </div>
     )
@@ -205,7 +207,7 @@ const Send = ({ clicked }) => {
     )
 }
 
-const Share = ({clicked}) => {
+const Share = ({ clicked }) => {
     let share = (
         <svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
