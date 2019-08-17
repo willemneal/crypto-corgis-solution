@@ -15,13 +15,13 @@ const SYMBOL: string = "CORG"
 const TOTAL_SUPPLY: u64 = 420;
 const DNA_DIGITS: u32 = 16;
 const HEX_ALPHABET: string = '0123456789abcdef';
-// const RARITY: string = {
-//   common: "COMMON",
-//   uncommon: "UNCOMMON",
-//   rare: "RARE",
-//   veryRare: "VERY RARE",
-//   ultraRare: "ULTRA RARE"
-// }
+//RARITY: 
+//   common: "COMMON", 0.15-1
+//   uncommon: "UNCOMMON", 0.05-0.15
+//   rare: "RARE", 0.01-0.05
+//   veryRare: "VERY RARE", 0-0.01
+//   ultraRare: "ULTRA RARE" 0
+//
 
 // Collections where we store data
 let balances = collections.map<string, u64>("b");
@@ -158,7 +158,8 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 // Create unique Corgi
 export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
   let randDna = generateRandomDna();
-  let sausage = generateRandomLength();
+  let rate = generateRandomrate();
+  let sausage = generateRandomLength(rate);
   return _createCorgi(name, randDna, color, sausage, backgroundColor, quote);
 }
 
@@ -184,15 +185,35 @@ function generateRandomDna(): string {
 
 function generateRandomrate(): string {
   Math.seedRandom(12345)
-  let n = Math.random()
-  return n
+  let rand = Math.random()
+  if (rand > 0.1) {
+    return "COMMON"
+  } else if (rand > 0.05) {
+    return "UNCOMMON"
+  } else if (rand > 0.01) {
+    return "RARE"
+  } else if (rand > 0) {
+    return "VERY RARE"
+  } else {
+    return "ULTRA RARE"
+  }
 }
 
 // random is not working
-function generateRandomLength(): string {
-  Math.seedRandom(12345);
-  let l = Math.floor(Math.random() * 400) + 10;
-  let sausage = min(l, 400);
+function generateRandomLength(rarity: string): string {
+  Math.seedRandom(67890);
+  let l = Math.random();
+  let sausage = 0;
+  switch (rarity) {
+    case "COMMON":
+      sausage = l * 50 + 150;
+    case "UNCOMMON":
+      sausage = l * 50 + 100;
+    case "RARE":
+      sausage = l * 50 + 50;
+    case "VERY RARE":
+      sausage = l * 50;
+  }
   return sausage.toString()
 }
 

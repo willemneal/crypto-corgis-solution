@@ -5,22 +5,22 @@ import Dialogue from '../dialogue/dialogue';
 import '../creation.css';
 
 //miss icon for sending and share
-const CreationAccount = (props) => {
+const CreationAccount = ({color, backgroundColor, corgiName, quote, sausage, rate}) => {
     return (
         <div className="creation">
             <div style={{
-                backgroundColor: props.backgroundColor,
+                backgroundColor: backgroundColor,
                 borderRadius: "10px",
                 padding: "20px",
                 display: "inline-block"
             }}>
-                <Dialogue className="dialogue" des={props.des} color={props.color} />
+                <Dialogue quote={quote} color={color}/>
                 <Corgi 
-                    color={props.color} 
-                    sausage={props.sausage} />
+                    color={color} 
+                    sausage={sausage} />
             </div>
-            <p className="dogname">{props.corgiName}</p>
-            <p className="address blue">§ {props.rate}</p>
+            <p className="dogname">{corgiName}</p>
+            <p className="address blue">§ {rate}</p>
         </div>
     )
 }

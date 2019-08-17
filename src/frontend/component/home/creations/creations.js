@@ -23,41 +23,41 @@ let corgiArray = [{
     color: COLOR.green,
     sausage: "20",
     corgiName: "J.Corg",
-    accountName: "jstutz",
-    des: "Does this color make me look fat?"
+    owner: "jstutz",
+    quote: "Does this color make me look fat?"
 }, {
     backgroundColor: BACKGROUNDCOLOR.purple,
     color: COLOR.blue,
     sausage: "0",
     corgiName: "Squatty Blu Doggy",
-    accountName: "icerove",
-    des: "I like a lot of things subjects and things about things..."
+    owner: "icerove",
+    quote: "I like a lot of things subjects and things about things..."
 }, {
     backgroundColor: BACKGROUNDCOLOR.blue,
     color: COLOR.orange,
     sausage: "50",
     corgiName: "Squatty Blu Doggy",
-    accountName: "icerove",
-    des: "We know what we are, but know not what we may be"
+    owner: "icerove",
+    quote: "We know what we are, but know not what we may be"
 },{
     backgroundColor: BACKGROUNDCOLOR.pink,
     color: COLOR.gray,
     sausage: "100",
     corgiName: "Potato",
-    accountName: "potato",
-    des: "test,test,test"
+    owner: "potato",
+    quote: "Do you want me?"
 }]
 
 const Creations = () => {
     let Corgis = corgiArray.map(corgi => {
         return (<Creation
-            key={corgi.des}
+            key={corgi.quote}
             backgroundColor={corgi.backgroundColor}
             color={corgi.color}
             sausage={corgi.sausage}
             corgiName={corgi.corgiName}
-            accountName={corgi.accountName}
-            des={corgi.des} />)
+            owner={corgi.owner}
+            quote={corgi.quote} />)
     })
     return (
         <div className="creations">

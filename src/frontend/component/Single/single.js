@@ -34,7 +34,7 @@ class Single extends Component {
                     backgroundColor={corgi.backgroundColor}
                     color={corgi.color}
                     sausage={corgi.sausage}
-                    des={corgi.quote}
+                    quote={corgi.quote}
                     handleChange={handleChange}
                     backdropCancelHandler={backdropCancelHandler}
                     backDrop={backDrop}
@@ -44,7 +44,7 @@ class Single extends Component {
                     backgroundColor={corgi.backgroundColor}
                     color={corgi.color}
                     sausage={corgi.sausage}
-                    des={corgi.quote}
+                    quote={corgi.quote}
                     backCancelHandler={backCancelHandler}
                     back={back} />
                 <div>
@@ -54,7 +54,7 @@ class Single extends Component {
                             backgroundColor={corgi.backgroundColor}
                             color={corgi.color}
                             sausage={corgi.sausage}
-                            des={corgi.quote} />
+                            quote={corgi.quote} />
                     </div>
                     <div className="wrapper" >
                         <Rate />

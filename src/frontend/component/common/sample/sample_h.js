@@ -1,9 +1,11 @@
 import React from 'react'
 
-const SampleH = () => {
+const SampleH = ({
+    width = "90%"
+}) => {
     return (
         <div>
-            <svg width="600" height="35" viewBox="0 0 872 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <svg width={width} height="35" viewBox="0 0 872 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="home" transform="translate(-515.000000, -780.000000)">
                         <g id="Group" transform="translate(514.999918, 780.000000)">

@@ -24,7 +24,7 @@ class Account extends Component {
                             color={corgi.color}
                             sausage={corgi.sausage}
                             corgiName={corgi.name}
-                            des={corgi.quote}
+                            quote={corgi.quote}
                             rate="Rarity" /></Link>)
             })
         }

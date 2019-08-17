@@ -26,8 +26,9 @@ class App extends Component {
             color: "#EF4F24",
             backgroundColor: "#84D0B5",
             newCorgiName: '',
-            quote: "this is the fake quote",
-            dna: ''
+            dna: '',
+            quote: '',
+            quoteSum: null
         }
         this.signedInFlow = this.signedInFlow.bind(this);
         this.requestSignIn = this.requestSignIn.bind(this);
@@ -37,12 +38,40 @@ class App extends Component {
     // }
 
     componentDidMount() {
+        fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json', {
+            headers: {
+                Accept: "application/json",
+            }
+        })
+            .then(response => response.json())
+            .then((responseData) => {
+                this.setState({
+                    quoteSum: responseData.quotes,
+                    quote: responseData.quotes[0].quote
+                });
+            })
+            .catch(error => this.setState({ error }));
         let loggedIn = window.walletAccount.isSignedIn();
         if (loggedIn) {
             this.signedInFlow();
         } else {
             this.signedOutFlow();
         }
+    }
+
+    generateQuote = () => {
+        const chosenQuote = [];
+        const QuoteSum = this.state.quoteSum;
+        let randomNumber = Math.floor((Math.random() * QuoteSum.length) + 1);
+
+        QuoteSum.forEach(function (element, index) {
+            if (index === randomNumber) {
+                chosenQuote.push(element)
+            }
+        })
+        this.setState({
+            quote: chosenQuote[0].quote
+        })
     }
 
     signedOutFlow = () => {
@@ -57,7 +86,7 @@ class App extends Component {
         return this.props.contract.getCorgisByOwner({ owner: owner });
     }
 
-    async signedInFlow(){
+    async signedInFlow() {
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
             this.setState({
@@ -144,10 +173,11 @@ class App extends Component {
                         color={color}
                         backgroundColor={backgroundColor}
                         newCorgiName={newCorgiName}
-                        quote={quote}
                         handleChange={this.handleChange}
                         corgis={corgis}
-                        contract={contract} />} />
+                        contract={contract}
+                        generateQuote={this.generateQuote}
+                        quote={quote} />} />
                     <Route exact path="/account" render={() => <Account
                         login={loggedIn}
                         corgis={corgis}
@@ -162,8 +192,6 @@ class App extends Component {
                         contract={contract}
                         corgis={corgis}
                         backDrop={backDrop}
-                        dna={dna}
-                        newCorgiName={newCorgiName}
                         backDrop={backDrop}
                         back={back}
                         backdropShowHandler={this.backdropShowHandler}

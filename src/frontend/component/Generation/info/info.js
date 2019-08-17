@@ -17,9 +17,9 @@ class Info extends Component {
     }
 
     handleSubmit = (e) => {
-        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis, history} = this.props
+        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis, history, generateQuote} = this.props
         e.preventDefault()
-        handleChange({name: "loaded", value: "false"})
+        generateQuote()
         contract.createRandomCorgi({
             backgroundColor, name:newCorgiName, quote, color
         }).then(response => {
@@ -27,8 +27,8 @@ class Info extends Component {
             let corgi = response
             let newCorgis = corgis.concat(corgi)
             handleChange({name: "dna",value:corgi.dna})
-            handleChange({name:"loaded",value:"true"})
             handleChange({name:"corgis",value:newCorgis})
+            handleChange({name:"sausage",value:corgi.sausage})
             history.push("/generating")
         }).catch(err => {
             console.log(err);
