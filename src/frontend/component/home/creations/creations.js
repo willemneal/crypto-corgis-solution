@@ -1,5 +1,5 @@
 import React from 'react';
-import Creation from '../../creation/creation';
+import Creation from '../../creation/creationHome';
 import SampleH from '../../common/sample/sample_h';
 import './creations.css'
 
@@ -8,46 +8,56 @@ const BACKGROUNDCOLOR = {
     green: "rgba(237,241,133,0.50)",
     purple: "rgba(130,117,175,0.50)",
     blue: "rgba(150,228,221,0.50)",
+    pink: "#ffb8c6"
 }
 
 const COLOR = {
     green: "rgb(90, 179, 121)",
     blue: "rgb(81, 169, 220)",
-    orange: "rgb(224, 100, 58)"
+    orange: "rgb(224, 100, 58)",
+    gray: "#004739"
 }
 
 let corgiArray = [{
-    backColor: BACKGROUNDCOLOR.green,
+    backgroundColor: BACKGROUNDCOLOR.green,
     color: COLOR.green,
-    sausage: "20px",
+    sausage: "20",
     corgiName: "J.Corg",
-    accountName: "jstutz",
-    des: "Does this color make me look fat?"
+    owner: "jstutz",
+    quote: "Does this color make me look fat?"
 }, {
-    backColor: BACKGROUNDCOLOR.purple,
+    backgroundColor: BACKGROUNDCOLOR.purple,
     color: COLOR.blue,
-    sausage: "10px",
+    sausage: "0",
     corgiName: "Squatty Blu Doggy",
-    accountName: "icerove",
-    des: "I like a lot of things subjects and things about things..."
+    owner: "icerove",
+    quote: "I like a lot of things subjects and things about things..."
 }, {
-    backColor: BACKGROUNDCOLOR.blue,
+    backgroundColor: BACKGROUNDCOLOR.blue,
     color: COLOR.orange,
-    sausage: "50px",
+    sausage: "50",
     corgiName: "Squatty Blu Doggy",
-    accountName: "icerove",
-    des: "I like you!"
+    owner: "icerove",
+    quote: "We know what we are, but know not what we may be"
+},{
+    backgroundColor: BACKGROUNDCOLOR.pink,
+    color: COLOR.gray,
+    sausage: "100",
+    corgiName: "Potato",
+    owner: "potato",
+    quote: "Do you want me?"
 }]
 
 const Creations = () => {
     let Corgis = corgiArray.map(corgi => {
         return (<Creation
-            backColor={corgi.backColor}
+            key={corgi.quote}
+            backgroundColor={corgi.backgroundColor}
             color={corgi.color}
             sausage={corgi.sausage}
             corgiName={corgi.corgiName}
-            accountName={corgi.accountName}
-            des={corgi.des} />)
+            owner={corgi.owner}
+            quote={corgi.quote} />)
     })
     return (
         <div className="creations">
@@ -55,7 +65,7 @@ const Creations = () => {
                 <h2 className="title">Latest Creations</h2>
                 <SampleH className="sample"/>
             </div>
-            <div style={{width: "100%"}}>{Corgis}</div> 
+            <div className="board">{Corgis}</div> 
             
         </div>)
 }

@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import ImageLoader from '../common/ImageLoad/ImageLoad';
 import Button from '../common/Button/Button';
+import Nav from './Nav/nav'
 
 import logo from '../../../assets/logo.png';
-import Account from './accountSVG/accountSVG';
+
 
 
 import './Header.css';
 
-//state login
-//dispatch change login true false
-
-class Header extends Component {    
+class Header extends Component {
     render() {
-        let { login, load, requestSignIn } = this.props
+        let { login, load, requestSignIn, requestSignOut ,accountId, length, clicked } = this.props
         let show = "loading"
         if (login && load) {
-            show = <Account accountName="loaded.potato" number="5" />
+            show = <Nav  
+                        accountName={accountId} 
+                        number={length} 
+                        requestSignOut={requestSignOut}
+                        login={login} 
+                         />
         } else if (load) {
-            show = <Button description="Get Started" action={requestSignIn} />
+            show = <Button description="Get Started" action={requestSignIn}/>
         }
         return (
             <div className="header">
-                <ImageLoader image={logo} style={{ width: "25%", height: "100%" }} />
+                <NavLink exact to="/" style={{textAlign: "left"}} onClick={clicked}><ImageLoader image={logo} style={{ width: "70%", height: "100%" }} /></NavLink>
                 {show}
             </div>
         )

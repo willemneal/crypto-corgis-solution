@@ -4,13 +4,11 @@ import './colorpicker.css'
 class ColorPicker extends Component {
     handleColorChange = (event) => {
         let value = event.target.value;
-        console.log("[colorpicker.js] color,", this.props.color)
         this.props.handleChange({ name: "color", value })
     }
 
     handleBackGroundColorChange = (event) => {
         let value = event.target.value;
-        console.log("[colorpicker.js] backcolor,", this.props.backgroundColor)
         this.props.handleChange({ name: "backgroundColor", value })
     }
 
@@ -18,7 +16,7 @@ class ColorPicker extends Component {
         const arrow = (
             <div>
                 <svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                         <g id="create" transform="translate(-110.000000, -548.000000)" fill="#24272A">
                             <polygon id="Fill-1-Copy" points="128 548 110 566 128 566"></polygon>
                         </g>

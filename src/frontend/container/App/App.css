@@ -1,5 +1,9 @@
 body {
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
+button {
+  all: unset;
+  outline:none;
+}

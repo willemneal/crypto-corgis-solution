@@ -42,7 +42,7 @@ async function doInitContract() {
       "symbol",
       "getCorgisByOwner",
       "getCorgi",
-      "getSender"],
+      "getSender" ],
     changeMethods: [
       "init",
       "transfer",
@@ -52,7 +52,8 @@ async function doInitContract() {
       "takeOwnership",
       "setCorgi",
       "setCorgisByOwner",
-      "setBalance"],
+      "setBalance",
+      "deleteCorgiProfile"],
     sender: window.accountId
   });
 }

@@ -4,6 +4,7 @@ const webpack = require('webpack-stream');
 const path = require('path');
 const webpackConfig = require('./webpack.config.js');
 const connect = require('gulp-connect');
+const historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task("build:model", callback => {
   nearUtils.generateBindings("model.ts", "../out/model.near.ts", callback);
@@ -28,7 +29,10 @@ gulp.task("serve", (resolve) => {
   connect.server({
     root: 'dist/',
     livereload: true,
-    port: 5000
+    port: 5000,
+    middleware: function(connect, opt) {
+      return [ historyApiFallback() ];
+    }
   });
   resolve();
 });

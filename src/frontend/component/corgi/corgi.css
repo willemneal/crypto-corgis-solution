@@ -1,23 +1,23 @@
 .corgi {
   display: flex;
-  width: 100%;
+  margin-left: 10px;
 }
 
 .head, 
 .tail,
 .body {
-  margin: 1% 0;
+  margin:0;
   display: inline-block;
 }
 
 .body {
   position: relative;
-  bottom: -79px;
+  bottom: -63px;
   left: -1px;
 }
 
 .tail {
   position: relative;
-  bottom: -11px;
+  bottom: -8px;
   left: -2px;
 }

@@ -4,22 +4,22 @@ import Corgi from '../corgi/corgi';
 import Dialogue from './dialogue/dialogue';
 import './creation.css';
 
-const Creation = (props) => {
+const Creation = ({backgroundColor, color, corgiName, owner, quote, sausage}) => {
     return (
         <div className="creation">
             <div style={{
-                backgroundColor: props.backColor,
+                backgroundColor: backgroundColor,
                 borderRadius: "10px",
                 padding: "20px",
                 display: "inline-block"
             }}>
-                <Dialogue className="dialogue" des={props.des} color={props.color} />
+                <Dialogue quote={quote} color={color}/>
                 <Corgi 
-                    color={props.color} 
-                    sausage={props.sausage} />
+                    color={color} 
+                    sausage={sausage} />
             </div>
-            <p className="dogname">{props.corgiName}</p>
-            <p className="address">Created by <span className="orange">@{props.accountName}</span></p>
+            <p className="dogname">{corgiName}</p>
+            <p className="address">Created by <span className="orange">@{owner}</span></p>
         </div>
     )
 }

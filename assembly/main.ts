@@ -1,7 +1,6 @@
 // import "allocator/arena";
 import { context, storage, near, collections, base64 } from "./near";
 import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
-
 // export { memory }
 
 // export { CorgiTokenMarket } ;
@@ -16,6 +15,13 @@ const SYMBOL: string = "CORG"
 const TOTAL_SUPPLY: u64 = 420;
 const DNA_DIGITS: u32 = 16;
 const HEX_ALPHABET: string = '0123456789abcdef';
+//RARITY: 
+//   common: "COMMON", 0.15-1
+//   uncommon: "UNCOMMON", 0.05-0.15
+//   rare: "RARE", 0.01-0.05
+//   veryRare: "VERY RARE", 0-0.01
+//   ultraRare: "ULTRA RARE" 0
+//
 
 // Collections where we store data
 let balances = collections.map<string, u64>("b");
@@ -40,14 +46,7 @@ export function init(initialOwner: string): void {
   storage.setItem("init", "done");
 }
 
-// BAlance for owner
-// Get Owner
-export function ownerOf(tokenId: string): string {
-  let corgi = getCorgi(tokenId);
-  let owner = corgi.owner;
-  return owner;
-}
-
+// Balance for owner
 export function balanceOf(owner: string): u64 {
   return balances.get(owner);
 }
@@ -70,7 +69,14 @@ export function totalSupply(): string {
   return TOTAL_SUPPLY.toString();
 }
 
-// Methods for Corgi
+//Methods for owner
+
+export function ownerOf(tokenId: string): string {
+  let corgi = getCorgi(tokenId);
+  let owner = corgi.owner;
+  return owner;
+}
+
 export function getCorgisByOwner(owner: string): CorgiArray {
   return corgisByOwner.get(owner);
 }
@@ -91,6 +97,7 @@ export function setCorgisByOwner(corgi: Corgi): void {
   corgisByOwner.set(corgi.owner, ca);
 }
 
+// Methods for Corgi
 export function getCorgi(tokenId: string): Corgi {
   return corgis.get(tokenId);
 }
@@ -103,12 +110,27 @@ export function getSender(): string {
   return context.sender;
 }
 
-// Transfornation between users
-export function transfer(to: string, tokenId: string): void {
+function deleteCorgi(tokenId: string): void {
+  corgis.delete(tokenId)
+}
+
+export function deleteCorgiProfile(tokenId: string): Array<Corgi> {
+  let corgi = getCorgi(tokenId)
+  decrementOldOwnerCorgis(corgi.owner, tokenId);
+  let leftCorgis = getCorgisByOwner(corgi.owner).corgis;
+  near.log("get corgis")
+  return leftCorgis;
+}
+
+// Transfer between users
+export function transfer(to: string, tokenId: string): Array<Corgi> {
   let corgi = getCorgi(tokenId);
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
   incrementNewOwnerCorgis(to, tokenId);
   decrementOldOwnerCorgis(corgi.owner, tokenId);
+  let leftCorgis = getCorgisByOwner(corgi.owner).corgis;
+  near.log("get corgis")
+  return leftCorgis;
 }
 
 function incrementNewOwnerCorgis(to: string, tokenId: string): void {
@@ -127,26 +149,30 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
       near.log("match");
     }
   }
-  let oca = new CorgiArray()
+  let oca = new CorgiArray();
   oca.corgis = _corgis;
   corgisByOwner.set(from, oca);
+  deleteCorgi(tokenId);
 }
 
 // Create unique Corgi
-export function createRandomCorgi(name: string, seed: i32): Corgi {
+export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
   let randDna = generateRandomDna();
-  let color = generateRandomColorHex(seed);
-  let sausage = generateRandomLength();
-  return _createCorgi(name, randDna, color, sausage);
+  let rate = generateRandomrate();
+  let sausage = generateRandomLength(rate);
+  return _createCorgi(name, randDna, color, rate, sausage, backgroundColor, quote);
 }
 
-function _createCorgi(name: string, dna: string, color: string, sausage: string): Corgi {
+function _createCorgi(name: string, dna: string, color: string, rate: string, sausage: string, backgroundColor: string, quote: string): Corgi {
   let corgi = new Corgi();
   corgi.owner = context.sender;
   corgi.dna = dna;
   corgi.name = name;
   corgi.color = color
   corgi.sausage = sausage;
+  corgi.backgroundColor = backgroundColor;
+  corgi.quote = quote;
+  corgi.rate = rate;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
   return corgi;
@@ -155,8 +181,40 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string)
 function generateRandomDna(): string {
   let buf = near.randomBuffer(DNA_DIGITS);
   let b64 = base64.encode(buf);
-  near.log(b64);
   return b64;
+}
+
+function generateRandomrate(): string {
+  Math.seedRandom(12345)
+  let rand = Math.random()
+  if (rand > 0.1) {
+    return "COMMON"
+  } else if (rand > 0.05) {
+    return "UNCOMMON"
+  } else if (rand > 0.01) {
+    return "RARE"
+  } else if (rand > 0) {
+    return "VERY RARE"
+  } else {
+    return "ULTRA RARE"
+  }
+}
+
+// random is not working
+function generateRandomLength(rarity: string): string {
+  Math.seedRandom(67890);
+  let l = Math.random();
+  let sausage = 0.0;
+  if (rarity == "COMMON") {
+    sausage = l * 50.0 + 150.0;
+  } else if (rarity == "UNCOMMON") {
+    sausage = l * 50.0 + 100.0;
+  } else if (rarity == "RARE") {
+    sausage = l * 50.0 + 50.0;
+  } else if (rarity == "VERY RARE") {
+    sausage = l * 50.0;
+  }
+  return sausage.toString()
 }
 
 function intToHex(integer: u32): string {
@@ -171,19 +229,12 @@ function intToHex(integer: u32): string {
   return hex.length % 2 ? "0" + hex : hex;
 }
 
-function generateRandomColorHex(int: i32): string {
-  Math.seedRandom(int);
-  let rand = Math.floor(Math.random() * 16777215) as u32;
-  let hex = intToHex(rand);
-  return "#" + hex;
-}
-
-function generateRandomLength() : string {
-  let l = Math.floor(Math.random() * 400) + 10;
-  let sausage = min(l, 400);
-  return sausage.toString() ;
-}
-
+// function generateRandomColorHex(int: i32): string {
+//   Math.seedRandom(int);
+//   let rand = Math.floor(Math.random() * 16777215) as u32;
+//   let hex = intToHex(rand);
+//   return "#" + hex;
+// }
 
 //ERROR handling
 function _corgiDNEError(corgi: Corgi): bool {
