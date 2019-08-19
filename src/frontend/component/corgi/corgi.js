@@ -1,7 +1,8 @@
 import React from 'react';
 import './corgi.css';
 
-const Corgi = ({color, sausage}) => {
+const Corgi = ({ color, sausage }) => {
+    console.log(sausage)
     return (
         <div className="corgi">
             <div className="head">
@@ -21,7 +22,7 @@ const Corgi = ({color, sausage}) => {
 
 export default Corgi
 
-const CorgiHead = ({color}) => (
+const CorgiHead = ({ color }) => (
     <svg width="103px" height="170px" viewBox="0 0 103 170" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
         <defs>
             <radialGradient cx="50.007975%" cy="49.2029455%" fx="50.007975%" fy="49.2029455%" r="55.2359437%" gradientTransform="translate(0.500080,0.492029),scale(1.000000,0.834130),translate(-0.500080,-0.492029)" id="radialGradient-1">
@@ -93,27 +94,29 @@ const CorgiHead = ({color}) => (
         </g>
     </svg>)
 
-const CorgiBody = ({sausage, color}) => (
-    <div style={{margin:"0",width:`${sausage}`}}>
-        <svg width="26px" height="107px" viewBox="0 0 26 107" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+const CorgiBody = ({ sausage, color }) => {
+    const sa = Number(sausage)
+    return (<div style={{margin: "0"}}>
+        <svg width={sausage} height="107px" viewBox={`0 0 ${sa} 107`} version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="home" transform="translate(-500.000000, -119.000000)" fillRule="nonzero">
                     <g id="corgi-mid" transform="translate(500.000000, 119.000000)">
-                        <polygon id="Path" fill="#FFFFFF" points="26 0.479104478 0 0.479104478 0 83.8432836 26 83.8432836"></polygon>
-                        <polygon id="Path" fill="#231F20" opacity="0.15" points="26 77.5159104 0 77.5159104 0 83.8432836 26 83.8432836"></polygon>
-                        <rect id="Rectangle" fill="#231F20" opacity="0.2" x="0" y="95.341791" width="26" height="11.4985075"></rect>
+                        <polygon id="Path" fill="#FFFFFF" points={`${sa} 0.479104478 0 0.479104478 0 83.8432836 ${sa} 83.8432836`}></polygon>
+                        <polygon id="Path" fill="#231F20" opacity="0.15" points={`${sa} 77.5159104 0 77.5159104 0 83.8432836 ${sa} 83.8432836`}></polygon>
+                        <rect id="Rectangle" fill="#231F20" opacity="0.2" x="0" y="95.341791" width={sausage} height="11.4985075"></rect>
                         <path d="M0,64.0402985 L26,64.0402985" id="Path" fill={color}></path>
-                        <polygon id="Path" fill={color} points="26 0.479104478 0 0.479104478 0 64.0402985 26 64.0402985"></polygon>
-                        <rect id="Rectangle" fill="#231F20" x="0" y="0" width="26" height="1"></rect>
-                        <rect id="Rectangle" fill="#231F20" x="0" y="83.3641791" width="26" height="1"></rect>
+                        <polygon id="Path" fill={color} points={`${sa} 0.479104478 0 0.479104478 0 64.0402985 ${sa} 64.0402985`}></polygon>
+                        <rect id="Rectangle" fill="#231F20" x="0" y="0" width={sausage} height="1"></rect>
+                        <rect id="Rectangle" fill="#231F20" x="0" y="83.3641791" width={sausage} height="1"></rect>
                     </g>
                 </g>
             </g>
         </svg>
     </div>
-)
+    )
+}
 
-const CorgiTail = ({color}) => (
+const CorgiTail = ({ color }) => (
     <svg width="138px" height="162px" viewBox="0 0 138 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="home" transform="translate(-526.000000, -64.000000)" fillRule="nonzero">

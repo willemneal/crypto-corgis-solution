@@ -22,11 +22,13 @@ class SendPage extends Component {
                     ? <div>
                         <h3>Send a Corgi</h3>
                         <div>
-                            <Corgi
-                                backgroundColor={backgroundColor}
-                                color={color}
-                                sausage={sausage}
-                                quote={quote} />
+                            <div style={{overflowX:"scroll"}}>
+                                <Corgi
+                                    backgroundColor={backgroundColor}
+                                    color={color}
+                                    sausage={sausage}
+                                    quote={quote} />
+                            </div>
                             <p>{name}<span style={{ color: "orange", marginLeft: "10em" }}>RARE</span></p>
                             <hr />
                             {/* <p>LOGO</p> */}

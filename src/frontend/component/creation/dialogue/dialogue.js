@@ -3,7 +3,7 @@ import React from 'react';
 const Dialogue = ({quote,color}) => {
 
     return (
-        <div style={{ position: "relative", bottom: "-30px", fontSize: "0,7rem", width: "200px",   wordWrap: "break-word" }}>
+        <div style={{ position: "relative", bottom: "-30px", left: "70px", fontSize: "0,7rem", width: "200px", wordWrap: "break-word" }}>
             <Quote quote={quote} color={color}/>
             {/* <Ellipse1 /> */}
             {/* <Ellipse2 /> */}

@@ -25,7 +25,7 @@ class Account extends Component {
                             sausage={corgi.sausage}
                             corgiName={corgi.name}
                             quote={corgi.quote}
-                            rate="Rarity" /></Link>)
+                            rate={corgi.rate} /></Link>)
             })
         }
         return (

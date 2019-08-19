@@ -23,7 +23,7 @@ class Single extends Component {
         if (!login) { return <Redirect to="/" /> }
         let dna = history.location.hash.slice(1)
         let name = history.location.pathname.slice(7)
-        let corgi = corgis.filter((corgi) => dna === dna && corgi.name === name)[0]
+        let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === name)[0]
         if (!corgi) { return <Redirect to="/account" />}
 
         return (

@@ -160,10 +160,10 @@ export function createRandomCorgi(name: string, color: string, backgroundColor: 
   let randDna = generateRandomDna();
   let rate = generateRandomrate();
   let sausage = generateRandomLength(rate);
-  return _createCorgi(name, randDna, color, sausage, backgroundColor, quote);
+  return _createCorgi(name, randDna, color, rate, sausage, backgroundColor, quote);
 }
 
-function _createCorgi(name: string, dna: string, color: string, sausage: string, backgroundColor: string, quote: string): Corgi {
+function _createCorgi(name: string, dna: string, color: string, rate: string, sausage: string, backgroundColor: string, quote: string): Corgi {
   let corgi = new Corgi();
   corgi.owner = context.sender;
   corgi.dna = dna;
@@ -172,6 +172,7 @@ function _createCorgi(name: string, dna: string, color: string, sausage: string,
   corgi.sausage = sausage;
   corgi.backgroundColor = backgroundColor;
   corgi.quote = quote;
+  corgi.rate = rate;
   setCorgi(corgi);
   setCorgisByOwner(corgi);
   return corgi;
@@ -203,16 +204,15 @@ function generateRandomrate(): string {
 function generateRandomLength(rarity: string): string {
   Math.seedRandom(67890);
   let l = Math.random();
-  let sausage = 0;
-  switch (rarity) {
-    case "COMMON":
-      sausage = l * 50 + 150;
-    case "UNCOMMON":
-      sausage = l * 50 + 100;
-    case "RARE":
-      sausage = l * 50 + 50;
-    case "VERY RARE":
-      sausage = l * 50;
+  let sausage = 0.0;
+  if (rarity == "COMMON") {
+    sausage = l * 50.0 + 150.0;
+  } else if (rarity == "UNCOMMON") {
+    sausage = l * 50.0 + 100.0;
+  } else if (rarity == "RARE") {
+    sausage = l * 50.0 + 50.0;
+  } else if (rarity == "VERY RARE") {
+    sausage = l * 50.0;
   }
   return sausage.toString()
 }
