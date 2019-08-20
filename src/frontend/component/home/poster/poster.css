@@ -76,3 +76,20 @@
   }
 }
 
+@media all and (max-width: 540px) {
+  .wrapper {
+    width: 90%;
+  }
+
+  .backup {
+    display: grid;
+    grid-template-areas: "text"
+                        "image";
+  }
+
+  .imagePoster {
+    margin-top: 2%;
+    grid-area: image;
+  }
+}
+
