@@ -6,7 +6,7 @@ import './footer.css';
 const Footer = () => (
     <div className="footer">
         <div className="left">
-            <ImageLoad image={nearLogo} style={{width: "5em"}} />
+            <ImageLoad image={nearLogo} style={{width: "5em", height:"5.5em"}} />
             <div className="text">
                 <p>Crypto Corgis was created to demonstrate the NFT</p>
                 <p>capabilities of NEAR Protocol. </p>

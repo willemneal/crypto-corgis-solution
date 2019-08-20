@@ -91,6 +91,7 @@ class App extends Component {
         this.getCorgis(accountId).then(res => {
             this.setState({
                 loggedIn: true,
+                front: true,
                 accountId
             });
             if (res == null || res.corgis.length < 1 || res.corgis == null) {

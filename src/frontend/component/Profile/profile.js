@@ -5,18 +5,15 @@ import CreationProfile from '../creation/creationProgile/creationProfile'
 
 //TO DO: Add sender and message
 class Profile extends Component {
-    componentDidMount() {
-        console.log("[profile.js] corgis", this.props.corgis)
-    }
     render() {
-        let { corgis, login, contract, handleChange } = this.props
+        let { corgis, contract, handleChange, login } = this.props
         if (!login) { return <Redirect to="/" /> }
         let Corgis = 'loading'
         if (corgis && corgis.length === 0) { return <Redirect to="/generation" /> }
         if (corgis.length > 0) {
             Corgis = corgis.map(corgi => {
                 return (
-                    <li key={corgi.dna}>
+                    <li style={{textDecoration:"none"}} key={corgi.dna}>
                         <CreationProfile
                             contract={contract}
                             corgi={corgi}
@@ -26,10 +23,10 @@ class Profile extends Component {
         }
         return (
             <div>
-                <h1>Your Corgi List</h1>
+                <h1>Your Corgis</h1>
                 <p>look and delete</p>
                 <div>
-                    <ul>
+                    <ul style={{textAlign:"center", padding:"10px",margin:"auto",textDecoration:"none"}}>
                         {Corgis}
                     </ul>
 

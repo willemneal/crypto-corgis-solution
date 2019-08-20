@@ -36,8 +36,8 @@ class ColorPicker extends Component {
                         <div className="select">{arrow}</div>
                     </label>
                     <div>
-                        <p style={{ marginBottom: "0", fontWeight: "600" }}>Corgi</p>
-                        <p style={{ marginBottom: "0" }}>{colorSet}</p>
+                        <p style={{ marginBottom: "0", marginLeft:"2px", fontWeight: "600" }}>Corgi</p>
+                        <p style={{ marginBottom: "0", marginLeft:"2px", }}>{colorSet}</p>
                     </div>
                 </div>
                 <div className="colorpicker">
@@ -47,8 +47,8 @@ class ColorPicker extends Component {
                         <div className="select">{arrow}</div>
                     </label>
                     <div>
-                        <p style={{ marginBottom: "0", fontWeight: "600" }}>BackGround</p>
-                        <p style={{ marginBottom: "0" }}>{backColorSet}</p>
+                        <p style={{ marginBottom: "0", marginLeft:"2px", fontWeight: "600" }}>BackGround</p>
+                        <p style={{ marginBottom: "0", marginLeft:"2px", }}>{backColorSet}</p>
                     </div>
                 </div>
             </div>

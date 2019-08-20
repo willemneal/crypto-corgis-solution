@@ -2,7 +2,6 @@ import React from 'react';
 import './corgi.css';
 
 const Corgi = ({ color, sausage }) => {
-    console.log(sausage)
     return (
         <div className="corgi">
             <div className="head">

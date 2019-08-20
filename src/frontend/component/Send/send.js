@@ -15,7 +15,7 @@ class SendPage extends Component {
     }
 
     render() {
-        let { contract, name, dna, backgroundColor, color, sausage, quote, backDrop, backdropCancelHandler, handleChange } = this.props
+        let { contract, name, dna, backgroundColor, color, sausage, rate, quote, backDrop, backdropCancelHandler, handleChange } = this.props
         return (
             <Modal show={backDrop} CancelHandler={backdropCancelHandler}>
                 {!this.state.loading
@@ -29,7 +29,7 @@ class SendPage extends Component {
                                     sausage={sausage}
                                     quote={quote} />
                             </div>
-                            <p>{name}<span style={{ color: "orange", marginLeft: "10em" }}>RARE</span></p>
+                            <p>{name}<span style={{ color: "orange", marginLeft: "5rem" }}>{rate}</span></p>
                             <hr />
                             {/* <p>LOGO</p> */}
                         </div>

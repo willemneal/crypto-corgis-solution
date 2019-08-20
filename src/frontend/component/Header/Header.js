@@ -27,7 +27,7 @@ class Header extends Component {
         }
         return (
             <div className="header">
-                <NavLink exact to="/" style={{textAlign: "left"}} onClick={clicked}><ImageLoader image={logo} style={{ width: "70%", height: "100%" }} /></NavLink>
+                <NavLink exact to="/" style={{textAlign: "left"}} onClick={clicked}><ImageLoader image={logo} style={{ minWidth:"100px", width: "70%", height: "100%" }} /></NavLink>
                 {show}
             </div>
         )

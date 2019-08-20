@@ -7,7 +7,7 @@ import Modal from '../common/Modal/modal';
 class SharePage extends Component {
 
     render() {
-        let { name, backgroundColor, color, sausage, quote, back, backCancelHandler, location } = this.props
+        let { name, backgroundColor, color, sausage, rate, quote, back, backCancelHandler, location } = this.props
         let address = "http://www.cryptocorgis.com" + location.pathname + location.hash
         return (
             <Modal show={back} CancelHandler={backCancelHandler}>
@@ -21,7 +21,7 @@ class SharePage extends Component {
                                 sausage={sausage}
                                 quote={quote} />
                         </div>
-                        <p>{name}<span style={{ color: "orange", marginLeft: "10em" }}>RARE</span></p>
+                        <p>{name}<span style={{ color: "orange", marginLeft: "10em" }}>{rate}</span></p>
                         <hr />
                     </div>
                     <div>

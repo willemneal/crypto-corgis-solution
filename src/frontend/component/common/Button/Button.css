@@ -1,11 +1,17 @@
 .Button {
-    background: #fbb040;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    color: #fff;
-    font-weight: 600;
-    margin: auto;
-    padding: 5px 30px;
-    letter-spacing: 0;
-    white-space: nowrap;
+  background: #fbb040;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  margin: auto;
+  padding: 5px 30px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+@media all and (max-width: 450px) {
+  .Button {
+    padding: 3px;
   }
+}

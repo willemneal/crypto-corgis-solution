@@ -1,6 +1,7 @@
 .corgi {
   display: flex;
   margin-left: 10px;
+  width: 80%;
 }
 
 .head, 

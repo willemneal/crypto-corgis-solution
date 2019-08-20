@@ -21,7 +21,7 @@ class Screen extends Component {
             </div>
         )
         let shadow = (
-            <div style={{ width: "65%", position: "relative", top: "-10px", margin: "auto" }}>
+            <div style={{ width: "60%", position: "relative", top: "-10px", margin: "auto" }}>
                 <svg width="200px" height="25px" viewBox="0 0 200 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" fillOpacity="0.2">
                         <g id="create" transform="translate(-801.000000, -709.000000)" fill="#000000">

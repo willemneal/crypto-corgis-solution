@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SampleH = ({
-    width = "90%"
+    width = "100%"
 }) => {
     return (
         <div>

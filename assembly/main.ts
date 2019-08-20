@@ -205,13 +205,13 @@ function generateRandomLength(rarity: string): string {
   Math.seedRandom(67890);
   let l = Math.random();
   let sausage = 0.0;
-  if (rarity == "COMMON") {
+  if (rarity == "VERY RARE") {
     sausage = l * 50.0 + 150.0;
-  } else if (rarity == "UNCOMMON") {
-    sausage = l * 50.0 + 100.0;
   } else if (rarity == "RARE") {
+    sausage = l * 50.0 + 100.0;
+  } else if (rarity == "UNCOMMON") {
     sausage = l * 50.0 + 50.0;
-  } else if (rarity == "VERY RARE") {
+  } else if (rarity == "COMMON") {
     sausage = l * 50.0;
   }
   return sausage.toString()

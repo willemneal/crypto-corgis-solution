@@ -1,40 +1,48 @@
 import React, { Component } from 'react';
 import Button from '../../common/Button/Button'
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Redirect, withRouter } from 'react-router-dom';
 
 import './nav.css'
 
 class Nav extends Component {
+    componentDidMount() {
+        if (!this.props.login) { return <Redirect push to="/" /> }
+    }
+    switchToProfile = () => {
+        this.props.history.push("/profile")
+    }
     render() {
-        let { accountName, number, requestSignOut,login } = this.props
+        let { accountName, number, requestSignOut } = this.props
         let des = "My Corgis (" + number + ")"
-        if (!login) {return <Redirect push to="/" />}
         return (
             <div className="wrap">
-                <NavLink to="/account" ><Button description={des} style={{boxShadow: "none"}}/></NavLink>
-                <Card accountName={accountName} requestSignOut={requestSignOut}/>
+                <div className="account">
+                    <NavLink to="/account" ><Button description={des} style={{ boxShadow: "none" }} /></NavLink>
+                    <Card accountName={accountName} requestSignOut={requestSignOut} switchToProfile={this.switchToProfile} />
+                </div>
                 <NavLink to="/generation"><AddCorgi /></NavLink>
             </div>
         )
     }
 }
 
-export default Nav
+export default withRouter(Nav)
 
-const Card = ({ accountName, requestSignOut }) => {
+const Card = ({ accountName, requestSignOut, switchToProfile }) => {
     let style = {
         textDecoration: "none",
         display: "block",
         padding: "auto",
-        color: "#01c9fd"
+        color: "#01c9fd",
+        margin: "2%  auto"
     }
-    let name = "@"+accountName+"▾"
+    let name = "@" + accountName + "▾"
     return (
         <div className="dropdown">
             <button className="menutop">{name}</button>
             <div className="dropdown-content">
-                <ul>
-                    <li style={style}><NavLink to="/profile">Edit Profile</NavLink></li>
+                <ul style={{textAlign:"center", padding:"2px"}}>
+                    <li style={style}><button onClick={switchToProfile}>Edit Profile</button></li>
                     <li style={style}><button onClick={requestSignOut}>Sign Out</button></li>
                 </ul>
             </div>
@@ -43,7 +51,7 @@ const Card = ({ accountName, requestSignOut }) => {
 }
 
 const AddCorgi = () => (
-    <div style={{boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.5)", borderRadius:"50%"}}>
+    <div style={{ boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.5)", borderRadius: "50%" }}>
         <svg width="40px" height="40px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="create" transform="translate(-1047.000000, -1249.000000)" fillRule="nonzero">

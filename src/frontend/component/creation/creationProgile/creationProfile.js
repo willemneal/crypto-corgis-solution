@@ -26,8 +26,11 @@ class CreationProfile extends Component {
             </svg>
         </div>)
         return (
-            <div>
-                <span>{uncommon}</span>{corgi.name}  <TiDelete onClick={this.deleteCorgi}/>
+            <div style={{margin: "5px"}}>
+                {uncommon}
+                <div style={{marginLeft:"20px", fontSize:"1.5rem"}}>
+                    {corgi.name} <TiDelete onClick={this.deleteCorgi} style={{marginLeft:"5px", color:"#ff4143",fontSize: "2rem" }}/>
+                </div>
             </div>
         )
     }
