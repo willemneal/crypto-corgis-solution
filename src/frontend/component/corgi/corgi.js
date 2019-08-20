@@ -14,7 +14,6 @@ const Corgi = ({ color, sausage }) => {
                 <CorgiTail color={color} />
             </div>
         </div>
-
     )
 }
 

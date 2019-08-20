@@ -60,6 +60,10 @@
 }
 
 @media all and (max-width: 1000px) {
+  .wrapper {
+    width: 70%;
+  }
+
   .backup {
     display: grid;
     grid-template-areas: "text"

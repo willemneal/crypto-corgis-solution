@@ -19,7 +19,7 @@ gulp.task("build", gulp.series("build:bindings", callback => {
 }));
 
 gulp.task("webpack", () => {
-  return gulp.src('src/main.js')
+  return gulp.src('src/*')
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('dist/'))
     .pipe(connect.reload());
@@ -38,8 +38,8 @@ gulp.task("serve", (resolve) => {
 });
 
 gulp.task('watch', (resolve) => {
-  gulp.watch(['./src/*'], gulp.series('webpack'));
-  gulp.watch(['./src/frontend/*'], gulp.series('webpack'));
+  gulp.watch(['./src/**'], gulp.series('webpack'));
+  gulp.watch(['./assembly/**'], gulp.series('build'));
   resolve();
 });
 

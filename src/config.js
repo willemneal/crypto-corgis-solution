@@ -1,5 +1,5 @@
 (function() {
-    const CONTRACT_NAME = 'macdonald.test'; /* TODO: fill this in! */
+    const CONTRACT_NAME = 'banana2'; /* TODO: fill this in! */
     const DEFAULT_ENV = 'development';
 
     function getConfig(env) {
@@ -52,6 +52,6 @@
 })();
 
 // Local environment:
-// nearcore + cmake + protobuf + rustup
+// nearcore + cmake + protobuf + rustup + openssl
 // python ./scripts/start_localnet.py --local
 // NODE_ENV=local npm run start

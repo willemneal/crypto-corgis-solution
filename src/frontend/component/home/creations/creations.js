@@ -35,15 +35,15 @@ let corgiArray = [{
     color: COLOR.orange,
     sausage: "50",
     corgiName: "Squatty Blu Doggy",
-    owner: "icerove",
+    owner: "potato",
     quote: "We know what we are, but know not what we may be"
 }, {
     backgroundColor: BACKGROUNDCOLOR.pink,
     color: COLOR.gray,
     sausage: "200",
     corgiName: "Potato",
-    owner: "potato",
-    quote: "Do you want me?"
+    owner: "icerove",
+    quote: "Do you want me? I am rare corgi and have a cool name!"
 }]
 
 const Creations = () => {
