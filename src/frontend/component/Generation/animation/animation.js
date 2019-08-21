@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 import { Keyframes, Frame } from 'react-keyframes';
 import SampleH from '../../common/sample/sample_h';
+import Spinner from '../../common/spinner/spinner'
 
 import './animation.css';
 class Animation extends Component {
@@ -9,7 +10,7 @@ class Animation extends Component {
         running: true
     }
     render() {
-        let { corgis, dna, newCorgiName, login } = this.props
+        let { corgis, dna, newCorgiName, login, load } = this.props
         let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === newCorgiName)[0]
         let color = corgi.color
         let backgroundColor = corgi.backgroundColor
@@ -178,7 +179,8 @@ class Animation extends Component {
                 </g>
             </svg>
         )
-        if (!login) { return <Redirect to="/" /> }
+        if (!load) {return <Spinner />}
+        if (load && !login) {return <Redirect to="/" />}
         if (!this.state.running) { return <Redirect to={{ pathname: "/corgi/" + newCorgiName, hash: corgi.dna }} /> }
         return (
             <div>

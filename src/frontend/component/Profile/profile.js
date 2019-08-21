@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 
-import CreationProfile from '../creation/creationProgile/creationProfile'
+import CreationProfile from '../creation/creationProgile/creationProfile';
+import Spinner from '../common/spinner/spinner'
 
 //TO DO: Add sender and message
 class Profile extends Component {
     render() {
-        let { corgis, contract, handleChange, login } = this.props
-        if (!login) { return <Redirect to="/" /> }
+        let { corgis, contract, handleChange, login, load } = this.props
+        if (!load) {return <Spinner />}
+        if (load && !login) {return <Redirect to="/" />}
         let Corgis = 'loading'
         if (corgis && corgis.length === 0) { return <Redirect to="/generation" /> }
         if (corgis.length > 0) {

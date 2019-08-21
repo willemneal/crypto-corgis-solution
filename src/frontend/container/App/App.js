@@ -171,6 +171,7 @@ class App extends Component {
                     />
                     <Route exact path="/generation" render={() => <Generation
                         login={loggedIn}
+                        load={loaded}
                         color={color}
                         backgroundColor={backgroundColor}
                         newCorgiName={newCorgiName}
@@ -180,15 +181,18 @@ class App extends Component {
                         generateQuote={this.generateQuote}
                         quote={quote} />} />
                     <Route exact path="/account" render={() => <Account
+                        load={loaded}
                         login={loggedIn}
                         corgis={corgis}
                     />} />
                     <Route exact path="/profile" render={() => <Profile
+                        load={loaded}
                         login={loggedIn}
                         corgis={corgis}
                         contract={contract}
                         handleChange={this.handleChange} />} />
                     <Route path="/corgi/:name" render={() => <Single
+                        load={loaded}
                         login={loggedIn}
                         contract={contract}
                         corgis={corgis}
@@ -203,6 +207,7 @@ class App extends Component {
                     />} />
                     <Route path="/generating" render={() => <Animation
                         login={loggedIn}
+                        load={loaded}
                         corgis={corgis}
                         dna={dna}
                         newCorgiName={newCorgiName}

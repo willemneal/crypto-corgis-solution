@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+
+import Spinner from '../common/spinner/spinner';
 import CreationAccount from '../creation/creationAccount/creationAccount'
 import './account.css';
 
@@ -8,8 +10,9 @@ class Account extends Component {
         console.log("[account.js] corgis", this.props.corgis)
     }
     render() {
-        let { corgis, login } = this.props
-        if (!login) { return <Redirect to="/" /> }
+        let { corgis, login, load } = this.props
+        if (!load) {return <Spinner />}
+        if (load && !login) {return <Redirect to="/" />}
         let Corgis = 'loading'
         if (corgis && corgis.length === 0) { return <Redirect to="/generation" /> }
         if (corgis.length > 0) {

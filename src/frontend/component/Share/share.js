@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import {CreationSingleSmall} from '../creation/creationSingle/creationsingle';
+import { CreationSingleSmall } from '../creation/creationSingle/creationsingle';
 import Modal from '../common/Modal/modal';
 // handlechange dna contract
 class SharePage extends Component {
-
     render() {
         let { name, backgroundColor, color, sausage, rate, quote, back, backCancelHandler, location } = this.props
         let address = "http://www.cryptocorgis.com" + location.pathname + location.hash
         return (
             <Modal show={back} CancelHandler={backCancelHandler}>
-                <div style={{width:"100%", height: "100%"}}>
+                <div style={{ width: "100%", height: "100%" }}>
                     <h3>Share a Corgi</h3>
                     <div>
-                        <div style={{overflowX:"scroll", width:"100%", height: "90%"}}>
+                        <div style={{ overflowX: "scroll", width: "100%", height: "90%" }}>
                             <CreationSingleSmall
                                 backgroundColor={backgroundColor}
                                 color={color}
@@ -26,7 +26,12 @@ class SharePage extends Component {
                     </div>
                     <div>
                         <p style={{ backgroundColor: "white", borderRadius: "5px", padding: "4px 2px", wordWrap: "break-word" }}>{address}</p>
-                        <span><button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px" }}>Copy Link</button></span>
+
+                        <CopyToClipboard text={address}
+                            onCopy={() => this.setState({ copied: true })}>
+                            <button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px" }}>Copy Link</button>
+
+                        </CopyToClipboard>
                     </div>
                 </div>
             </Modal>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 
-import {CreationSingle, CreationSingleSmall} from '../creation/creationSingle/creationsingle';
+import { CreationSingle, CreationSingleSmall } from '../creation/creationSingle/creationsingle';
 import SendPage from '../Send/send';
 import SharePage from '../Share/share';
+import Spinner from '../common/spinner/spinner';
 
 import "./single.css"
 class Single extends Component {
@@ -14,6 +15,7 @@ class Single extends Component {
         let {
             corgis,
             login,
+            load,
             contract,
             handleChange,
             history,
@@ -23,24 +25,25 @@ class Single extends Component {
             back,
             backShowHandler,
             backCancelHandler,
-         } = this.props
-        if (!login) { return <Redirect to="/" /> }
+        } = this.props
+        if (!load) { return <Spinner /> }
+        if (load && !login) { return <Redirect to="/" /> }
         let dna = history.location.hash.slice(1)
         let name = history.location.pathname.slice(7)
         let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === name)[0]
         if (!corgi) { return <Redirect to="/account" /> }
 
         let Corgi = window.innerWidth > 630 ?
-                     <CreationSingle
-                        backgroundColor={corgi.backgroundColor}
-                        color={corgi.color}
-                        sausage={corgi.sausage}
-                        quote={corgi.quote} />
-                    : <CreationSingleSmall
-                        backgroundColor={corgi.backgroundColor}
-                        color={corgi.color}
-                        sausage={corgi.sausage}
-                        quote={corgi.quote} />
+            <CreationSingle
+                backgroundColor={corgi.backgroundColor}
+                color={corgi.color}
+                sausage={corgi.sausage}
+                quote={corgi.quote} />
+            : <CreationSingleSmall
+                backgroundColor={corgi.backgroundColor}
+                color={corgi.color}
+                sausage={corgi.sausage}
+                quote={corgi.quote} />
         return (
             <div>
                 <SendPage
