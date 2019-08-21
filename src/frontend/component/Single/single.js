@@ -8,9 +8,6 @@ import Spinner from '../common/spinner/spinner';
 
 import "./single.css"
 class Single extends Component {
-    componentDidMount() {
-        console.log(window.innerWidth)
-    }
     render() {
         let {
             corgis,
@@ -143,9 +140,7 @@ const Rate = ({ rate }) => {
 }
 
 const SendAndShare = ({ backdropShowHandler, backShowHandler }) => {
-    let styleB = {display: "flex", flexDirection: "row"}
-    let styleS = {display: "flex", flexDirection: "column"}
-    let style = window.innerWidth > 415 ? styleB : styleS 
+    let style = {display: "flex", flexDirection: "column"}
     return (
         <div>
             <h5>What would you like to do with </h5>

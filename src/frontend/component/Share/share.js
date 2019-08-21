@@ -21,7 +21,7 @@ class SharePage extends Component {
                                 sausage={sausage}
                                 quote={quote} />
                         </div>
-                        <p>{name}<span style={{ color: "orange", marginLeft: "10em" }}>{rate}</span></p>
+                        <p>{name}<span style={{ color: "orange", marginLeft: "5em" }}>{rate}</span></p>
                         <hr />
                     </div>
                     <div>

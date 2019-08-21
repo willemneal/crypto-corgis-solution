@@ -13,9 +13,9 @@ class Animation extends Component {
         let { corgis, dna, newCorgiName, login, load } = this.props
         let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === newCorgiName)[0]
         let color = corgi.color
-        let backgroundColor = corgi.backgroundColor
+        let backgroundColor = corgi.backgroundColor 
         const shadow = (
-            <div style={{ width: "50%", position: "relative", top: "40px", margin: "auto" }}>
+            <div style={{ width: "100%", position: "relative", top: "40px", margin: "auto" }}>
                 <svg width="200px" height="25px" viewBox="0 0 200 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" fillOpacity="0.2">
                         <g id="create" transform="translate(-801.000000, -709.000000)" fill="#000000">
@@ -25,8 +25,8 @@ class Animation extends Component {
                 </svg>
             </div>
         )
-        const corgiOne = () => (
-            <svg className="spinning" width="192px" height="191px" viewBox="0 0 192 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        const corgiOne = ({width="100%"}) => (
+            <svg className="spinning" width={width} height="191px" viewBox="0 0 192 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-759.000000, -1100.000000)">
                         <g id="c-phase1-(1)" transform="translate(761.000000, 1102.000000)">
@@ -38,8 +38,8 @@ class Animation extends Component {
                 </g>
             </svg>
         )
-        const corgiTwo = () => (
-            <svg className="spinning" width="199px" height="271px" viewBox="0 0 199 271" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        const corgiTwo = ({width="100%"}) => (
+            <svg className="spinning" width={width} height="271px" viewBox="0 0 199 271" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-745.000000, -1012.000000)">
                         <g id="c-phase2-(1)" transform="translate(845.500000, 1147.000000) rotate(-90.000000) translate(-845.500000, -1147.000000) translate(711.000000, 1048.000000)">
@@ -54,8 +54,8 @@ class Animation extends Component {
                 </g>
             </svg>
         )
-        const corgiThree = () => (
-            <svg className="spinning" width="338px" height="257px" viewBox="0 0 338 257" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        const corgiThree = ({width="100%"}) => (
+            <svg className="spinning" width={width} height="257px" viewBox="0 0 338 257" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-676.000000, -1020.000000)">
                         <g id="c-phase3-(1)" transform="translate(676.000000, 1020.000000)">
@@ -72,8 +72,8 @@ class Animation extends Component {
                 </g>
             </svg>
         )
-        const corgiFour = () => (
-            <svg className="spinning" width="338px" height="284px" viewBox="0 0 338 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        const corgiFour = ({width="100%"}) => (
+            <svg className="spinning" width={width} height="284px" viewBox="0 0 338 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="gen1" transform="translate(-1012.000000, -1220.000000)">
                         <g id="c-phase4-(1)" transform="translate(1012.000000, 1220.000000)">
@@ -101,8 +101,8 @@ class Animation extends Component {
                 </g>
             </svg>
         )
-        const corgiFive = () => (
-            <svg width="582px" height="365px" viewBox="0 0 582 365" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        const corgiFive = ({width="100%"}) => (
+            <svg width={width} height="365px" viewBox="0 0 582 365" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <defs>
                     <radialGradient cx="49.9963641%" cy="49.1947232%" fx="49.9963641%" fy="49.1947232%" r="55.2273167%" gradientTransform="translate(0.499964,0.491947),scale(1.000000,0.833542),translate(-0.499964,-0.491947)" id="radialGradient-1">
                         <stop stopColor="#C8667B" offset="0%"></stop>
