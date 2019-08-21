@@ -6,7 +6,7 @@ import Button from '../common/Button/Button';
 import Nav from './Nav/nav'
 
 import logo from '../../../assets/logo.png';
-
+import Spinner from '../common/spinner/spinner';
 
 
 import './Header.css';
@@ -14,7 +14,7 @@ import './Header.css';
 class Header extends Component {
     render() {
         let { login, load, requestSignIn, requestSignOut ,accountId, length, clicked } = this.props
-        let show = "loading"
+        let show = <Spinner />
         if (login && load) {
             show = <Nav  
                         accountName={accountId} 

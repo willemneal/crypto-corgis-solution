@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Button from '../../common/Button/Button';
 import ImageLoader from '../../common/ImageLoad/ImageLoad';
 import SampleH from '../../common/sample/sample_h'
+import Spinner from '../../common/spinner/spinner';
 
 import corgiFull from '../../../../assets/corgi-full.png';
 import "./poster.css";
@@ -13,7 +14,7 @@ class Poster extends Component {
     }
     render() {
         let { requestSignIn, load, front, accountId } = this.props
-        let showButton = "loading";
+        let showButton = <Spinner />;
         if (load && !front) { showButton = <Button description="Login with NEAR" action={requestSignIn} /> }
         else if (load && front) { showButton = <div className="show">Logged In {accountId}</div> }
         return (

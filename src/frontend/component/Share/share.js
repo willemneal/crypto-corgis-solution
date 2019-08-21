@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Corgi from '../creation/creationSingle/creationsingle';
+import {CreationSingleSmall} from '../creation/creationSingle/creationsingle';
 import Modal from '../common/Modal/modal';
 // handlechange dna contract
 class SharePage extends Component {
@@ -11,11 +11,11 @@ class SharePage extends Component {
         let address = "http://www.cryptocorgis.com" + location.pathname + location.hash
         return (
             <Modal show={back} CancelHandler={backCancelHandler}>
-                <div>
+                <div style={{width:"100%", height: "100%"}}>
                     <h3>Share a Corgi</h3>
                     <div>
-                        <div style={{overflowX:"scroll"}}>
-                            <Corgi
+                        <div style={{overflowX:"scroll", width:"100%", height: "90%"}}>
+                            <CreationSingleSmall
                                 backgroundColor={backgroundColor}
                                 color={color}
                                 sausage={sausage}

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { FaBarcode } from "react-icons/fa";
 
-import Corgi from '../creation/creationSingle/creationsingle';
+import { CreationSingleSmall } from '../creation/creationSingle/creationsingle';
 import Modal from '../common/Modal/modal';
 import Transfer from '../tokens/transfer';
+import Spinner from '../common/spinner/spinner';
 // handlechange dna contract
 class SendPage extends Component {
     state = {
@@ -19,11 +21,12 @@ class SendPage extends Component {
         return (
             <Modal show={backDrop} CancelHandler={backdropCancelHandler}>
                 {!this.state.loading
-                    ? <div>
+                    ? <div style={{ width: "100%", height: "100%" }}>
                         <h3>Send a Corgi</h3>
                         <div>
-                            <div style={{overflowX:"scroll"}}>
-                                <Corgi
+                            <div style={{ overflowX: "scroll", width: "100%", height: "90%" }}>
+                                <CreationSingleSmall
+                                    style={{ width: "100%", height: "100%" }}
                                     backgroundColor={backgroundColor}
                                     color={color}
                                     sausage={sausage}
@@ -31,7 +34,6 @@ class SendPage extends Component {
                             </div>
                             <p>{name}<span style={{ color: "orange", marginLeft: "5rem" }}>{rate}</span></p>
                             <hr />
-                            {/* <p>LOGO</p> */}
                         </div>
                         <Transfer
                             contract={contract}
@@ -39,10 +41,11 @@ class SendPage extends Component {
                             loadingHandler={this.loadingHandler}
                             handleChange={handleChange} />
                     </div>
-                    : "loading"}
+                    : <Spinner />}
             </Modal>
         )
     }
 }
 
 export default SendPage
+

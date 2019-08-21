@@ -1,6 +1,6 @@
 .corgi {
   display: flex;
-  margin-left: 10px;
+  justify-content: "center";
   width: 80%;
 }
 

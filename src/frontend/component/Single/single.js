@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 
-import Corgi from '../creation/creationSingle/creationsingle';
+import {CreationSingle, CreationSingleSmall} from '../creation/creationSingle/creationsingle';
 import SendPage from '../Send/send';
 import SharePage from '../Share/share';
 
 import "./single.css"
 class Single extends Component {
     componentDidMount() {
-
+        console.log(window.innerWidth)
     }
     render() {
         let {
@@ -22,13 +22,25 @@ class Single extends Component {
             backDrop,
             back,
             backShowHandler,
-            backCancelHandler } = this.props
+            backCancelHandler,
+         } = this.props
         if (!login) { return <Redirect to="/" /> }
         let dna = history.location.hash.slice(1)
         let name = history.location.pathname.slice(7)
         let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === name)[0]
         if (!corgi) { return <Redirect to="/account" /> }
 
+        let Corgi = window.innerWidth > 630 ?
+                     <CreationSingle
+                        backgroundColor={corgi.backgroundColor}
+                        color={corgi.color}
+                        sausage={corgi.sausage}
+                        quote={corgi.quote} />
+                    : <CreationSingleSmall
+                        backgroundColor={corgi.backgroundColor}
+                        color={corgi.color}
+                        sausage={corgi.sausage}
+                        quote={corgi.quote} />
         return (
             <div>
                 <SendPage
@@ -55,11 +67,7 @@ class Single extends Component {
                 <div>
                     <h1>Meet {corgi.name}!</h1>
                     <div>
-                        <Corgi
-                            backgroundColor={corgi.backgroundColor}
-                            color={corgi.color}
-                            sausage={corgi.sausage}
-                            quote={corgi.quote} />
+                        {Corgi}
                     </div>
                     <div className="wrapperS" >
                         <Rate rate={corgi.rate} />

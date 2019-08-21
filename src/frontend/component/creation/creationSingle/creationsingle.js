@@ -1,21 +1,39 @@
 import React from 'react';
+import Corgi from '../../corgi/corgi'
+import Dialogue from '../../creation/dialogue/dialogue'
 
-const CreationSingle = ({ backgroundColor, color, quote, sausage }) => {
+export const CreationSingle = ({ backgroundColor, color, quote, sausage}) => {
     return (
-        <div style={{
-            backgroundColor: backgroundColor,
-            borderRadius: "10px",
-            padding: "20px",
-            display: "inline-block",
-            textAlign: "center"
-        }}>
+        <div 
+            style={{
+                backgroundColor: backgroundColor,
+                borderRadius: "10px",
+                padding: "20px 100px",
+                display: "inline-block",
+                textAlign: "center",
+                width: "90%"}}
+        >
             <BigDialogue quote={quote} color={color} />
             <BigCorgi color={color} sausage={sausage} />
         </div>
     )
 }
 
-export default CreationSingle
+export const CreationSingleSmall = ({ backgroundColor, color, quote, sausage}) => {
+    return (
+        <div 
+            style={{
+                backgroundColor: backgroundColor,
+                borderRadius: "10px",
+                padding: "20px",
+                display: "inline-block",
+                textAlign: "center"}}
+        >
+            <Dialogue quote={quote} color={color} />
+            <Corgi color={color} sausage={sausage} />
+        </div>
+    )
+}
 
 const BigDialogue = ({ quote, color }) => {
     return (
@@ -36,7 +54,7 @@ const BigDialogue = ({ quote, color }) => {
 
 const BigCorgi = ({ color, sausage }) => {
     return (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
             <div style={{ margin: "0" }}>
                 <Head color={color} />
             </div>
