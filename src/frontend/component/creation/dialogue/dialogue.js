@@ -13,7 +13,7 @@ const Dialogue = ({quote,color}) => {
                 opacity: "0.7", 
                 borderRadius: "20px",
                 left: "60px" }}>
-            <p style={{color:color, margin:"0"}}><i class="fa fa-quote-left"></i>{quote}</p>
+            <p style={{color:color, margin:"0"}}><i class="fa fa-quote-left"></i> {quote}</p>
         </div>
     )
 }

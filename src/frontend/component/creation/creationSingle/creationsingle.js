@@ -8,9 +8,9 @@ export const CreationSingle = ({ backgroundColor, color, quote, sausage}) => {
             style={{
                 backgroundColor: backgroundColor,
                 borderRadius: "10px",
-                padding: "20px 70px",
-                display: "inline-block",
-                textAlign: "center",
+                padding: "20px",
+                display: "inline-grid",
+                justifyItems: "center",
                 width: "86%"}}
         >
             <BigDialogue quote={quote} color={color} />
@@ -27,8 +27,7 @@ export const CreationSingleSmall = ({ backgroundColor, color, quote, sausage}) =
                 borderRadius: "10px",
                 padding: "20px",
                 display: "inline-block",
-                textAlign: "center",
-                width: "90%"}}
+                textAlign: "center"}}
         >
             <Dialogue quote={quote} color={color} />
             <Corgi color={color} sausage={sausage} />
@@ -46,7 +45,8 @@ const BigDialogue = ({ quote, color }) => {
             backgroundColor: "white",
             opacity: "0.7",
             borderRadius: "20px",
-            left: "160px"
+            left: "160px",
+            margin: "auto"
         }}>
             <p style={{ color: color, margin: "0" }}><i class="fa fa-quote-left"></i>{quote}</p>
         </div>
@@ -55,7 +55,7 @@ const BigDialogue = ({ quote, color }) => {
 
 const BigCorgi = ({ color, sausage }) => {
     return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "inline-flex", justifyContent: "center" }}>
             <div style={{ margin: "0" }}>
                 <Head color={color} />
             </div>

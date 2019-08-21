@@ -23,7 +23,6 @@ class Profile extends Component {
                     </li>)
             })
         }
-        console.log(Corgis)
         return (
             <div>
                 <h1>Your Corgis</h1>

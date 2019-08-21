@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FaBarcode } from "react-icons/fa";
 
 import { CreationSingleSmall } from '../creation/creationSingle/creationsingle';
 import Modal from '../common/Modal/modal';

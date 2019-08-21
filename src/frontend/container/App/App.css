@@ -7,3 +7,8 @@ button {
   all: unset;
   outline:none;
 }
+
+input {
+  all:unset;
+  padding: 5px;
+}

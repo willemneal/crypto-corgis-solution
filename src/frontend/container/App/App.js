@@ -172,14 +172,15 @@ class App extends Component {
                     <Route exact path="/generation" render={() => <Generation
                         login={loggedIn}
                         load={loaded}
+                        handleChange={this.handleChange}
                         color={color}
                         backgroundColor={backgroundColor}
                         newCorgiName={newCorgiName}
-                        handleChange={this.handleChange}
                         corgis={corgis}
                         contract={contract}
                         generateQuote={this.generateQuote}
-                        quote={quote} />} />
+                        quote={quote}
+                        accountId={accountId} />} />
                     <Route exact path="/account" render={() => <Account
                         load={loaded}
                         login={loggedIn}

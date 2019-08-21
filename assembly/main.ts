@@ -123,8 +123,9 @@ export function deleteCorgiProfile(tokenId: string): Array<Corgi> {
 }
 
 // Transfer between users
-export function transfer(to: string, tokenId: string): Array<Corgi> {
+export function transfer(to: string, tokenId: string, message:string): Array<Corgi> {
   let corgi = getCorgi(tokenId);
+  corgi.message = message;
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
   incrementNewOwnerCorgis(to, tokenId);
   decrementOldOwnerCorgis(corgi.owner, tokenId);

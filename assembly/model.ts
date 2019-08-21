@@ -1,6 +1,7 @@
 export class Corgi {
   owner: string;
   sender:string;
+  message:string;
   dna: string;
   name: string;
   color:string;

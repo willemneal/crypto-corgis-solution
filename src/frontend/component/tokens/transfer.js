@@ -27,12 +27,13 @@ class TransferCorgi extends Component {
     loadingHandler()
     contract.transfer({
       to: recipient,
-      tokenId: dna
+      tokenId: dna,
+      message
     })
       .then(response => {
-        console.log("[transfer.js] left", response)
+        console.log("[transfer.js] corgis", response)
         let newCorgis = response
-        handleChange({name:"corgis",value:newCorgis})
+        handleChange({ name: "corgis", value: newCorgis })
         loadingHandler()
         history.push("/account")
       }).catch(err => {
@@ -42,25 +43,40 @@ class TransferCorgi extends Component {
 
   render() {
     let { recipient, message } = this.state
+    let style = {
+      display: "block",
+      margin: "auto",
+      background: "#FFFFFF",
+      boxShadow: "0 2px 4px 0 rgba(0,0,0,0.50)",
+      borderRadius: "5px",
+      color: "#4A4F54",
+      letterSpacing: "0",
+      textAlign:"start",
+      marginBottom: "5px"
+    }
     return (
       <div>
         <form onSubmit={this.transferCorgi}>
-          <label>To:</label>
+          <label style={{ display: "block" }}>To:</label>
           <input
             required
             id="recipient"
             type="text"
             placeholder="Corgi recipient"
             onChange={this.handleNameChange}
-            value={recipient} />
-          {/* <label>Message</label>
-        <input
-          type="text"
-          placeholder="(Optional)Best wish to your friend  with corgi"
-          onChange={this.handleMessageChange}
-          value={message}
-        /> */}
-          <Button description="Transfer" />
+            value={recipient}
+            style={style}
+          />
+          <label style={{ display: "block" }}>Message:</label>
+          <input
+            id=""
+            type="text"
+            placeholder="(Optional)Best wish to your friend with corgi!"
+            onChange={this.handleMessageChange}
+            value={message}
+            style={style}
+          />
+          <Button description="Transfer" style={{ display: "block" }} />
         </form>
       </div>
     )
