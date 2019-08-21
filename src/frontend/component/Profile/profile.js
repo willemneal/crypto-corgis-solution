@@ -10,7 +10,7 @@ class Profile extends Component {
         let { corgis, contract, handleChange, login, load } = this.props
         if (!load) {return <Spinner />}
         if (load && !login) {return <Redirect to="/" />}
-        let Corgis = 'loading'
+        let Corgis = <Spinner />
         if (corgis && corgis.length === 0) { return <Redirect to="/generation" /> }
         if (corgis.length > 0) {
             Corgis = corgis.map(corgi => {
@@ -23,6 +23,7 @@ class Profile extends Component {
                     </li>)
             })
         }
+        console.log(Corgis)
         return (
             <div>
                 <h1>Your Corgis</h1>

@@ -11,7 +11,7 @@ export const CreationSingle = ({ backgroundColor, color, quote, sausage}) => {
                 padding: "20px 70px",
                 display: "inline-block",
                 textAlign: "center",
-                width: "70%"}}
+                width: "86%"}}
         >
             <BigDialogue quote={quote} color={color} />
             <BigCorgi color={color} sausage={sausage} />
@@ -27,7 +27,8 @@ export const CreationSingleSmall = ({ backgroundColor, color, quote, sausage}) =
                 borderRadius: "10px",
                 padding: "20px",
                 display: "inline-block",
-                textAlign: "center"}}
+                textAlign: "center",
+                width: "90%"}}
         >
             <Dialogue quote={quote} color={color} />
             <Corgi color={color} sausage={sausage} />

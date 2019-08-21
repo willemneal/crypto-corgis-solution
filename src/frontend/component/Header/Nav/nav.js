@@ -34,7 +34,8 @@ const Card = ({ accountName, requestSignOut, switchToProfile }) => {
         display: "block",
         padding: "auto",
         color: "#01c9fd",
-        margin: "2%  auto"
+        margin: "2%  auto",
+        cursor: "alias"
     }
     let name = "@" + accountName + "▾"
     return (

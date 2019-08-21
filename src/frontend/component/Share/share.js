@@ -29,7 +29,7 @@ class SharePage extends Component {
 
                         <CopyToClipboard text={address}
                             onCopy={() => this.setState({ copied: true })}>
-                            <button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px" }}>Copy Link</button>
+                            <button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px", cursor:"alias" }}>Copy Link</button>
 
                         </CopyToClipboard>
                     </div>
