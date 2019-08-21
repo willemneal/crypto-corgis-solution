@@ -6,7 +6,7 @@ import SendPage from '../Send/send';
 import SharePage from '../Share/share';
 import Spinner from '../common/spinner/spinner';
 
-import "./single.css"
+import "./single.css" 
 class Single extends Component {
     render() {
         let {

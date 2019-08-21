@@ -16,7 +16,12 @@ class Home extends Component {
         let { login, load, requestSignIn, front, accountId } = this.props
         return (
             <div className="home">
-                <Poster requestSignIn={requestSignIn} load={load} front={front} accountId={accountId} />
+                <Poster 
+                    requestSignIn={requestSignIn} 
+                    load={load} 
+                    login={login} 
+                    front={front} 
+                    accountId={accountId} />
                 <Creations />
             </div>
         )

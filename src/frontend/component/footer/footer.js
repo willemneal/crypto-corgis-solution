@@ -10,11 +10,11 @@ const Footer = () => (
             <div className="text">
                 <p>Crypto Corgis was created to demonstrate the NFT</p>
                 <p>capabilities of NEAR Protocol. </p>
-                <p>Learn more at
+                <p>Learn more at 
                     <a
                         href="https://nearprotocol.com/"
                         target="_blank"
-                        className="blue" >nearprotcol.com</a></p>
+                        className="blue" > nearprotcol.com</a></p>
             </div>
         </div>
         <div className="right">

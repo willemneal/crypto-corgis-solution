@@ -5,7 +5,6 @@ import { CreationSingleSmall } from '../creation/creationSingle/creationsingle';
 import Modal from '../common/Modal/modal';
 import Transfer from '../tokens/transfer';
 import Spinner from '../common/spinner/spinner';
-// handlechange dna contract
 class SendPage extends Component {
     state = {
         loading: false

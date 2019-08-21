@@ -8,7 +8,7 @@ import Modal from '../common/Modal/modal';
 class SharePage extends Component {
     render() {
         let { name, backgroundColor, color, sausage, rate, quote, back, backCancelHandler, location } = this.props
-        let address = "https://" + location.pathname + location.hash
+        let address = "https://corgis.nearprotocol.com" + location.pathname + location.hash
         return (
             <Modal show={back} CancelHandler={backCancelHandler}>
                 <div style={{ width: "100%", height: "100%" }}>
