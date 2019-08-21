@@ -8,10 +8,10 @@ export const CreationSingle = ({ backgroundColor, color, quote, sausage}) => {
             style={{
                 backgroundColor: backgroundColor,
                 borderRadius: "10px",
-                padding: "20px 100px",
+                padding: "20px 70px",
                 display: "inline-block",
                 textAlign: "center",
-                width: "90%"}}
+                width: "70%"}}
         >
             <BigDialogue quote={quote} color={color} />
             <BigCorgi color={color} sausage={sausage} />

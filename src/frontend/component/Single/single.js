@@ -143,10 +143,13 @@ const Rate = ({ rate }) => {
 }
 
 const SendAndShare = ({ backdropShowHandler, backShowHandler }) => {
+    let styleB = {display: "flex", flexDirection: "row"}
+    let styleS = {display: "flex", flexDirection: "column"}
+    let style = window.innerWidth > 415 ? styleB : styleS 
     return (
         <div>
             <h5>What would you like to do with </h5>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={style}>
                 <Send clicked={backdropShowHandler} />
                 <Share clicked={backShowHandler} />
             </div>
