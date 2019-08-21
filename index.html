@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NEAR Corgi</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,800,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="../src/frontend/corgi.css"> -->
-</head>
+  <body>
+    <div id="container">
+      <!-- <h1>Hello, you have got a Corgi!</h1>
 
-<body>
-  <div class="container">
-    <h1>Hello, you have got a Corgi!</h1>
-
-    <p>Here is how you use can use it from JavaScript.</p>
+    <p>Here is how you use can interact with the smart contract powering these Corgis. See below for a simple frontend for corgis with uniqe fur color!</p>
 
     <p>To init:</p>
     <pre>contract.init({initialOwner: nearlib.dev.myAccountId})
@@ -22,20 +32,17 @@
     <pre>contract.createRandomCorgi({name: "Winifred The Corgi King", seed: 1})
     </pre>
 
-    <p>To check your balance:</p>
-    <pre>contract.balanceOf({owner: nearlib.dev.myAccountId})
-    </pre>
-
     <p>To send a Corgi:</p>
     <pre>contract.transfer({to: 'bob.near', tokenId: 'a233safhj23'})
-    </pre>
-    <div id="tokens">
-      Loading...
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/nearlib@0.7.1/dist/nearlib.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-  <script src="./bundle.js"></script>
-</body>
+    </pre> -->
 
+      <!-- <div id="tokens">
+      Loading...
+    </div> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/nearlib@0.12.1/dist/nearlib.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <!-- <script src="./config.js"></script> -->
+    <script src="/bundle.js"></script>
+  </body>
 </html>
