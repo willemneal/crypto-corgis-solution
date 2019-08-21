@@ -2,6 +2,7 @@
   "name": "crypo_corgis",
   "description": "",
   "version": "0.0.1",
+  "homepage": "https://nearprotocol.github.io/crypto-corgis-solution",
   "scripts": {
     "build": "mkdir -p out/ && gulp",
     "deploy:contract": "near deploy",
