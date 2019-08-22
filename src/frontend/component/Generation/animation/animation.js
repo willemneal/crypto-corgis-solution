@@ -189,9 +189,9 @@ class Animation extends Component {
                         background: backgroundColor, 
                         borderRadius: "10px", 
                         height: "50%", 
-                        width: "80%", 
+                        width: "86%", 
                         maxWidth: "1100px", 
-                        margin: "10% 5%", 
+                        margin: "5% auto", 
                         padding: "10%" }}>
                     <Keyframes onEnd={() => { this.setState({ running: false }) }}>
                         <Frame duration={500} component={corgiOne} ></Frame>
