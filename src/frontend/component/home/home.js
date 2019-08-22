@@ -7,13 +7,11 @@ import Spinner from '../common/spinner/spinner';
 
 import './home.css';
 class Home extends Component {
-    componentDidMount(){
-        let { login, load, front } = this.props
+    render() {
+        let { login, load, requestSignIn, front, accountId,length } = this.props
         if (!load) {return <Spinner />}
         if (login && load && !front) { return <Redirect to="/account" /> }
-    }
-    render() {
-        let { login, load, requestSignIn, front, accountId } = this.props
+        if (length === 0) {return <Redirect to="/generation"/>}
         return (
             <div className="home">
                 <Poster 

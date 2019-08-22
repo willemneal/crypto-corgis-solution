@@ -108,9 +108,10 @@ class App extends Component {
     }
 
     async requestSignIn() {
+        const appTitle = 'NEAR Corgi';
         await this.props.wallet.requestSignIn(
             window.nearConfig.contractName,
-            window.nearConfig.appName
+            appTitle
         )
     }
 
@@ -167,7 +168,8 @@ class App extends Component {
                             load={loaded}
                             requestSignIn={this.requestSignIn}
                             front={front}
-                            accountId={accountId} />}
+                            accountId={accountId}
+                            length={corgis.length} />}
                     />
                     <Route exact path="/generation" render={() => <Generation
                         login={loggedIn}

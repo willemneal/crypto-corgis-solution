@@ -1,5 +1,5 @@
 (function() {
-    const CONTRACT_NAME = 'kkkkk'; /* TODO: fill this in! */
+    const CONTRACT_NAME = 'crypto-corgis'; /* TODO: fill this in! */
     const DEFAULT_ENV = 'development'; /* TODO: fill this */
 
     function getConfig(env) {
