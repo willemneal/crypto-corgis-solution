@@ -3,14 +3,14 @@
     z-index: 500;
     background-color: #f8f8f8;
     min-width: 250px;
-    width: 40%;
+    width: 60%;
     height: 70%;
     border: 1px solid #ccc;
     border-radius: 5px 10px;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     top: 20%;
-    left: 30%;
+    left: 20%;
     transition: all 0.3s ease-out;
 }
 

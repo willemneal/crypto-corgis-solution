@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 
-import { CreationSingle, CreationSingleSmall } from '../creation/creationSingle/creationsingle';
+import { CreationSingle } from '../creation/creationSingle/creationsingle';
 import SendPage from '../Send/send';
 import SharePage from '../Share/share';
 import Spinner from '../common/spinner/spinner';
@@ -31,13 +31,7 @@ class Single extends Component {
         let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === name)[0]
         if (!corgi) { return <Redirect to="/account" /> }
 
-        let Corgi = window.innerWidth > 630 ?
-            <CreationSingle
-                backgroundColor={corgi.backgroundColor}
-                color={corgi.color}
-                sausage={corgi.sausage}
-                quote={corgi.quote} />
-            : <CreationSingleSmall
+        let Corgi = <CreationSingle
                 backgroundColor={corgi.backgroundColor}
                 color={corgi.color}
                 sausage={corgi.sausage}

@@ -29,7 +29,7 @@ class TransferCorgi extends Component {
       to: recipient,
       tokenId: dna,
       message,
-      sender:accountId
+      sender: accountId
     })
       .then(response => {
         console.log("[transfer.js] corgis", response)
@@ -44,39 +44,56 @@ class TransferCorgi extends Component {
 
   render() {
     let { recipient, message } = this.state
-    let style = {
-      display: "block",
-      margin: "auto",
+    let styleSender = {
+      display: "inline",
+      marginLeft: "5px",
       background: "#FFFFFF",
       boxShadow: "0 2px 4px 0 rgba(0,0,0,0.50)",
       borderRadius: "5px",
       color: "#4A4F54",
       letterSpacing: "0",
-      textAlign:"start",
-      marginBottom: "5px"
+      textAlign: "start",
+      marginBottom: "5px",
+    }
+    let styleMes = {
+      display: "inline",
+      marginLeft: "5px",
+      background: "#FFFFFF",
+      boxShadow: "0 2px 4px 0 rgba(0,0,0,0.50)",
+      borderRadius: "5px",
+      color: "#4A4F54",
+      letterSpacing: "0",
+      textAlign: "start",
+      marginBottom: "5px",
+      width: "70%",
     }
     return (
       <div>
         <form onSubmit={this.transferCorgi}>
-          <label style={{ display: "block" }}>To:</label>
-          <input
-            required
-            id="recipient"
-            type="text"
-            placeholder="Corgi recipient"
-            onChange={this.handleNameChange}
-            value={recipient}
-            style={style}
-          />
-          <label style={{ display: "block" }}>Message:</label>
-          <input
-            id=""
-            type="text"
-            placeholder="(Optional)Best wish to your friend with corgi!"
-            onChange={this.handleMessageChange}
-            value={message}
-            style={style}
-          />
+          <div style={{textAlign:"left"}}>
+            <label>To: </label>
+            <input
+              required
+              id="recipient"
+              type="text"
+              placeholder="Corgi recipient"
+              onChange={this.handleNameChange}
+              value={recipient}
+              style={styleSender}
+            />
+          </div>
+          <div style={{textAlign:"left"}}>
+            <label>Text: </label>
+            <input
+              id=""
+              type="text"
+              placeholder="(Optional)Best wish to your friend!"
+              onChange={this.handleMessageChange}
+              value={message}
+              style={styleMes}
+              size="300"
+            />
+          </div>
           <Button description="Transfer" style={{ display: "block" }} />
         </form>
       </div>

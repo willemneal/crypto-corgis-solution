@@ -2,20 +2,20 @@ import React from 'react';
 
 const Corgi = ({ color, sausage }) => {
     return (
-        <div style={{width:"90%"}}>
+        <div style={{width:"100%", margin:"auto"}}>
             <CorgiGroup color={color} sausage={sausage}/>
         </div>
     )
 }
 
-
 export default Corgi
 
-const CorgiGroup = ({ color, sausage, width = "100%" }) => {
+const CorgiGroup = ({ color, sausage, width = "100%", height = "100%" }) => {
     const sa = Number(sausage)
-    const len = sa + 221;
+    let len = sa + 220;
+    let lenW = sa + 520;
     return (
-        <svg width={width} height="374px" viewBox="0 0 577 374" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        <svg width={width} height={height} viewBox={`0 0 ${lenW} 374`} version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <radialGradient cx="50.007975%" cy="49.2029455%" fx="50.007975%" fy="49.2029455%" r="55.2359437%" gradientTransform="translate(0.500080,0.492029),scale(1.000000,0.815886),translate(-0.500080,-0.492029)" id="radialGradient-1">
                     <stop stopColor="#C8667B" offset="0%"></stop>
@@ -48,7 +48,7 @@ const CorgiGroup = ({ color, sausage, width = "100%" }) => {
             </defs>
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Group-12" fillRule="nonzero">
-                    <g id="corgi-mid" transform="translate(221, 138.793201)">
+                    <g id="corgi-mid" transform="translate(220, 138.793201)">
                         <polygon id="Path" fill="#FFFFFF" points={`${sa} 1.00515726 0 1.00515726 0 183.943779 ${sa} 183.943779`}></polygon>
                         <polygon id="Path" fill="#231F20" opacity="0.15" points={`${sa} 169.871577 0 169.871577 0 183.943779 ${sa} 183.943779`}></polygon>
                         <rect id="Rectangle" fill="#231F20" opacity="0.2" x="0" y="210.077867" width={sausage} height="25.1289315"></rect>

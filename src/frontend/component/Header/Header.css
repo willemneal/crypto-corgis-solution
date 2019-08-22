@@ -1,5 +1,5 @@
 .header {
-    margin: 5% auto;
+    margin: 1% auto;
     padding: auto;
     display: flex;
     justify-content: space-between;
@@ -9,6 +9,6 @@
 @media all and (max-width: 750px) {
     .header{
         width: 90%;
-        margin: 5% auto;
+        margin: 1% auto;
     }
 }
