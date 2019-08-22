@@ -56,23 +56,29 @@ class CreationProfile extends Component {
                 </g>
             </svg>
         </div>)
-        
-        let show = "ULTRA RARE";
-        if (rate == "COMMON"){
-            show=common
-        }else if(rate == "UNCOMMON"){
-            show=uncommon
-        }else if(rate == "RARE"){
-            show=rare
-        }else if(rate == "VERY RARE"){
-            show=veryRare
-        }
 
+        let show = "ULTRA RARE";
+        if (rate == "COMMON") {
+            show = common
+        } else if (rate == "UNCOMMON") {
+            show = uncommon
+        } else if (rate == "RARE") {
+            show = rare
+        } else if (rate == "VERY RARE") {
+            show = veryRare
+        }
+        let info = corgi.sender
+            ? <div>{corgi.name} from: {corgi.sender} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+            : <div>{corgi.name} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+        let message = corgi.message ?
+            <div>message: {corgi.message}</div>
+            : null
         return (
-            <div style={{ margin: "5px" }}>
+            <div style={{ margin: "5px", display:"flex",flexBasis: "row wrap", justifyContent:"center"  }}>
                 {show}
-                <div style={{ marginLeft: "20px", fontSize: "1.5rem" }}>
-                    {corgi.name} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} />
+                <div style={{marginLeft:"10px"}}>
+                    {info}
+                    {message}
                 </div>
             </div>
         )

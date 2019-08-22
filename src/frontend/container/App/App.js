@@ -179,8 +179,7 @@ class App extends Component {
                         corgis={corgis}
                         contract={contract}
                         generateQuote={this.generateQuote}
-                        quote={quote}
-                        accountId={accountId} />} />
+                        quote={quote} />} />
                     <Route exact path="/account" render={() => <Account
                         load={loaded}
                         login={loggedIn}
@@ -205,6 +204,7 @@ class App extends Component {
                         backShowHandler={this.backShowHandler}
                         backCancelHandler={this.backCancelHandler}
                         handleChange={this.handleChange}
+                        accountId={accountId}
                     />} />
                     <Route path="/generating" render={() => <Animation
                         login={loggedIn}

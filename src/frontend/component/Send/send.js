@@ -15,7 +15,7 @@ class SendPage extends Component {
     }
 
     render() {
-        let { contract, name, dna, backgroundColor, color, sausage, rate, quote, backDrop, backdropCancelHandler, handleChange } = this.props
+        let { contract, name, dna, backgroundColor, color, sausage, rate, quote, backDrop, backdropCancelHandler, handleChange, accountId } = this.props
         return (
             <Modal show={backDrop} CancelHandler={backdropCancelHandler}>
                 {!this.state.loading
@@ -37,7 +37,8 @@ class SendPage extends Component {
                             contract={contract}
                             dna={dna}
                             loadingHandler={this.loadingHandler}
-                            handleChange={handleChange} />
+                            handleChange={handleChange}
+                            accountId={accountId} />
                     </div>
                     : <Spinner />}
             </Modal>

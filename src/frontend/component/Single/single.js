@@ -22,6 +22,7 @@ class Single extends Component {
             back,
             backShowHandler,
             backCancelHandler,
+            accountId
         } = this.props
         if (!load) { return <Spinner /> }
         if (load && !login) { return <Redirect to="/" /> }
@@ -54,7 +55,8 @@ class Single extends Component {
                     handleChange={handleChange}
                     backdropCancelHandler={backdropCancelHandler}
                     backDrop={backDrop}
-                    contract={contract} />
+                    contract={contract}
+                    accountId={accountId} />
                 <SharePage
                     name={corgi.name}
                     backgroundColor={corgi.backgroundColor}

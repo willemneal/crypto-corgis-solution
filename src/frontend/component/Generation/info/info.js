@@ -17,7 +17,7 @@ class Info extends Component {
     }
 
     handleSubmit = (e) => {
-        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis, history, generateQuote, accountId} = this.props
+        let {color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis, history, generateQuote} = this.props
         e.preventDefault()
         generateQuote()
         contract.createRandomCorgi({
@@ -25,7 +25,6 @@ class Info extends Component {
             name:newCorgiName, 
             quote, 
             color,
-            sender:accountId
         }).then(response => {
             console.log("[info.js] generation", response)
             let corgi = response

@@ -21,14 +21,15 @@ class TransferCorgi extends Component {
   }
 
   transferCorgi = (e) => {
-    let { loadingHandler, contract, dna, history, handleChange } = this.props
+    let { loadingHandler, contract, dna, history, handleChange, accountId } = this.props
     let { recipient } = this.state
     e.preventDefault();
     loadingHandler()
     contract.transfer({
       to: recipient,
       tokenId: dna,
-      message
+      message,
+      sender:accountId
     })
       .then(response => {
         console.log("[transfer.js] corgis", response)
