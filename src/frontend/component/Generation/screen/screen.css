@@ -5,6 +5,7 @@
 
 .white {
     color: #fff;
+    filter: brightness(50%);
 }
 
 .bold {

@@ -4,13 +4,17 @@ import { TiDelete } from "react-icons/ti";
 
 class CreationProfile extends Component {
     deleteCorgi = () => {
-        let { contract, corgi, handleChange } = this.props
+        let { contract, corgi, handleChange, handleDelete } = this.props
+        handleDelete()
         contract.deleteCorgiProfile({
             tokenId: corgi.dna
         }).then(response => {
             console.log("[profile.js] corgis", response)
             let newCorgis = response
             handleChange({ name: "corgis", value: newCorgis })
+            handleDelete()
+        }).catch(err => {
+            console.log(err);
         })
     }
     render() {

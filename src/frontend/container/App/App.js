@@ -1,6 +1,7 @@
 // import 'babel-polyfill';
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
+let randomColor = require('randomcolor');
 
 import Header from '../../component/Header/Header';
 import Footer from '../../component/Footer/footer';
@@ -23,8 +24,8 @@ class App extends Component {
             front: false,
             corgis: [],
             accountId: '',
-            color: "#EF4F24",
-            backgroundColor: "#84D0B5",
+            color: randomColor(),
+            backgroundColor: randomColor(),
             newCorgiName: '',
             dna: '',
             quote: '',
@@ -60,17 +61,16 @@ class App extends Component {
     }
 
     generateQuote = () => {
-        const chosenQuote = [];
         const QuoteSum = this.state.quoteSum;
         let randomNumber = Math.floor((Math.random() * QuoteSum.length) + 1);
-
+        let Q = null;
         QuoteSum.forEach(function (element, index) {
             if (index === randomNumber) {
-                chosenQuote.push(element)
+                Q = element
             }
         })
         this.setState({
-            quote: chosenQuote[0].quote
+            quote: Q
         })
     }
 
