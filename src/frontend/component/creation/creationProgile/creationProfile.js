@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { TiDelete } from "react-icons/ti";
+import { GiDiscussion,GiJumpingDog,GiDogBowl } from "react-icons/gi";
 
 class CreationProfile extends Component {
     deleteCorgi = () => {
@@ -72,15 +73,15 @@ class CreationProfile extends Component {
             show = veryRare
         }
         let info = corgi.sender
-            ? <div>{corgi.name} from: {corgi.sender} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
-            : <div>{corgi.name} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+            ? <div><GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: {corgi.sender} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+            : <div><GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: NEAR<TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
         let message = corgi.message ?
-            <div>message: {corgi.message}</div>
-            : null
+            <p><GiDiscussion style={{color: "#9437ff"}}/>{corgi.message}</p>
+            : <p><GiDiscussion style={{color: "#9437ff"}}/>give this lovely corgi to you</p>
         return (
             <div style={{ margin: "5px", display:"flex",flexBasis: "row wrap", justifyContent:"center"  }}>
                 {show}
-                <div style={{marginLeft:"10px"}}>
+                <div style={{marginLeft:"10px", width:"50%",textAlign:"left"}}>
                     {info}
                     {message}
                 </div>

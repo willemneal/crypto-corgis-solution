@@ -48,7 +48,6 @@ class Info extends Component {
     }
 
     render() {
-        console.log(this.props.color, this.props.backgroundColor)
         return (
             <div className="inputboard">
                 <p className="title">My Corgi is called</p>
@@ -65,12 +64,13 @@ class Info extends Component {
                         <span><GiGreekSphinx 
                                 onClick={()=>this.handleRandomName(event)} 
                                 style={{ 
-                                    marginLeft: "5px", 
+                                    marginLeft: "8px", 
                                     color: "#a51cea", 
                                     fontSize: "2rem", 
                                     borderRadius: "50%", 
-                                    boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.5)",
-                                    background: "#f5ebff" }}/></span>
+                                    boxShadow: "0 0 4px 4px rgba(0, 0, 0, 0.5), inset 0 0 5px 2px #ffffff",
+                                    background: "#f5ebff",
+                                    cursor:"pointer" }}/></span>
                     </div>
                     <p className="title">Colors</p>
                     <ColorPicker

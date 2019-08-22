@@ -6,12 +6,8 @@ import CreationAccount from '../creation/creationAccount/creationAccount'
 import './account.css';
 
 class Account extends Component {
-    componentDidMount() {
-        
-    }
     render() {
         let { corgis, login, load } = this.props
-        console.log("[account.js] corgis", corgis)
         if (!load) {return <Spinner />}
         if (load && !login) {return <Redirect to="/" />}
         let Corgis = 'loading'
