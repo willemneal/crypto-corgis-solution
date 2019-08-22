@@ -22,7 +22,7 @@ class TransferCorgi extends Component {
 
   transferCorgi = (e) => {
     let { loadingHandler, contract, dna, history, handleChange, accountId } = this.props
-    let { recipient } = this.state
+    let { recipient, message } = this.state
     e.preventDefault();
     loadingHandler()
     contract.transfer({

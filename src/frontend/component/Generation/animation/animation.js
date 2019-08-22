@@ -185,7 +185,14 @@ class Animation extends Component {
         return (
             <div>
                 <h3>Generating...</h3>
-                <div style={{ background: backgroundColor, borderRadius: "10px", height: "50%", width: "90%", maxWidth: "1100px", margin: "5%", padding: "10%" }}>
+                <div style={{ 
+                        background: backgroundColor, 
+                        borderRadius: "10px", 
+                        height: "50%", 
+                        width: "80%", 
+                        maxWidth: "1100px", 
+                        margin: "10% 5%", 
+                        padding: "10%" }}>
                     <Keyframes onEnd={() => { this.setState({ running: false }) }}>
                         <Frame duration={500} component={corgiOne} ></Frame>
                         <Frame duration={500} component={corgiTwo} ></Frame>

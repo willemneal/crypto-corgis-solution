@@ -127,6 +127,8 @@ export function transfer(to: string, tokenId: string, message:string, sender:str
   let corgi = getCorgi(tokenId);
   corgi.message = message;
   corgi.sender = sender;
+  setCorgisByOwner(corgi);
+  setCorgi(corgi);
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
   incrementNewOwnerCorgis(to, tokenId);
   decrementOldOwnerCorgis(corgi.owner, tokenId);
