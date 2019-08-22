@@ -8,7 +8,7 @@ import Button from '../../common/Button/Button'
 import './info.css'
 class Info extends Component {
     state = {
-        Name: generate({ words: 2, alliterative: true }).spaced
+        Name: `${this.props.newCorgiName}`
     }
 
     handleRandomName = (e) => {
@@ -48,6 +48,7 @@ class Info extends Component {
     }
 
     render() {
+        console.log(this.props.color, this.props.backgroundColor)
         return (
             <div className="inputboard">
                 <p className="title">My Corgi is called</p>

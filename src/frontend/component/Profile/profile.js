@@ -41,7 +41,6 @@ class Profile extends Component {
                     <ul style={{ textAlign: "center", padding: "10px", margin: "auto", textDecoration: "none" }}>
                         {Corgis}
                     </ul>
-                    <Goodbye />
                 </div>
             </div>
         )

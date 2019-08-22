@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SampleH from '../../common/sample/sample_h'
+let tinycolor = require("tinycolor2");
 import './screen.css'
 class Screen extends Component {
 
@@ -39,11 +40,12 @@ class Screen extends Component {
             marginBottom: "5%",
             textAlign: "center"
         }
+        let textColor = tinycolor.mostReadable(backgroundColor,[color,"#fff","#000"]).toHexString()
         return (
             <div className="board">
                 <div style={style}>
-                    <p className="white bold">All corgis come equipped with built-in cuteness and an unlimited capacity to love.</p>
-                    <p className="white bold marginB">Just choose a name and a few colors and we’ll do the rest.</p>
+                    <p style={{color:textColor, fontWeight: "600"}}>All corgis come equipped with built-in cuteness and an unlimited capacity to love.</p>
+                    <p style={{color:textColor, fontWeight: "600", marginBottom: "20px"}}>Just choose a name and a few colors and we’ll do the rest.</p>
                     {corgiEgg}
                     {shadow}
                 </div>

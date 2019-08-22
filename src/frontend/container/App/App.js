@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 let randomColor = require('randomcolor');
+let generate = require('project-name-generator');
 
 import Header from '../../component/Header/Header';
 import Footer from '../../component/Footer/footer';
@@ -26,7 +27,7 @@ class App extends Component {
             accountId: '',
             color: randomColor(),
             backgroundColor: randomColor(),
-            newCorgiName: '',
+            newCorgiName: generate({ words: 2, alliterative: true }).spaced,
             dna: '',
             quote: '',
             quoteSum: null
@@ -63,15 +64,10 @@ class App extends Component {
     generateQuote = () => {
         const QuoteSum = this.state.quoteSum;
         let randomNumber = Math.floor((Math.random() * QuoteSum.length) + 1);
-        let Q = null;
-        QuoteSum.forEach(function (element, index) {
-            if (index === randomNumber) {
-                Q = element
-            }
-        })
+        let Q = QuoteSum[randomNumber];
         this.setState({
             quote: Q
-        })
+        });
     }
 
     signedOutFlow = () => {
