@@ -53,7 +53,6 @@ class TransferCorgi extends Component {
       color: "#4A4F54",
       letterSpacing: "0",
       textAlign: "start",
-      marginBottom: "5px",
     }
     let styleMes = {
       display: "inline",
@@ -64,13 +63,12 @@ class TransferCorgi extends Component {
       color: "#4A4F54",
       letterSpacing: "0",
       textAlign: "start",
-      marginBottom: "5px",
       width: "70%",
     }
     return (
       <div>
         <form onSubmit={this.transferCorgi}>
-          <div style={{textAlign:"left"}}>
+          <div style={{ textAlign: "left" }}>
             <label>To: </label>
             <input
               required
@@ -82,7 +80,7 @@ class TransferCorgi extends Component {
               style={styleSender}
             />
           </div>
-          <div style={{textAlign:"left"}}>
+          <div style={{ textAlign: "left" }}>
             <label>Text: </label>
             <input
               id=""
@@ -94,7 +92,9 @@ class TransferCorgi extends Component {
               size="300"
             />
           </div>
-          <Button description="Transfer" style={{ display: "block" }} />
+          <div>
+            <Button description="Transfer" style={{ display: "block" }} />
+          </div>
         </form>
       </div>
     )

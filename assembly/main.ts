@@ -21,7 +21,6 @@ const HEX_ALPHABET: string = '0123456789abcdef';
 //   rare: "RARE", 0.01-0.05
 //   veryRare: "VERY RARE", 0-0.01
 //   ultraRare: "ULTRA RARE" 0
-//
 
 // Collections where we store data
 let balances = collections.map<string, u64>("b");
