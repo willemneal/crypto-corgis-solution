@@ -11,7 +11,7 @@ class Home extends Component {
         let { login, load, requestSignIn, front, accountId,length } = this.props
         if (!load) {return <Spinner />}
         if (login && load && !front) { return <Redirect to="/account" /> }
-        if (length === 0) {return <Redirect to="/generation"/>}
+        if (login && length === 0) {return <Redirect to="/generation"/>}
         return (
             <div className="home">
                 <Poster 
