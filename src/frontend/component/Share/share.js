@@ -21,7 +21,8 @@ class SharePage extends Component {
                                 sausage={sausage}
                                 quote={quote} />
                         </div>
-                        <p>{name}<span style={{ color: "orange", marginLeft: "5em" }}>{rate}</span></p>
+                        <p style={{ margin: "0" }}>{name}</p>
+                        <span style={{ color: "orange", fontSize: "0.7rem" }}>{rate}</span>
                         <hr />
                     </div>
                     <div>
@@ -29,7 +30,7 @@ class SharePage extends Component {
 
                         <CopyToClipboard text={address}
                             onCopy={() => this.setState({ copied: true })}>
-                            <button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px", cursor:"alias" }}>Copy Link</button>
+                            <button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px", cursor: "alias" }}>Copy Link</button>
 
                         </CopyToClipboard>
                     </div>

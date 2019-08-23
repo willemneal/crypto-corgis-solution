@@ -48,7 +48,7 @@ const BigDialogue = ({ quote, color }) => {
             borderRadius: "20px",
             margin: "auto"
         }}>
-            <p style={{ color: color,filter: "brightness(50%)", margin: "0" }}><i class="fa fa-quote-left"></i>{quote}</p>
+            <p style={{ color: color,filter: "brightness(50%)", margin: "0" }}><i class="fa fa-quote-left"></i> {quote}</p>
         </div>
     )
 }

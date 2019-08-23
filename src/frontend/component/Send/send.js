@@ -30,7 +30,8 @@ class SendPage extends Component {
                                     sausage={sausage}
                                     quote={quote} />
                             </div>
-                            <p>{name}<span style={{ color: "orange", marginLeft: "5rem" }}>{rate}</span></p>
+                            <p style={{margin:"0"}}>{name}</p>
+                            <span style={{ color: "orange", fontSize:"0.7rem"}}>{rate}</span>
                             <hr />
                         </div>
                         <Transfer

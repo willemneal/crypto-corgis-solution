@@ -55,7 +55,7 @@ li.active {
 
 @media all and (max-width: 1200px) {
   .wrap{
-    font-size: 0.7em;
+    font-size: 0.8em;
   }
   .menutop {
     padding: 5px;
@@ -64,7 +64,7 @@ li.active {
 
 @media all and (max-width: 450px) {
   .wrap{
-    font-size: 0.5em;
+    font-size: 0.6em;
   }
   .account{
     flex-direction: row;

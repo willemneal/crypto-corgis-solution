@@ -1,6 +1,6 @@
 // import 'babel-polyfill';
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 let randomColor = require('randomcolor');
 let generate = require('project-name-generator');
 
@@ -70,6 +70,7 @@ class App extends Component {
             loggedIn: false,
             loaded: true,
         });
+        return <Redirect to="/" />
     }
 
     getCorgis = (owner) => {
@@ -105,8 +106,9 @@ class App extends Component {
     }
 
     requestSignOut = () => {
+        this.setState({loaded:false})
         this.props.wallet.signOut();
-        this.signedOutFlow();
+        setTimeout(this.signedOutFlow,2000);
     }
 
     handleChange = ({ name, value }) => {
