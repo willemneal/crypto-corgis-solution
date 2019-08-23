@@ -13,10 +13,10 @@ class Poster extends Component {
 
     }
     render() {
-        let { requestSignIn, load, login, front, accountId } = this.props
+        let { requestSignIn, load, login, accountId } = this.props
         let showButton = <Spinner />;
         if (!login) { showButton = <Button description="Login with NEAR" action={requestSignIn} /> }
-        else if (login && load && front) { showButton = <div className="show">Logged In {accountId}</div> }
+        else if (login && load) { showButton = <div className="show">Logged In {accountId}</div> }
         return (
             <div className="wrapper">
                 <div className="backup">

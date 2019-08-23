@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 let generate = require('project-name-generator');
 import { GiGreekSphinx } from "react-icons/gi";
+
 import ColorPicker from '../colorpicker/colorpicker';
 import Button from '../../common/Button/Button'
 
@@ -25,29 +26,14 @@ class Info extends Component {
     }
 
     handleSubmit = (e) => {
-        let { color, backgroundColor, newCorgiName, handleChange, contract, corgis, history, generateQuote } = this.props
+        let { handleChange, history } = this.props
         e.preventDefault()
         handleChange({ name: "newCorgiName", value: this.state.Name })
-        let quote = generateQuote()
-        contract.createRandomCorgi({
-            backgroundColor,
-            name: newCorgiName,
-            quote,
-            color,
-        }).then(response => {
-            console.log("[info.js] generation", response)
-            let corgi = response
-            let newCorgis = corgis.concat(corgi)
-            handleChange({ name: "dna", value: corgi.dna })
-            handleChange({ name: "corgis", value: newCorgis })
-            handleChange({ name: "sausage", value: corgi.sausage })
-            history.push("/generating")
-        }).catch(err => {
-            console.log(err);
-        })
+        history.push("/generating")
     }
 
     render() {
+        let {color, backgroundColor, handleChange} = this.props
         return (
             <div className="inputboard">
                 <p className="title">My Corgi is called</p>
@@ -61,22 +47,23 @@ class Info extends Component {
                             onChange={this.handleNameChange}
                             value={this.state.Name}
                             required />
-                        <span><GiGreekSphinx 
-                                onClick={()=>this.handleRandomName(event)} 
-                                style={{ 
-                                    marginLeft: "8px", 
-                                    color: "#a51cea", 
-                                    fontSize: "2rem", 
-                                    borderRadius: "50%", 
-                                    boxShadow: "0 0 4px 4px rgba(0, 0, 0, 0.5), inset 0 0 5px 2px #ffffff",
-                                    background: "#f5ebff",
-                                    cursor:"pointer" }}/></span>
+                        <span><GiGreekSphinx
+                            onClick={() => this.handleRandomName(event)}
+                            style={{
+                                marginLeft: "8px",
+                                color: "#a51cea",
+                                fontSize: "2rem",
+                                borderRadius: "50%",
+                                boxShadow: "0 0 4px 4px rgba(0, 0, 0, 0.5), inset 0 0 5px 2px #ffffff",
+                                background: "#f5ebff",
+                                cursor: "pointer"
+                            }} /></span>
                     </div>
                     <p className="title">Colors</p>
                     <ColorPicker
-                        color={this.props.color}
-                        handleChange={this.props.handleChange}
-                        backgroundColor={this.props.backgroundColor} />
+                        color={color}
+                        handleChange={handleChange}
+                        backgroundColor={backgroundColor} />
                     <Button description="Generate Corgi" />
                 </form>
                 <p className="quote">This will create a one-of-a-kind Corgi that will develop a unique size and

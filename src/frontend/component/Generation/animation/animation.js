@@ -9,11 +9,27 @@ class Animation extends Component {
     state = {
         running: true
     }
+    handleSubmit = () => {
+        let {color, backgroundColor, newCorgiName, handleChange, contract, corgis, generateQuote } = this.props
+        let quote = generateQuote()
+        contract.createRandomCorgi({
+            backgroundColor,
+            name: newCorgiName,
+            quote,
+            color
+        }).then(response => {
+            console.log("[animation.js] generation", response)
+            let corgi = response
+            let newCorgis = corgis.concat(corgi)
+            handleChange({ name: "dna", value: corgi.dna })
+            handleChange({ name: "corgis", value: newCorgis })
+            handleChange({ name: "sausage", value: corgi.sausage })
+        }).catch(err => {
+            console.log(err);
+        })
+    }
     render() {
-        let { corgis, dna, newCorgiName, login, load } = this.props
-        let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === newCorgiName)[0]
-        let color = corgi.color
-        let backgroundColor = corgi.backgroundColor 
+        let { color, backgroundColor, newCorgiName, login, load, dna } = this.props
         const shadow = (
             <div style={{ width: "100%", position: "relative", top: "40px", margin: "auto" }}>
                 <svg width="200px" height="25px" viewBox="0 0 200 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
@@ -181,7 +197,7 @@ class Animation extends Component {
         )
         if (!load) {return <Spinner />}
         if (load && !login) {return <Redirect to="/" />}
-        if (!this.state.running) { return <Redirect to={{ pathname: "/corgi/" + newCorgiName, hash: corgi.dna }} /> }
+        if (!this.state.running) { return <Redirect to={{ pathname: "/corgi/" + newCorgiName, hash: dna }} /> }
         return (
             <div>
                 <h3>Generating...</h3>
@@ -193,7 +209,7 @@ class Animation extends Component {
                         maxWidth: "1100px", 
                         margin: "5% auto", 
                         padding: "10%" }}>
-                    <Keyframes onEnd={() => { this.setState({ running: false }) }}>
+                    <Keyframes onStart={this.handleSubmit} onEnd={() => { this.setState({ running: false }) }}>
                         <Frame duration={500} component={corgiOne} ></Frame>
                         <Frame duration={500} component={corgiTwo} ></Frame>
                         <Frame duration={500} component={corgiThree} ></Frame>

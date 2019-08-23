@@ -29,6 +29,6 @@
 
 @media all and (max-width: 765px) {
   .inputboard{
-    width: 90%;
+    width: 100%;
   }
 }

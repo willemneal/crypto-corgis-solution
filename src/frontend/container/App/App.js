@@ -22,7 +22,6 @@ class App extends Component {
             loggedIn: false,
             backDrop: false,
             back: false,
-            front: false,
             corgis: [],
             accountId: '',
             color: randomColor(),
@@ -62,7 +61,6 @@ class App extends Component {
     generateQuote = () => {
         const QuoteSum = this.state.quoteSum;
         let randomNumber = Math.floor((Math.random() * QuoteSum.length) + 1);
-        console.log(randomNumber)
         let Q = QuoteSum[randomNumber].quote;
         return Q;
     }
@@ -71,7 +69,6 @@ class App extends Component {
         this.setState({
             loggedIn: false,
             loaded: true,
-            front: false
         });
     }
 
@@ -84,7 +81,6 @@ class App extends Component {
         this.getCorgis(accountId).then(res => {
             this.setState({
                 loggedIn: true,
-                front: true,
                 accountId
             });
             if (res == null || res.corgis.length < 1 || res.corgis == null) {
@@ -135,12 +131,8 @@ class App extends Component {
         this.setState({ back: false })
     }
 
-    homeFrontHandler = () => {
-        this.setState({ front: true })
-    }
-
     render() {
-        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, backDrop, back, front, dna } = this.state
+        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, backDrop, back, dna } = this.state
         let { contract } = this.props
         return (
             <div className="App">
@@ -151,7 +143,6 @@ class App extends Component {
                     requestSignOut={this.requestSignOut}
                     accountId={accountId}
                     length={corgis.length}
-                    clicked={this.homeFrontHandler}
                     handleChange={this.handleChange} />
                 <Switch>
                     <Route
@@ -161,53 +152,70 @@ class App extends Component {
                             login={loggedIn}
                             load={loaded}
                             requestSignIn={this.requestSignIn}
-                            front={front}
                             accountId={accountId}
                             length={corgis.length} />}
                     />
-                    <Route exact path="/generation" render={() => <Generation
-                        login={loggedIn}
-                        load={loaded}
-                        handleChange={this.handleChange}
-                        color={color}
-                        backgroundColor={backgroundColor}
-                        newCorgiName={newCorgiName}
-                        corgis={corgis}
-                        contract={contract}
-                        generateQuote={this.generateQuote} />} />
-                    <Route exact path="/account" render={() => <Account
-                        load={loaded}
-                        login={loggedIn}
-                        corgis={corgis}
-                    />} />
-                    <Route exact path="/profile" render={() => <Profile
-                        load={loaded}
-                        login={loggedIn}
-                        corgis={corgis}
-                        contract={contract}
-                        handleChange={this.handleChange} />} />
-                    <Route path="/corgi/:name" render={() => <Single
-                        load={loaded}
-                        login={loggedIn}
-                        contract={contract}
-                        corgis={corgis}
-                        backDrop={backDrop}
-                        backDrop={backDrop}
-                        back={back}
-                        backdropShowHandler={this.backdropShowHandler}
-                        backdropCancelHandler={this.backdropCancelHandler}
-                        backShowHandler={this.backShowHandler}
-                        backCancelHandler={this.backCancelHandler}
-                        handleChange={this.handleChange}
-                        accountId={accountId}
-                    />} />
-                    <Route path="/generating" render={() => <Animation
-                        login={loggedIn}
-                        load={loaded}
-                        corgis={corgis}
-                        dna={dna}
-                        newCorgiName={newCorgiName}
-                    />} />
+                    <Route
+                        exact
+                        path="/generation"
+                        render={() => <Generation
+                            login={loggedIn}
+                            load={loaded}
+                            handleChange={this.handleChange}
+                            color={color}
+                            backgroundColor={backgroundColor}
+                            newCorgiName={newCorgiName}
+                        />} />
+                    <Route
+                        exact
+                        path="/account"
+                        render={() => <Account
+                            load={loaded}
+                            login={loggedIn}
+                            corgis={corgis}
+                        />} />
+                    <Route
+                        exact
+                        path="/profile"
+                        render={() => <Profile
+                            load={loaded}
+                            login={loggedIn}
+                            corgis={corgis}
+                            contract={contract}
+                            handleChange={this.handleChange} />} />
+                    <Route
+                        exact
+                        path="/corgi/:name"
+                        render={() => <Single
+                            load={loaded}
+                            login={loggedIn}
+                            contract={contract}
+                            corgis={corgis}
+                            backDrop={backDrop}
+                            backDrop={backDrop}
+                            back={back}
+                            backdropShowHandler={this.backdropShowHandler}
+                            backdropCancelHandler={this.backdropCancelHandler}
+                            backShowHandler={this.backShowHandler}
+                            backCancelHandler={this.backCancelHandler}
+                            handleChange={this.handleChange}
+                            accountId={accountId}
+                        />} />
+                    <Route
+                        exact
+                        path="/generating"
+                        render={() => <Animation
+                            load={loaded}
+                            login={loggedIn}
+                            color={color}
+                            backgroundColor={backgroundColor}
+                            newCorgiName={newCorgiName}
+                            generateQuote={this.generateQuote}
+                            handleChange={this.handleChange}
+                            corgis={corgis}
+                            contract={contract}
+                            dna={dna}
+                        />} />
                 </Switch>
                 <Footer />
             </div>

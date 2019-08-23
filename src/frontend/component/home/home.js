@@ -8,9 +8,8 @@ import Spinner from '../common/spinner/spinner';
 import './home.css';
 class Home extends Component {
     render() {
-        let { login, load, requestSignIn, front, accountId,length } = this.props
+        let { login, load, requestSignIn, accountId,length } = this.props
         if (!load) {return <Spinner />}
-        if (login && load && !front) { return <Redirect to="/account" /> }
         if (login && length === 0) {return <Redirect to="/generation"/>}
         return (
             <div className="home">
@@ -18,7 +17,6 @@ class Home extends Component {
                     requestSignIn={requestSignIn} 
                     load={load} 
                     login={login} 
-                    front={front} 
                     accountId={accountId} />
                 <Creations />
             </div>
