@@ -25,7 +25,9 @@ const HEX_ALPHABET: string = '0123456789abcdef';
 
 // Collections where we store data
 let balances = collections.map<string, u64>("b");
+// store all corgis with unique dna
 let corgis = collections.map<string, Corgi>("c");
+//store all corgis dna of a owner
 let corgisByOwner = collections.map<string, CorgiArray>("co");
 
 // *********************************************************
