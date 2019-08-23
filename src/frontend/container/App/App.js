@@ -151,7 +151,8 @@ class App extends Component {
                     requestSignOut={this.requestSignOut}
                     accountId={accountId}
                     length={corgis.length}
-                    clicked={this.homeFrontHandler} />
+                    clicked={this.homeFrontHandler}
+                    handleChange={this.handleChange} />
                 <Switch>
                     <Route
                         exact

@@ -13,21 +13,24 @@ import './Header.css';
 
 class Header extends Component {
     render() {
-        let { login, load, requestSignIn, requestSignOut ,accountId, length, clicked } = this.props
+        let { login, load, requestSignIn, requestSignOut, accountId, length, clicked, handleChange } = this.props
         let show = <Spinner />
         if (login && load) {
-            show = <Nav  
-                        accountName={accountId} 
-                        number={length} 
-                        requestSignOut={requestSignOut}
-                        login={login} 
-                         />
+            show =<div className="header">
+                <NavLink exact to="/" onClick={clicked}><ImageLoader image={logo} style={{ minWidth: "100px", width: "70%" }} /></NavLink>
+                <Nav
+                    accountName={accountId}
+                    number={length}
+                    requestSignOut={requestSignOut}
+                    login={login}
+                    handleChange={handleChange} /></div>
         } else if (load) {
-            show = <Button description="Get Started" action={requestSignIn}/>
+            show =<div className="header">
+                <NavLink exact to="/" onClick={clicked}><ImageLoader image={logo} style={{ minWidth: "100px", width: "60%" }} /></NavLink>
+                <Button description="Get Started" action={requestSignIn} /></div>
         }
         return (
-            <div className="header">
-                <NavLink exact to="/" style={{textAlign: "left"}} onClick={clicked}><ImageLoader image={logo} style={{ minWidth:"100px", width: "70%", height: "100%" }} /></NavLink>
+            <div>
                 {show}
             </div>
         )

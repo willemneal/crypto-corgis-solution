@@ -151,6 +151,7 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
     if (tokenId == _corgis[i].dna) {
       _corgis.splice(i, 1);
       near.log("match");
+      break;
     }
   }
   let oca = new CorgiArray();

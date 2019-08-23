@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import Button from '../../common/Button/Button'
+let randomColor = require('randomcolor');
+let generate = require('project-name-generator');
 import { NavLink, Redirect, withRouter } from 'react-router-dom';
+
+import Button from '../../common/Button/Button'
+
 
 import './nav.css'
 
@@ -11,16 +15,23 @@ class Nav extends Component {
     switchToProfile = () => {
         this.props.history.push("/profile")
     }
+
+    InfoChangeHandler = () => {
+        this.props.handleChange({name:"color", value: randomColor()})
+        this.props.handleChange({name:"backgroundColor", value: randomColor()})
+        this.props.handleChange({name:"newCorgiName", value: generate({ words: 2, alliterative: true }).spaced})
+    }
+
     render() {
         let { accountName, number, requestSignOut } = this.props
         let des = "My Corgis (" + number + ")"
         return (
             <div className="wrap">
                 <div className="account">
-                    <NavLink to="/account" ><Button description={des} style={{ boxShadow: "none" }} /></NavLink>
+                    <NavLink to="/account" ><Button description={des} /></NavLink>
                     <Card accountName={accountName} requestSignOut={requestSignOut} switchToProfile={this.switchToProfile} />
                 </div>
-                <NavLink to="/generation"><AddCorgi /></NavLink>
+                <NavLink to="/generation"><AddCorgi InfoChangeHandler={this.InfoChangeHandler}/></NavLink>
             </div>
         )
     }
@@ -42,7 +53,7 @@ const Card = ({ accountName, requestSignOut, switchToProfile }) => {
         <div className="dropdown">
             <button className="menutop">{name}</button>
             <div className="dropdown-content">
-                <ul style={{textAlign:"center", padding:"2px"}}>
+                <ul style={{textAlign:"center", padding:"2px",marginBottom: "0"}}>
                     <li style={style}><button onClick={switchToProfile}>Edit Profile</button></li>
                     <li style={style}><button onClick={requestSignOut}>Sign Out</button></li>
                 </ul>
@@ -51,8 +62,8 @@ const Card = ({ accountName, requestSignOut, switchToProfile }) => {
     )
 }
 
-const AddCorgi = () => (
-    <div style={{ boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.5)", borderRadius: "50%" }}>
+const AddCorgi = ({InfoChangeHandler}) => (
+    <div style={{ boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.5)", borderRadius: "50%" }} onClick={InfoChangeHandler}>
         <svg width="40px" height="40px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="create" transform="translate(-1047.000000, -1249.000000)" fillRule="nonzero">

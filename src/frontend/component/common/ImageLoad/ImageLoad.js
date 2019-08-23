@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ImageLoader = (props) => (
-    <img src={props.image} style={props.style}/>
+const ImageLoader = ({image,style}) => (
+    <img src={image} style={style}/>
 )
 
 export default ImageLoader

@@ -11,8 +11,8 @@
   cursor: pointer;
 }
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 451px) {
   .Button {
-    padding: 3px;
+    padding: 8px 3px;
   }
 }
