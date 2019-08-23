@@ -29,7 +29,6 @@ class App extends Component {
             backgroundColor: randomColor(),
             newCorgiName: generate({ words: 2, alliterative: true }).spaced,
             dna: '',
-            quote: '',
             quoteSum: null
         }
         this.signedInFlow = this.signedInFlow.bind(this);
@@ -49,7 +48,6 @@ class App extends Component {
             .then((responseData) => {
                 this.setState({
                     quoteSum: responseData.quotes,
-                    quote: responseData.quotes[0].quote
                 });
             })
             .catch(error => this.setState({ error }));
@@ -64,10 +62,9 @@ class App extends Component {
     generateQuote = () => {
         const QuoteSum = this.state.quoteSum;
         let randomNumber = Math.floor((Math.random() * QuoteSum.length) + 1);
-        let Q = QuoteSum[randomNumber];
-        this.setState({
-            quote: Q
-        });
+        console.log(randomNumber)
+        let Q = QuoteSum[randomNumber].quote;
+        return Q;
     }
 
     signedOutFlow = () => {
@@ -143,7 +140,7 @@ class App extends Component {
     }
 
     render() {
-        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, quote, backDrop, back, front, dna } = this.state
+        let { loggedIn, loaded, corgis, accountId, color, backgroundColor, newCorgiName, backDrop, back, front, dna } = this.state
         let { contract } = this.props
         return (
             <div className="App">
@@ -176,8 +173,7 @@ class App extends Component {
                         newCorgiName={newCorgiName}
                         corgis={corgis}
                         contract={contract}
-                        generateQuote={this.generateQuote}
-                        quote={quote} />} />
+                        generateQuote={this.generateQuote} />} />
                     <Route exact path="/account" render={() => <Account
                         load={loaded}
                         login={loggedIn}

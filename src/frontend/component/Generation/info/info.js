@@ -25,10 +25,10 @@ class Info extends Component {
     }
 
     handleSubmit = (e) => {
-        let { color, backgroundColor, newCorgiName, quote, handleChange, contract, corgis, history, generateQuote } = this.props
+        let { color, backgroundColor, newCorgiName, handleChange, contract, corgis, history, generateQuote } = this.props
         e.preventDefault()
         handleChange({ name: "newCorgiName", value: this.state.Name })
-        generateQuote()
+        let quote = generateQuote()
         contract.createRandomCorgi({
             backgroundColor,
             name: newCorgiName,
