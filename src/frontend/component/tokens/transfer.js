@@ -63,12 +63,12 @@ class TransferCorgi extends Component {
       color: "#4A4F54",
       letterSpacing: "0",
       textAlign: "start",
-      width: "70%",
+      width: "80%"
     }
     return (
       <div>
         <form onSubmit={this.transferCorgi}>
-          <div style={{ textAlign: "left" }}>
+          <div style={{ textAlign: "left", marginBottom:"3px" }}>
             <label>To: </label>
             <input
               required
@@ -80,19 +80,19 @@ class TransferCorgi extends Component {
               style={styleSender}
             />
           </div>
-          <div style={{ textAlign: "left" }}>
+          <div style={{ textAlign: "left"}}>
             <label>Text: </label>
-            <input
+            <textarea
               id=""
               type="text"
               placeholder="(Optional)Best wish to your friend!"
               onChange={this.handleMessageChange}
               value={message}
               style={styleMes}
-              size="300"
+              maxLength="140"
             />
           </div>
-          <div>
+          <div style={{marginTop:"5px"}}>
             <Button description="Transfer" style={{ display: "block" }} />
           </div>
         </form>
