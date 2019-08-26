@@ -1,7 +1,7 @@
 // import "allocator/arena";
 import { context, storage, near, collections, base64 } from "./near";
 import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
-import { CorgiMetaData } from "./model";
+import { CorgiMetaData, CorgiMetaData } from "./model";
 // export { memory }
 
 // export { CorgiTokenMarket } ;
@@ -79,33 +79,36 @@ export function ownerOf(tokenId: string): string {
   return owner;
 }
 
-export function getCorgis(owner: string): Array<Corgi> {
-  let _corgisDNA = getCorgisByOwner(owner);
-  let _corgisList = new Array<Corgi>();
-  for (let i = 0; i < _corgisDNA.length; i++) {
-    if (corgis.contains(_corgisDNA[i])) {
-      let _corgi = getCorgi(_corgisDNA[i])
-      _corgisList.push(_corgi)
-    }
-  }
-  return _corgisList;
-}
+// export function getCorgis(owner: string): Array<Corgi> {
+//   let _corgisDNA = getCorgisByOwner(owner);
+//   let _corgisList = new Array<Corgi>();
+//   for (let i = 0; i < _corgisDNA.length; i++) {
+//     if (corgis.contains(_corgisDNA[i])) {
+//       let _corgi = getCorgi(_corgisDNA[i])
+//       _corgisList.push(_corgi)
+//     }
+//   }
+//   return _corgisList;
+// }
 
-export function getCorgisByOwner(owner: string):  Array<string>{
-  return corgisByOwner.get(owner);
+export function getCorgisByOwner(owner: string):  CorgiMetaData {
+  let corgiDNA = corgisByOwner.get(owner);
+  return {attributes: corgiDNA};
+
 }
 
 export function setCorgisByOwner(corgi: Corgi): void {
-  let _corgisDNA = getCorgisByOwner(corgi.owner);
+  // let _corgisDNA = getCorgisByOwner(corgi.owner);
 
-  if (_corgisDNA == null) {
-    _corgisDNA = new Array<string>();
-    _corgisDNA.push(corgi.dna);
-  } else {
-    _corgisDNA.push(corgi.dna);
-  }
+//   if (_corgisDNA == null) {
+//     _corgisDNA = new Array<string>();
+//     _corgisDNA.push(corgi.dna);
+//   } else {
+//     _corgisDNA.push(corgi.dna);
+//   }
 
-  corgisByOwner.set(corgi.owner, _corgisDNA);
+//   corgisByOwner.set(corgi.owner, _corgisDNA);
+// }
 }
 
 // Methods for Corgi

@@ -53,6 +53,7 @@ class TransferCorgi extends Component {
       color: "#4A4F54",
       letterSpacing: "0",
       textAlign: "start",
+      width: "50%"
     }
     let styleMes = {
       display: "inline",
