@@ -50,6 +50,7 @@ class App extends Component {
                 });
             })
             .catch(error => this.setState({ error }));
+        console.log("component Did Mount")
         let loggedIn = window.walletAccount.isSignedIn();
         if (loggedIn) {
             this.signedInFlow();
@@ -74,12 +75,15 @@ class App extends Component {
     }
 
     getCorgis = (owner) => {
+        console.log("get corgis function before")
         return this.props.contract.getCorgis({ owner: owner }).corgis;
     }
 
     async signedInFlow() {
+        console.log("sign in")
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
+            console.log("get corgis")
             this.setState({
                 loggedIn: true,
                 accountId

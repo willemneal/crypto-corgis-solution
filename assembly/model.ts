@@ -14,7 +14,7 @@ export class Corgi {
 }
 // ADDING THE TOKEN METADATA TO THE INDIVIDUAL CORGI ALLOWS INTEROP WITH OTHERS
 export class CorgiMetaData {
-  attributes: Array<string>;
+  dna: Array<string>;
 }
 
 export class CorgiArray {
