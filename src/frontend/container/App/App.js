@@ -74,7 +74,7 @@ class App extends Component {
     }
 
     getCorgis = (owner) => {
-        return this.props.contract.getCorgisByOwner({ owner: owner });
+        return this.props.contract.getCorgis({ owner: owner }).corgis;
     }
 
     async signedInFlow() {

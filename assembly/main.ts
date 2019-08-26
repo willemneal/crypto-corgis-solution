@@ -1,6 +1,7 @@
 // import "allocator/arena";
 import { context, storage, near, collections, base64 } from "./near";
 import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
+import { CorgiMetaData } from "./model";
 // export { memory }
 
 // export { CorgiTokenMarket } ;
@@ -27,7 +28,7 @@ let balances = collections.map<string, u64>("b");
 // store all corgis with unique dna
 let corgis = collections.map<string, Corgi>("c");
 //store all corgis dna of a owner
-let corgisByOwner = collections.map<string, CorgiArray>("co");
+let corgisByOwner = collections.map<string, Array<string>>("co");
 
 // *********************************************************
 // // Methods to call for Terms
@@ -78,24 +79,33 @@ export function ownerOf(tokenId: string): string {
   return owner;
 }
 
-export function getCorgisByOwner(owner: string): CorgiArray {
+export function getCorgis(owner: string): Array<Corgi> {
+  let _corgisDNA = getCorgisByOwner(owner);
+  let _corgisList = new Array<Corgi>();
+  for (let i = 0; i < _corgisDNA.length; i++) {
+    if (corgis.contains(_corgisDNA[i])) {
+      let _corgi = getCorgi(_corgisDNA[i])
+      _corgisList.push(_corgi)
+    }
+  }
+  return _corgisList;
+}
+
+export function getCorgisByOwner(owner: string):  Array<string>{
   return corgisByOwner.get(owner);
 }
 
 export function setCorgisByOwner(corgi: Corgi): void {
-  let _corgis = getCorgisByOwner(corgi.owner).corgis;
+  let _corgisDNA = getCorgisByOwner(corgi.owner);
 
-  if (_corgis == null) {
-    _corgis = new Array();
-    _corgis.push(corgi);
+  if (_corgisDNA == null) {
+    _corgisDNA = new Array<string>();
+    _corgisDNA.push(corgi.dna);
   } else {
-    _corgis.push(corgi);
+    _corgisDNA.push(corgi.dna);
   }
 
-  let ca = new CorgiArray();
-
-  ca.corgis = _corgis;
-  corgisByOwner.set(corgi.owner, ca);
+  corgisByOwner.set(corgi.owner, _corgisDNA);
 }
 
 // Methods for Corgi
@@ -115,28 +125,28 @@ function deleteCorgi(tokenId: string): void {
   corgis.delete(tokenId)
 }
 
-export function deleteCorgiProfile(tokenId: string): Array<Corgi> {
-  let corgi = getCorgi(tokenId)
-  decrementOldOwnerCorgis(corgi.owner, tokenId);
-  let leftCorgis = getCorgisByOwner(corgi.owner).corgis;
-  near.log("get corgis")
-  return leftCorgis;
-}
+// export function deleteCorgiProfile(tokenId: string): Array<Corgi> {
+//   let corgi = getCorgi(tokenId)
+//   decrementOldOwnerCorgis(corgi.owner, tokenId);
+//   let leftCorgis = getCorgis(corgi.owner);
+//   near.log("get corgis")
+//   return leftCorgis;
+// }
 
-// Transfer between users
-export function transfer(to: string, tokenId: string, message:string, sender:string): Array<Corgi> {
-  let corgi = getCorgi(tokenId);
-  corgi.message = message;
-  corgi.sender = sender;
-  setCorgisByOwner(corgi);
-  setCorgi(corgi);
-  assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
-  incrementNewOwnerCorgis(to, tokenId);
-  decrementOldOwnerCorgis(corgi.owner, tokenId);
-  let leftCorgis = getCorgisByOwner(corgi.owner).corgis;
-  near.log("get corgis")
-  return leftCorgis;
-}
+// // Transfer between users
+// export function transfer(to: string, tokenId: string, message: string, sender: string): Array<Corgi> {
+//   let corgi = getCorgi(tokenId);
+//   corgi.message = message;
+//   corgi.sender = sender;
+//   setCorgisByOwner(corgi);
+//   setCorgi(corgi);
+//   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
+//   incrementNewOwnerCorgis(to, tokenId);
+//   decrementOldOwnerCorgis(corgi.owner, tokenId);
+//   let leftCorgis = getCorgis(corgi.owner);
+//   near.log("get corgis")
+//   return leftCorgis;
+// }
 
 function incrementNewOwnerCorgis(to: string, tokenId: string): void {
   let corgi = getCorgi(tokenId);
@@ -147,17 +157,15 @@ function incrementNewOwnerCorgis(to: string, tokenId: string): void {
 }
 
 function decrementOldOwnerCorgis(from: string, tokenId: string): void {
-  let _corgis = corgisByOwner.get(from).corgis;
-  for (let i = 0; i < _corgis.length; i++) {
-    if (tokenId == _corgis[i].dna) {
-      _corgis.splice(i, 1);
+  let _corgisDNA = corgisByOwner.get(from);
+  for (let i = 0; i < _corgisDNA.length; i++) {
+    if (tokenId == _corgisDNA[i]) {
+      _corgisDNA.splice(i, 1);
       near.log("match");
       break;
     }
   }
-  let oca = new CorgiArray();
-  oca.corgis = _corgis;
-  corgisByOwner.set(from, oca);
+  corgisByOwner.set(from, _corgisDNA);
   deleteCorgi(tokenId);
 }
 
@@ -223,17 +231,17 @@ function generateRandomLength(rarity: string): string {
   return sausage.toString()
 }
 
-function intToHex(integer: u32): string {
-  let res = new Array<string>();
-  do {
-    let t = integer / 16;
-    let r = integer % 16;
-    integer = t;
-    res.push(HEX_ALPHABET[r]);
-  } while (integer);
-  let hex = res.reverse().join('');
-  return hex.length % 2 ? "0" + hex : hex;
-}
+// function intToHex(integer: u32): string {
+//   let res = new Array<string>();
+//   do {
+//     let t = integer / 16;
+//     let r = integer % 16;
+//     integer = t;
+//     res.push(HEX_ALPHABET[r]);
+//   } while (integer);
+//   let hex = res.reverse().join('');
+//   return hex.length % 2 ? "0" + hex : hex;
+// }
 
 // function generateRandomColorHex(int: i32): string {
 //   Math.seedRandom(int);
