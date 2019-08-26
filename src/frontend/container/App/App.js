@@ -83,7 +83,7 @@ class App extends Component {
         console.log("sign in")
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
-            console.log("get corgis")
+            console.log("get corgis after sign in")
             this.setState({
                 loggedIn: true,
                 accountId
@@ -98,6 +98,8 @@ class App extends Component {
                     loaded: true
                 });
             }
+        }).catch(err => {
+            console.log(err);
         })
     }
 

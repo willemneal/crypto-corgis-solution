@@ -79,20 +79,22 @@ export function ownerOf(tokenId: string): string {
   return owner;
 }
 
-export function getCorgis(owner: string): CorgiArray {
-  let _corgisDNA = getCorgisByOwner(owner);
-  near.log(_corgisDNA.toString())
-  let _corgisList = new Array<Corgi>();
-  for (let i = 0; i < _corgisDNA.length; i++) {
-    if (corgis.contains(_corgisDNA[i])) {
-      let _corgi = getCorgi(_corgisDNA[i])
-      _corgisList.push(_corgi)
-    }
-  }
-  near.log(_corgisList.toString())
-  let cl = new CorgiArray();
-  cl.corgis = _corgisList;
-  return cl;
+export function getCorgis(owner: string): string {
+  near.log("get into getcorgis function")
+  // let _corgisDNA = getCorgisByOwner(owner);
+  // near.log(_corgisDNA.toString())
+  // let _corgisList = new Array<Corgi>();
+  // for (let i = 0; i < _corgisDNA.length; i++) {
+  //   if (corgis.contains(_corgisDNA[i])) {
+  //     let _corgi = getCorgi(_corgisDNA[i])
+  //     _corgisList.push(_corgi)
+  //   }
+  // }
+  // near.log(_corgisList.toString())
+  // let cl = new CorgiArray();
+  // cl.corgis = _corgisList;
+  // return cl;
+  return "It can get corgis"; 
 }
 
 export function getCorgisByOwner(owner: string):  Array<string> {

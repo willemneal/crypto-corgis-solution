@@ -8,19 +8,20 @@ The contract implements a "Non-Fungible Token," or NFT for short. In this case i
 Step 1: Create an account for the contract
 ```
 npm install
-near create_account account_id
+near login
 ```
 
 Step 2:
 modify src/config.js line that sets the ACCOUNT_ID. Set it to id from step 1.
 ```
-const ACCOUNT_ID = "contractId"; /* TODO: fill this in! */
+const CONTRACT_NAME = "contractId"; /* TODO: fill this in! */
 ```
 
 Step 3:
 Run the start script in the terminal, which will deploy the contract with default config and start a server for the static files.
 ```
-npm start
+yarn
+yarn start
 ```
 
 Step 3:
