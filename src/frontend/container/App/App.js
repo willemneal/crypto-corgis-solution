@@ -42,28 +42,18 @@ class App extends Component {
             headers: {
                 Accept: "application/json",
             }
-        })
-            .then(response => response.json())
+        }).then(response => response.json())
             .then((responseData) => {
                 this.setState({
                     quoteSum: responseData.quotes,
                 });
-            })
-            .catch(error => this.setState({ error }));
-        console.log("component Did Mount")
+            }).catch(error => this.setState({ error }));
         let loggedIn = window.walletAccount.isSignedIn();
         if (loggedIn) {
             this.signedInFlow();
         } else {
             this.signedOutFlow();
         }
-    }
-
-    generateQuote = () => {
-        const QuoteSum = this.state.quoteSum;
-        let randomNumber = Math.floor((Math.random() * QuoteSum.length) + 1);
-        let Q = QuoteSum[randomNumber].quote;
-        return Q;
     }
 
     signedOutFlow = () => {
@@ -75,15 +65,13 @@ class App extends Component {
     }
 
     getCorgis = (owner) => {
-        console.log("get corgis function before")
-        return this.props.contract.getCorgis({ owner: owner }).corgis;
+        return this.props.contract.getCorgis({ owner: owner });
     }
 
     async signedInFlow() {
-        console.log("sign in")
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
-            console.log("get corgis after sign in")
+            console.log('get corgis from contract',res.len)
             this.setState({
                 loggedIn: true,
                 accountId
@@ -112,9 +100,16 @@ class App extends Component {
     }
 
     requestSignOut = () => {
-        this.setState({loaded:false})
+        this.setState({ loaded: false })
         this.props.wallet.signOut();
-        setTimeout(this.signedOutFlow,2000);
+        setTimeout(this.signedOutFlow, 2000);
+    }
+
+    generateQuote = () => {
+        const QuoteSum = this.state.quoteSum;
+        let randomNumber = Math.floor((Math.random() * QuoteSum.length) + 1);
+        let Q = QuoteSum[randomNumber].quote;
+        return Q;
     }
 
     handleChange = ({ name, value }) => {

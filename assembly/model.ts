@@ -19,4 +19,5 @@ export class CorgiMetaData {
 
 export class CorgiArray {
   corgis: Array<Corgi>;
+  len: i32;
 }

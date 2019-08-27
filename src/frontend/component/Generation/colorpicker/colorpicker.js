@@ -32,7 +32,7 @@ class ColorPicker extends Component {
                 <div className="colorpicker">
                     <label>
                         <div className="result" style={{ backgroundColor: colorSet }}></div>
-                        <input name="color" type="color" id="color-picker" ref="color-value" onChange={this.handleColorChange} />
+                        <input name="color" type="color" id="color-picker" onChange={this.handleColorChange} />
                         <div className="select">{arrow}</div>
                     </label>
                     <div>
@@ -43,7 +43,7 @@ class ColorPicker extends Component {
                 <div className="colorpicker">
                     <label>
                         <div className="result" style={{ backgroundColor: backColorSet }}></div>
-                        <input name="backgroundColor" type="color" id="color-picker" ref="color-value" onChange={this.handleBackGroundColorChange} />
+                        <input name="backgroundColor" type="color" id="color-picker" onChange={this.handleBackGroundColorChange} />
                         <div className="select">{arrow}</div>
                     </label>
                     <div>

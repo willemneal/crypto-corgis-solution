@@ -1,6 +1,6 @@
 (function() {
-    const CONTRACT_NAME = 'crypto-corgis'; /* TODO: fill this in! */
-    const DEFAULT_ENV = 'development'; /* TODO: fill this */
+    const CONTRACT_NAME = 'banana2'; /* TODO: fill this in! 'crypto-corgis'*/
+    const DEFAULT_ENV = 'local'; /* TODO: fill this */
 
     function getConfig(env) {
         switch (env) {
@@ -11,15 +11,15 @@
                     nodeUrl: 'https://rpc.nearprotocol.com',
                     contractName: CONTRACT_NAME,
                     walletUrl: 'https://wallet.nearprotocol.com',
-                    initialBalance: 100000000,
+                    initialBalance: 1000000000000,
                 };
             case 'local':
                 return {
                     networkId: 'local',
                     nodeUrl: 'http://localhost:3030',
-                    walletUrl: 'http://localhost:3000',
+                    walletUrl: 'http://localhost:3000/wallet',
                     contractName: CONTRACT_NAME,
-                    initialBalance: 100000000,
+                    initialBalance: 1000000000000,
                 };
             case 'test':
                 return {
@@ -55,3 +55,5 @@
 // nearcore + cmake + protobuf + rustup + openssl
 // python ./scripts/start_localnet.py --local
 // NODE_ENV=local npm run start
+// create local account
+// use wallet/login/index.html

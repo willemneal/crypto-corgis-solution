@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { TiDelete } from "react-icons/ti";
-import { GiDiscussion,GiJumpingDog,GiDogBowl } from "react-icons/gi";
+import { GiDiscussion,GiJumpingDog,GiDogBowl, GiGlassBall } from "react-icons/gi";
 
 class CreationProfile extends Component {
     deleteCorgi = () => {
@@ -10,8 +10,8 @@ class CreationProfile extends Component {
         contract.deleteCorgiProfile({
             tokenId: corgi.dna
         }).then(response => {
-            console.log("[profile.js] corgis", response)
-            let newCorgis = response
+            console.log("[profile.js] corgis", response.len)
+            let newCorgis = response.corgis
             handleChange({ name: "corgis", value: newCorgis })
             handleDelete()
         }).catch(err => {
@@ -73,8 +73,8 @@ class CreationProfile extends Component {
             show = veryRare
         }
         let info = corgi.sender
-            ? <div><GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: {corgi.sender} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
-            : <div><GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: NEAR<TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+            ? <div><GiGlassBall style={{color: "#9437ff"}}/>{corgi.rate}<GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: {corgi.sender} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+            : <div><GiGlassBall style={{color: "#9437ff"}}/>{corgi.rate}<GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: NEAR<TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
         let message = corgi.message ?
             <p><GiDiscussion style={{color: "#9437ff"}}/>{corgi.message}</p>
             : <p><GiDiscussion style={{color: "#9437ff"}}/>give this lovely corgi to you</p>

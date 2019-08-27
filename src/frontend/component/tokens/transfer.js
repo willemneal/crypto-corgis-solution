@@ -32,8 +32,8 @@ class TransferCorgi extends Component {
       sender: accountId
     })
       .then(response => {
-        console.log("[transfer.js] corgis", response)
-        let newCorgis = response
+        console.log("[transfer.js] corgis", response.len)
+        let newCorgis = response.corgis
         handleChange({ name: "corgis", value: newCorgis })
         loadingHandler()
         history.push("/account")
