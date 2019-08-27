@@ -212,6 +212,7 @@ const Send = ({ clicked }) => {
     return (
         <button className="card" onClick={clicked}>
             {send}
+            <div className="small">Send</div>
             <div className="text">
                 <h4 className="cardChar">Send as a gift</h4>
                 <p>The perfect gift for any occasion</p>
@@ -236,6 +237,7 @@ const Share = ({ clicked }) => {
     return (
         <div className="card" onClick={clicked}>
             {share}
+            <div className="small">Share</div>
             <div className="text">
                 <h4 className="cardChar">Share on Social</h4>
                 <p>Got something rare? It is time to brag a bit.</p>
