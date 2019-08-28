@@ -24,31 +24,49 @@ class ColorPicker extends Component {
                 </svg>
             </div>
         )
-        let {color, backgroundColor } = this.props
+        let { color, backgroundColor } = this.props
         let colorSet = color ? color : "#fff"
-        let backColorSet = backgroundColor ? backgroundColor : "#fff" 
+        let backColorSet = backgroundColor ? backgroundColor : "#fff"
         return (
             <div>
                 <div className="colorpicker">
                     <label>
-                        <div className="result" style={{ backgroundColor: colorSet }}></div>
-                        <input name="color" type="color" id="color-picker" onChange={this.handleColorChange} />
-                        <div className="select">{arrow}</div>
+                        <div className="result" style={{ backgroundColor: colorSet }}>
+                            <input 
+                                type="color" 
+                                id="color-picker" 
+                                name="color"
+                                value={color} 
+                                onChange={this.handleColorChange}
+                                style={{
+                                    display: "none"
+                                }} />
+                            <div className="select">{arrow}</div>
+                        </div>
                     </label>
                     <div>
-                        <p style={{ marginBottom: "0", marginLeft:"2px", fontWeight: "600" }}>Corgi</p>
-                        <p style={{ marginBottom: "0", marginLeft:"2px", }}>{colorSet}</p>
+                        <p style={{ marginBottom: "0", marginLeft: "2px", fontWeight: "600" }}>Corgi</p>
+                        <p style={{ marginBottom: "0", marginLeft: "2px", }}>{colorSet}</p>
                     </div>
                 </div>
                 <div className="colorpicker">
                     <label>
-                        <div className="result" style={{ backgroundColor: backColorSet }}></div>
-                        <input name="backgroundColor" type="color" id="color-picker" onChange={this.handleBackGroundColorChange} />
-                        <div className="select">{arrow}</div>
+                        <div className="result" style={{ backgroundColor: backColorSet }}>
+                            <input 
+                                type="color" 
+                                id="backcolor-picker" 
+                                name="backcolor"
+                                value={backgroundColor} 
+                                onChange={this.handleBackGroundColorChange}
+                                style={{
+                                    display: "none"
+                                }} />
+                            <div className="select">{arrow}</div>
+                        </div>
                     </label>
                     <div>
-                        <p style={{ marginBottom: "0", marginLeft:"2px", fontWeight: "600" }}>BackGround</p>
-                        <p style={{ marginBottom: "0", marginLeft:"2px", }}>{backColorSet}</p>
+                        <p style={{ marginBottom: "0", marginLeft: "2px", fontWeight: "600" }}>Corgi</p>
+                        <p style={{ marginBottom: "0", marginLeft: "2px", }}>{colorSet}</p>
                     </div>
                 </div>
             </div>
@@ -57,5 +75,3 @@ class ColorPicker extends Component {
 }
 
 export default ColorPicker
-
-// color and background color should be stored in redux 
