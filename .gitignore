@@ -8,3 +8,4 @@ out/
 !/dist/index.html
 !/dist/CNAME
 !/dist/favicon.ico
+!/dist/manifest.json

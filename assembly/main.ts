@@ -155,6 +155,7 @@ export function transfer(to: string, tokenId: string, message: string, sender: s
 function incrementNewOwnerCorgis(to: string, tokenId: string): void {
   let corgi = getCorgi(tokenId);
   corgi.owner = to;
+  near.log("send to another account")
   near.log(to);
   setCorgisByOwner(corgi);
   setCorgi(corgi);
