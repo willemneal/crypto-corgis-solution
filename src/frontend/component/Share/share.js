@@ -25,7 +25,7 @@ class SharePage extends Component {
                         <span style={{ color: "orange", fontSize: "0.7rem" }}>{rate}</span>
                         <hr />
                     </div>
-                    <div>
+                    <div style={{marginBottom:"10px"}}>
                         <p style={{ backgroundColor: "white", borderRadius: "5px", padding: "4px 2px", wordWrap: "break-word" }}>{address}</p>
 
                         <CopyToClipboard text={address}
