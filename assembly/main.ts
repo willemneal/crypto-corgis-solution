@@ -81,6 +81,7 @@ export function ownerOf(tokenId: string): string {
 
 export function getCorgis(owner: string): CorgiArray {
   let _corgisDNA = getCorgisByOwner(owner);
+  near.log(_corgisDNA.toString())
   let _corgisList = new Array<Corgi>();
   for (let i = 0; i < _corgisDNA.length
     ; i++) {
@@ -146,7 +147,7 @@ export function transfer(to: string, tokenId: string, message: string, sender: s
   setCorgi(corgi);
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
   incrementNewOwnerCorgis(to, tokenId);
-  decrementOldOwnerCorgis(corgi.owner, tokenId);
+  decrementOldOwnerCorgis(corgi.sender, tokenId);
   let leftCorgis = getCorgis(corgi.owner);
   near.log("after transfer")
   return leftCorgis;
@@ -155,9 +156,13 @@ export function transfer(to: string, tokenId: string, message: string, sender: s
 function incrementNewOwnerCorgis(to: string, tokenId: string): void {
   let corgi = getCorgi(tokenId);
   corgi.owner = to;
-  near.log("send to another account")
+  near.log("send to another account");
   near.log(to);
   setCorgisByOwner(corgi);
+  setCorgi(corgi);
+
+  let co = getCorgisByOwner(corgi.owner);
+  near.log(co.toString())
 }
 
 function decrementOldOwnerCorgis(from: string, tokenId: string): void {

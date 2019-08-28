@@ -94,7 +94,7 @@ class TransferCorgi extends Component {
             />
           </div>
           <div style={{marginTop:"5px", marginBottom: "10px"}}>
-            <Button description="Transfer" style={{ display: "block" }} />
+            <Button description="Send" style={{ display: "block" }} />
           </div>
         </form>
       </div>

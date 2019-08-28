@@ -72,6 +72,7 @@ class App extends Component {
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
             console.log('get corgis from contract',res.len)
+            console.log("your corgis " ,res.corgis)
             this.setState({
                 loggedIn: true,
                 accountId
