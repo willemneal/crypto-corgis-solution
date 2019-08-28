@@ -158,7 +158,6 @@ function incrementNewOwnerCorgis(to: string, tokenId: string): void {
   near.log("send to another account")
   near.log(to);
   setCorgisByOwner(corgi);
-  setCorgi(corgi);
 }
 
 function decrementOldOwnerCorgis(from: string, tokenId: string): void {
