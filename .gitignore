@@ -3,4 +3,7 @@ node_modules
 */.DS_store
 neardev
 out/
-dist/
+/dist/*
+!/dist/404.html
+!/dist/index.html
+!/dist/CNAME
