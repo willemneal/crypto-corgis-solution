@@ -7,3 +7,4 @@ out/
 !/dist/404.html
 !/dist/index.html
 !/dist/CNAME
+!/dist/favicon.ico

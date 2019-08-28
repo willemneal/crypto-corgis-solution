@@ -1,6 +1,6 @@
 (function() {
-    const CONTRACT_NAME = 'crypto-corgis'; /* TODO: fill this in! 'crypto-corgis'*/
-    const DEFAULT_ENV = 'development'; /* TODO: fill this */
+    const CONTRACT_NAME = 'banana2'; /* TODO: fill this in! 'crypto-corgis' 'banana2' */
+    const DEFAULT_ENV = 'local'; /* TODO: fill this */
 
     function getConfig(env) {
         switch (env) {
@@ -54,6 +54,6 @@
 // Local environment:
 // nearcore + cmake + protobuf + rustup + openssl
 // python ./scripts/start_localnet.py --local
-// NODE_ENV=local npm run start
+// NODE_ENV=local yarn start
 // create local account
 // use wallet/login/index.html
