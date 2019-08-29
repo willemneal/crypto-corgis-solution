@@ -120,7 +120,7 @@ class Animation extends Component {
         )
         if (!load) {return <Spinner />}
         if (load && !login) {return <Redirect to="/" />}
-        if (!this.state.running) { return <Redirect to={{ pathname: "/corgi/" + newCorgiName, hash: dna }} /> }
+        if (!this.state.running) { return <Redirect to={{ pathname: "/" + newCorgiName, hash: dna }} /> }
         return (
             <div>
                 <h3>Generating...</h3>

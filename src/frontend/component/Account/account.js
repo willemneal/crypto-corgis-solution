@@ -16,7 +16,7 @@ class Account extends Component {
             Corgis = corgis.map(corgi => {
                 return (
                     <Link to={{
-                        pathname: "/corgi/" + corgi.name,
+                        pathname: "/" + corgi.name,
                         hash: corgi.dna
                     }} key={corgi.dna}>
                         <CreationAccount

@@ -64,31 +64,31 @@ class CreationProfile extends Component {
 
         let show =
             <Link to={{
-                pathname: "/corgi/" + corgi.name,
+                pathname: "/" + corgi.name,
                 hash: corgi.dna
             }} key={corgi.dna}>"ULTRA RARE"</Link>;
         if (rate == "COMMON") {
             show =
                 <Link to={{
-                    pathname: "/corgi/" + corgi.name,
+                    pathname: "/" + corgi.name,
                     hash: corgi.dna
                 }} key={corgi.dna}>{common}</Link>
         } else if (rate == "UNCOMMON") {
             show =
                 <Link to={{
-                    pathname: "/corgi/" + corgi.name,
+                    pathname: "/" + corgi.name,
                     hash: corgi.dna
                 }} key={corgi.dna}>{uncommon}</Link>
         } else if (rate == "RARE") {
             show =
                 <Link to={{
-                    pathname: "/corgi/" + corgi.name,
+                    pathname: "/" + corgi.name,
                     hash: corgi.dna
                 }} key={corgi.dna}>{rare}</Link>
         } else if (rate == "VERY RARE") {
             show =
                 <Link to={{
-                    pathname: "/corgi/" + corgi.name,
+                    pathname: "/" + corgi.name,
                     hash: corgi.dna
                 }} key={corgi.dna}>{veryRare}</Link>
         }
