@@ -27,7 +27,7 @@ class Single extends Component {
         if (!load) { return <Spinner /> }
         if (load && !login) { return <Redirect to="/" /> }
         let dna = history.location.hash.slice(1)
-        let name = history.location.pathname.slice(1)
+        let name = history.location.pathname.slice(2)
         let corgi = corgis.filter((corgi) => corgi.dna === dna && corgi.name === name)[0]
         if (!corgi) { return <Redirect to="/account" /> }
 

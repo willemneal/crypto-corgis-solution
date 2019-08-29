@@ -185,7 +185,7 @@ class App extends Component {
                             handleChange={this.handleChange} />} />
                     <Route
                         exact
-                        path="/:name"
+                        path="/@:name"
                         render={() => <Single
                             load={loaded}
                             login={loggedIn}
