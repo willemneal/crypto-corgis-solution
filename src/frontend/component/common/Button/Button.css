@@ -14,5 +14,6 @@
 @media all and (max-width: 451px) {
   .Button {
     padding: 8px 3px;
+    color: #fff;
   }
 }

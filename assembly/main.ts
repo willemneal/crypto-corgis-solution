@@ -144,25 +144,22 @@ export function transfer(to: string, tokenId: string, message: string, sender: s
   let corgi = getCorgi(tokenId);
   corgi.message = message;
   corgi.sender = sender;
+  let corgi_temp = corgi;
   setCorgi(corgi);
   assert(corgi.owner !== context.sender, "corgi does not belong to " + context.sender);
-  incrementNewOwnerCorgis(to, tokenId);
-  decrementOldOwnerCorgis(corgi.sender, tokenId);
-  let leftCorgis = getCorgis(corgi.owner);
+  decrementOldOwnerCorgis(corgi.owner, tokenId);
+  incrementNewOwnerCorgis(to, corgi_temp);
+  let leftCorgis = getCorgis(corgi.sender);
   near.log("after transfer")
   return leftCorgis;
 }
 
-function incrementNewOwnerCorgis(to: string, tokenId: string): void {
-  let corgi = getCorgi(tokenId);
+function incrementNewOwnerCorgis(to: string, corgi: Corgi): void {
   corgi.owner = to;
   near.log("send to another account");
   near.log(to);
   setCorgisByOwner(corgi);
   setCorgi(corgi);
-
-  let co = getCorgisByOwner(corgi.owner);
-  near.log(co.toString())
 }
 
 function decrementOldOwnerCorgis(from: string, tokenId: string): void {
