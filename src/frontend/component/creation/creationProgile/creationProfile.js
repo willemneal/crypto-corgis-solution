@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { TiDelete } from "react-icons/ti";
-import { GiDiscussion,GiJumpingDog,GiDogBowl, GiGlassBall } from "react-icons/gi";
+import { GiDiscussion, GiJumpingDog, GiDogBowl, GiGlassBall } from "react-icons/gi";
 
 class CreationProfile extends Component {
     deleteCorgi = () => {
@@ -62,26 +62,46 @@ class CreationProfile extends Component {
             </svg>
         </div>)
 
-        let show = "ULTRA RARE";
+        let show =
+            <Link to={{
+                pathname: "/corgi/" + corgi.name,
+                hash: corgi.dna
+            }} key={corgi.dna}>"ULTRA RARE"</Link>;
         if (rate == "COMMON") {
-            show = common
+            show =
+                <Link to={{
+                    pathname: "/corgi/" + corgi.name,
+                    hash: corgi.dna
+                }} key={corgi.dna}>{common}</Link>
         } else if (rate == "UNCOMMON") {
-            show = uncommon
+            show =
+                <Link to={{
+                    pathname: "/corgi/" + corgi.name,
+                    hash: corgi.dna
+                }} key={corgi.dna}>{uncommon}</Link>
         } else if (rate == "RARE") {
-            show = rare
+            show =
+                <Link to={{
+                    pathname: "/corgi/" + corgi.name,
+                    hash: corgi.dna
+                }} key={corgi.dna}>{rare}</Link>
         } else if (rate == "VERY RARE") {
-            show = veryRare
+            show =
+                <Link to={{
+                    pathname: "/corgi/" + corgi.name,
+                    hash: corgi.dna
+                }} key={corgi.dna}>{veryRare}</Link>
         }
         let info = corgi.sender
-            ? <div><GiGlassBall style={{color: "#9437ff"}}/>{corgi.rate}<GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: {corgi.sender} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
-            : <div><GiGlassBall style={{color: "#9437ff"}}/>{corgi.rate}<GiJumpingDog style={{color: "#9437ff"}}/>{corgi.name} <GiDogBowl style={{color: "#9437ff"}}/>from: NEAR<TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+            ? <div><GiGlassBall style={{ color: "#9437ff" }} />{corgi.rate}<GiJumpingDog style={{ color: "#9437ff" }} />{corgi.name} <GiDogBowl style={{ color: "#9437ff" }} />from: {corgi.sender} <TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
+            : <div><GiGlassBall style={{ color: "#9437ff" }} />{corgi.rate}<GiJumpingDog style={{ color: "#9437ff" }} />{corgi.name} <GiDogBowl style={{ color: "#9437ff" }} />from: NEAR<TiDelete onClick={this.deleteCorgi} style={{ marginLeft: "5px", color: "#ff4143", fontSize: "2rem" }} /></div>
         let message = corgi.message ?
-            <p><GiDiscussion style={{color: "#9437ff"}}/>{corgi.message}</p>
-            : <p><GiDiscussion style={{color: "#9437ff"}}/>give this lovely corgi to you</p>
+            <p><GiDiscussion style={{ color: "#9437ff" }} />{corgi.message}</p>
+            : <p><GiDiscussion style={{ color: "#9437ff" }} />give this lovely corgi to you</p>
         return (
-            <div style={{ margin: "5px", display:"flex",flexBasis: "row wrap", justifyContent:"center"  }}>
+            <div style={{ margin: "5px", display: "flex", flexBasis: "row wrap", justifyContent: "center" }}>
                 {show}
-                <div style={{marginLeft:"10px", width:"50%",textAlign:"left"}}>
+                <div style={{ marginLeft: "10px", width: "50%", textAlign: "left" }}>
                     {info}
                     {message}
                 </div>
