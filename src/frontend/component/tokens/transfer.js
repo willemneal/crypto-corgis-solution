@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline } from "react-icons/io";
 
 import Button from '../common/Button/Button';
 
 //message needs to be added
 class TransferCorgi extends Component {
-  state = {
-    recipient: "",
-    message: ""
+  constructor(props) {
+    super(props)
+    this.state = {
+      recipient: "",
+      message: "",
+      found: false
+    }
+    this.checkAccountAvailable = this.checkAccountAvailable.bind(this)
+  }
+
+
+  async checkAccountAvailable(value) {
+    try {
+      let result = !!(await new nearlib.Account(window.near.connection, value).state())
+      if (result) {
+        this.setState({ found: true })
+      }
+      console.log(result)
+    } catch (e) {
+      this.setState({ found: false })
+      console.log(e.message)
+    }
+
   }
 
   handleNameChange = (event) => {
     let value = event.target.value;
-    this.setState({ recipient: value })
+    this.checkAccountAvailable(value);
+    this.setState({ recipient: value });
+
   }
 
   handleMessageChange = (event) => {
@@ -43,7 +66,7 @@ class TransferCorgi extends Component {
   }
 
   render() {
-    let { recipient, message } = this.state
+    let { recipient, message, found } = this.state
     let styleSender = {
       display: "inline",
       marginLeft: "5px",
@@ -66,10 +89,26 @@ class TransferCorgi extends Component {
       textAlign: "start",
       width: "80%"
     }
+    let styleIconWrong = {
+      position: "relative",
+      left: "-30px",
+      fontSize: "1.5rem",
+      color: "Salmon"
+    }
+    let styleIconCorrect = {
+      position: "relative",
+      left: "-30px",
+      fontSize: "1.5rem",
+      color: "#78e3a7"
+    }
+    let icon = <label><IoIosCloseCircleOutline style={styleIconWrong}/></label>
+    if (found) {
+      icon = <label><IoIosCheckmarkCircleOutline style={styleIconCorrect}/></label>
+    }
     return (
       <div>
         <form onSubmit={this.transferCorgi}>
-          <div style={{ textAlign: "left", marginBottom:"3px" }}>
+          <div style={{ textAlign: "left", marginBottom: "3px" }}>
             <label>To: </label>
             <input
               required
@@ -79,9 +118,11 @@ class TransferCorgi extends Component {
               onChange={this.handleNameChange}
               value={recipient}
               style={styleSender}
+              maxLength='32'
             />
+            {icon}
           </div>
-          <div style={{ textAlign: "left"}}>
+          <div style={{ textAlign: "left" }}>
             <label>Text: </label>
             <textarea
               id=""
@@ -93,8 +134,8 @@ class TransferCorgi extends Component {
               maxLength="140"
             />
           </div>
-          <div style={{marginTop:"5px", marginBottom: "10px"}}>
-            <Button description="Send" style={{ display: "block" }} />
+          <div style={{ marginTop: "5px", marginBottom: "10px" }}>
+            <Button description="Send" style={{ display: "block" }} disabled={!found}/>
           </div>
         </form>
       </div>

@@ -11,6 +11,11 @@
   cursor: pointer;
 }
 
+.Button:disabled {
+  background: #cfcfcf;
+  color: #888888;
+}
+
 @media all and (max-width: 451px) {
   .Button {
     padding: 8px 3px;

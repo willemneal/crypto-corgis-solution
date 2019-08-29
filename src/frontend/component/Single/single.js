@@ -22,7 +22,7 @@ class Single extends Component {
             back,
             backShowHandler,
             backCancelHandler,
-            accountId
+            accountId,
         } = this.props
         if (!load) { return <Spinner /> }
         if (load && !login) { return <Redirect to="/" /> }
