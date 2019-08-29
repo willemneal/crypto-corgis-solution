@@ -12,6 +12,7 @@ import Account from '../../component/Account/account';
 import Profile from '../../component/Profile/profile';
 import Single from '../../component/Single/single';
 import Animation from '../../component/Generation/animation/animation'
+import SocialShare from '../../component/SocialShare/SocialShare'
 
 import './App.css';
 class App extends Component {
@@ -191,7 +192,6 @@ class App extends Component {
                             contract={contract}
                             corgis={corgis}
                             backDrop={backDrop}
-                            backDrop={backDrop}
                             back={back}
                             backdropShowHandler={this.backdropShowHandler}
                             backdropCancelHandler={this.backdropCancelHandler}
@@ -199,6 +199,14 @@ class App extends Component {
                             backCancelHandler={this.backCancelHandler}
                             handleChange={this.handleChange}
                             accountId={accountId}
+                        />} />
+                    <Route
+                        exact
+                        path="/share"
+                        render={() => <SocialShare
+                            load={loaded}
+                            login={loggedIn}
+                            contract={contract}
                         />} />
                     <Route
                         exact
