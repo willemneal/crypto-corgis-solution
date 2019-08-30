@@ -81,7 +81,6 @@ export function ownerOf(tokenId: string): string {
 
 export function getCorgis(owner: string): CorgiArray {
   let _corgisDNA = getCorgisByOwner(owner);
-  near.log(_corgisDNA.toString())
   let _corgisList = new Array<Corgi>();
   for (let i = 0; i < _corgisDNA.length
     ; i++) {

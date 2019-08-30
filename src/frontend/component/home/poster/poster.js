@@ -32,7 +32,7 @@ class Poster extends Component {
                     </div>
                 </div>
                 <div className="pop">
-                    <h2 className="title">Latest Creations</h2>
+                    <h2 className="title">Corgis Display</h2>
                     <SampleH className="sample" />
                 </div>
             </div>

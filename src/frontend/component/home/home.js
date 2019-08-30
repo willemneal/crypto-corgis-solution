@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 
 import Poster from './poster/poster'
-import Creations from './creations/creations'
+import ShowCase from './showcase/showcase'
 import Spinner from '../common/spinner/spinner';
 
 import './home.css';
@@ -18,7 +18,7 @@ class Home extends Component {
                     load={load} 
                     login={login} 
                     accountId={accountId} />
-                <Creations />
+                <ShowCase />
             </div>
         )
     }

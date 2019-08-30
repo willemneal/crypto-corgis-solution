@@ -1,89 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { GiBowTieRibbon, GiImperialCrown } from "react-icons/gi";
 
 import { CreationSingle } from '../creation/creationSingle/creationsingle';
-import Spinner from '../common/spinner/spinner';
-import Button from '../common/Button/Button';
+import { GiBowTieRibbon, GiImperialCrown } from "react-icons/gi";
 
-class SocialShare extends Component {
-    state = {
-        loading: true,
-        corgi: null
-    }
-    componentDidMount() {
-        let {
-            history,
-            contract
-        } = this.props
-        let dna = history.location.hash.slice(1)
-        console.log(dna)
-        contract.getCorgi({ tokenId: dna }).then(response => {
-            this.setState({
-                corgi: response,
-                loading: false
-            })
-        })
-    }
-    render() {
-        let {
-            load,
-            login,
-            requestSignIn
-        } = this.props
-        let { loading, corgi } = this.state
-        if (!load) { return <Spinner /> }
-        if (loading) { return <Spinner /> }
-        let Corgi = <CreationSingle
+const ShowPage = ({ corgis, history }) => {
+    let dna = history.location.hash.slice(1)
+    let corgi = corgis.filter((corgi) => corgi.dna === dna)[0]
+    let Corgi = <CreationSingle
             backgroundColor={corgi.backgroundColor}
             color={corgi.color}
             sausage={corgi.sausage}
             quote={corgi.quote} />
-        let address = window.location.origin + "/share" + location.hash
-        let sausage = Number(corgi.sausage).toFixed(4)
-        let style = {
-            width: "70%",
-            maxWidth: "800px",
-            margin: "2% auto",
-            display: "flex",
-            justifyContent: "space-between"
-        }
-        let poster = <div>
-            <p>or Do you want to have corgi yourself? click Get started and enjoy the game!</p>
-            <Button description="Get Started" action={requestSignIn} /></div>
-        if (login) {
-            poster = <p>Create your own and share</p>
-        }
-        return (
+    let style = {
+        width: "70%",
+        maxWidth: "800px",
+        margin: "2% auto",
+        display: "flex",
+        justifyContent: "space-between"
+    }
+    return (
+        <div>
+            <h1>Meet {corgi.name}!</h1>
             <div>
-                <h1>Meet {corgi.name}!</h1>
+                {Corgi}
+            </div>
+            <div style={style} >
+                <Rate rate={corgi.rate} name={corgi.name} />
                 <div>
-                    {Corgi}
-                </div>
-                <div style={style} >
-                    <Rate rate={corgi.rate} name={corgi.name} />
-                    <div>
-                        <h5><GiImperialCrown style={{ color: "#9437ff", fontSize: "1.1rem" }} />Owner: {corgi.owner}</h5>
-                        <h5><GiBowTieRibbon style={{ color: "#9437ff", fontSize: "1.2rem" }} />Sausage: {sausage}</h5>
-                    </div>
-                </div>
-                <div style={{ marginBottom: "10px" }}>
-                    {poster}
-                    <p style={{ backgroundColor: "white", borderRadius: "5px", padding: "4px 2px", wordWrap: "break-word" }}>
-                        Do you also want to share {corgi.name}?
-                        </p>
-                    <CopyToClipboard text={address}
-                        onCopy={() => this.setState({ copied: true })}>
-                        <button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px", cursor: "alias" }}>Copy Link</button>
-                    </CopyToClipboard>
+                    <h5><GiImperialCrown style={{ color: "#9437ff", fontSize: "1.1rem" }} />Owner: {corgi.owner}</h5>
+                    <h5><GiBowTieRibbon style={{ color: "#9437ff", fontSize: "1.2rem" }} />Sausage: {corgi.sausage}</h5>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default withRouter(SocialShare)
+export default withRouter(ShowPage)
 
 const Rate = ({ rate, name }) => {
     let orange = "#FBB040"
