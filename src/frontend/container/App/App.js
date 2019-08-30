@@ -207,6 +207,7 @@ class App extends Component {
                             load={loaded}
                             login={loggedIn}
                             contract={contract}
+                            requestSignIn={this.requestSignIn}
                         />} />
                     <Route
                         exact

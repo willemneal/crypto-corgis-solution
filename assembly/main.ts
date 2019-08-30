@@ -116,7 +116,7 @@ let _corgisDNA = getCorgisByOwner(corgi.owner);
 
 // Methods for Corgi
 export function getCorgi(tokenId: string): Corgi {
-  return corgis.get(tokenId);
+  return  corgis.get(tokenId);
 }
 
 export function setCorgi(corgi: Corgi): void {

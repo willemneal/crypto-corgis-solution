@@ -59,7 +59,8 @@ class Single extends Component {
                     rate={corgi.rate}
                     quote={corgi.quote}
                     backCancelHandler={backCancelHandler}
-                    back={back}/>
+                    back={back}
+                    dna={dna}/>
                 <div>
                     <h1>Meet {corgi.name}!</h1>
                     <div>
