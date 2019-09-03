@@ -1,6 +1,6 @@
 (function() {
-    const CONTRACT_NAME = 'crypto-corgis'; /* TODO: fill this in! 'crypto-corgis' 'banana2' */
-    const DEFAULT_ENV = 'development'; /* TODO: fill this */
+    const CONTRACT_NAME = 'banana2'; /* TODO: fill this in! 'crypto-corgis' 'banana2' */
+    const DEFAULT_ENV = 'local'; /* TODO: fill this */
 
     function getConfig(env) {
         switch (env) {

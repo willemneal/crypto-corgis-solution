@@ -67,9 +67,6 @@ function sleep(time) {
 
 // Render to the front end
 
-// const history = createBrowserHistory()
-// const store = createStore(createRootReducer(history), createMiddleware(history))
-
 window.nearInitPromise = doInitContract().then(() => {
   ReactDOM.render(<AppBuilder contract={contract} wallet={walletAccount}/>,
     document.getElementById('container')

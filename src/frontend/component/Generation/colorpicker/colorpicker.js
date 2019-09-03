@@ -65,7 +65,7 @@ class ColorPicker extends Component {
                         </div>
                     </label>
                     <div>
-                        <p style={{ marginBottom: "0", marginLeft: "2px", fontWeight: "600" }}>Corgi</p>
+                        <p style={{ marginBottom: "0", marginLeft: "2px", fontWeight: "600" }}>Background</p>
                         <p style={{ marginBottom: "0", marginLeft: "2px", }}>{colorSet}</p>
                     </div>
                 </div>

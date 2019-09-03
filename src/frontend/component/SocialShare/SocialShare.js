@@ -10,7 +10,8 @@ import Button from '../common/Button/Button';
 class SocialShare extends Component {
     state = {
         loading: true,
-        corgi: null
+        corgi: null,
+        copied: false
     }
     componentDidMount() {
         let {
@@ -75,8 +76,15 @@ class SocialShare extends Component {
                         </p>
                     <CopyToClipboard text={address}
                         onCopy={() => this.setState({ copied: true })}>
-                        <button style={{ backgroundColor: "#4b4f53", color: "#999999", borderRadius: "5px", padding: "4px 2px", cursor: "alias" }}>Copy Link</button>
+                        <button style={{ 
+                                backgroundColor: "#fbb040", 
+                                color: "#f2f2f2", 
+                                borderRadius: "5px", 
+                                padding: "4px 2px", 
+                                cursor: "alias",
+                                boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.5)" }}>Copy Link</button>
                     </CopyToClipboard>
+                    {this.state.copied ? <span style={{ color: '#961be0', marginLeft: "5px" }}>Copied.</span> : null}
                 </div>
             </div>
         )
