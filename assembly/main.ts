@@ -1,6 +1,8 @@
 // import "allocator/arena";
-import { context, storage, near, collections, base64 } from "./near";
-import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
+import { context, storage, collections, base64, PersistentMap, logging } from "near-runtime-ts";
+import { Corgi, CorgiArray, CorgiMetaData } from "./model";
+import { u128 } from "bignum";
+
 
 // export { memory }
 
@@ -24,11 +26,11 @@ const HEX_ALPHABET: string = '0123456789abcdef';
 //   ultraRare: "ULTRA RARE" 0
 
 // Collections where we store data
-let balances = collections.map<string, u64>("b");
+let balances = new PersistentMap<string, u64>("balance");
 // store all corgis with unique dna
-let corgis = collections.map<string, Corgi>("c");
+let corgis = new PersistentMap<string, Corgi>("corgis");
 //store all corgis dna of a owner
-let corgisByOwner = collections.map<string, CorgiMetaData>("co");
+let corgisByOwner = new PersistentMap<string, CorgiMetaData>("corigsByOwner");
 
 // *********************************************************
 // // Methods to call for Terms
@@ -42,10 +44,10 @@ export function symbol(): string {
 
 // Initializaton
 export function init(initialOwner: string): void {
-  near.log("initialOwner: " + initialOwner);
-  assert(storage.getItem("init") == null, "Already initialized token supply");
-  storage.setU64("io::" + initialOwner, TOTAL_SUPPLY);
-  storage.setItem("init", "done");
+  logging.log("initialOwner: " + initialOwner);
+  assert(storage.getString("init") == null, "Already initialized token supply");
+  storage.set<u64>("io::" + initialOwner, TOTAL_SUPPLY);
+  storage.set<String>("init", "done");
 }
 
 // Balance for owner
@@ -56,9 +58,9 @@ export function balanceOf(owner: string): u64 {
 export function updateBalance(owner: string, increment: u64): void {
   let balance = balanceOf(owner);
   if (balance) {
-    near.log(`${balance}`);
+    logging.log(`${balance}`);
   } else {
-    near.log("issues");
+    logging.log("issues");
   }
 }
 
@@ -134,7 +136,7 @@ export function deleteCorgiProfile(tokenId: string): CorgiArray {
   let corgi = getCorgi(tokenId)
   decrementOldOwnerCorgis(corgi.owner, tokenId);
   let leftCorgis = getCorgis(corgi.owner);
-  near.log("after delete")
+  logging.log("after delete")
   return leftCorgis;
 }
 
@@ -149,14 +151,14 @@ export function transfer(to: string, tokenId: string, message: string, sender: s
   decrementOldOwnerCorgis(corgi.owner, tokenId);
   incrementNewOwnerCorgis(to, corgi_temp);
   let leftCorgis = getCorgis(corgi.sender);
-  near.log("after transfer")
+  logging.log("after transfer")
   return leftCorgis;
 }
 
 function incrementNewOwnerCorgis(to: string, corgi: Corgi): void {
   corgi.owner = to;
-  near.log("send to another account");
-  near.log(to);
+  logging.log("send to another account");
+  logging.log(to);
   setCorgisByOwner(corgi);
   setCorgi(corgi);
 }
@@ -166,7 +168,7 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
   for (let i = 0; i < _corgisDNA.length; i++) {
     if (tokenId == _corgisDNA[i]) {
       _corgisDNA.splice(i, 1);
-      near.log("match");
+      logging.log("match");
       break;
     }
   }
@@ -177,12 +179,12 @@ function decrementOldOwnerCorgis(from: string, tokenId: string): void {
 }
 
 // Create unique Corgi
-export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
-  let randDna = generateRandomDna();
-  let rate = generateRandomrate();
-  let sausage = generateRandomLength(rate);
-  return _createCorgi(name, randDna, color, rate, sausage, backgroundColor, quote);
-}
+// export function createRandomCorgi(name: string, color: string, backgroundColor: string, quote: string): Corgi {
+//   let randDna = generateRandomDna();
+//   let rate = generateRandomrate();
+//   let sausage = generateRandomLength(rate);
+//   return _createCorgi(name, randDna, color, rate, sausage, backgroundColor, quote);
+// }
 
 function _createCorgi(name: string, dna: string, color: string, rate: string, sausage: string, backgroundColor: string, quote: string): Corgi {
   let corgi = new Corgi();
@@ -199,11 +201,12 @@ function _createCorgi(name: string, dna: string, color: string, rate: string, sa
   return corgi;
 }
 
-function generateRandomDna(): string {
-  let buf = near.randomBuffer(DNA_DIGITS);
-  let b64 = base64.encode(buf);
-  return b64;
-}
+//NOT WORKING ANYMORE
+// function generateRandomDna(): string {
+//   let buf = near.randomBuffer(DNA_DIGITS);
+//   let b64 = base64.encode(buf);
+//   return b64;
+// }
 
 function generateRandomrate(): string {
   Math.seedRandom(12345)
