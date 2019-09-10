@@ -1,5 +1,5 @@
 (function() {
-    const CONTRACT_NAME = 'banana2'; /* TODO: fill this in! 'crypto-corgis' 'banana2' */
+    const CONTRACT_NAME = 'corgismaster'; /* TODO: fill this in! 'crypto-corgis' 'corgismaster' */
     const DEFAULT_ENV = 'local'; /* TODO: fill this */
 
     function getConfig(env) {
@@ -17,7 +17,7 @@
                 return {
                     networkId: 'local',
                     nodeUrl: 'http://localhost:3030',
-                    walletUrl: 'http://localhost:3000/wallet',
+                    walletUrl: 'http://localhost:3000/src/wallet',
                     contractName: CONTRACT_NAME,
                     initialBalance: 1000000000000,
                 };
@@ -42,7 +42,7 @@
                 throw Error(`Unconfigured environment '${env}'. Can be configured in src/config.js.`);
         }
     }
-
+    let Cookies = require('js-cookie');
     const cookieConfig = typeof Cookies != 'undefined' && Cookies.getJSON('fiddleConfig');
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = getConfig;

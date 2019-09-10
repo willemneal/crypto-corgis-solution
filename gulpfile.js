@@ -6,17 +6,11 @@ const webpackConfig = require('./webpack.config.js');
 const connect = require('gulp-connect');
 const historyApiFallback = require('connect-history-api-fallback');
 
-gulp.task("build:model", callback => {
-  nearUtils.generateBindings("model.ts", "../out/model.near.ts", callback);
+gulp.task("build", callback => {
+  nearUtils.compile("./assembly/main.ts", "./out/main.wasm", callback);
 });
 
-gulp.task("build:bindings", gulp.series("build:model", callback => {
-  nearUtils.generateBindings("main.ts", "../out/main.near.ts", callback);
-}));
-
-gulp.task("build", gulp.series("build:bindings", callback => {
-  nearUtils.compile("../out/main.near.ts", "../out/main.wasm", callback);
-}));
+exports.default = gulp.series(["build"])
 
 gulp.task("webpack", () => {
   return gulp.src('src/*')

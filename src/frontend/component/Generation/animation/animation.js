@@ -10,13 +10,16 @@ class Animation extends Component {
         running: true
     }
     componentDidMount() {
-        let {color, backgroundColor, newCorgiName, handleChange, contract, corgis, generateQuote } = this.props
+        let {color, backgroundColor, newCorgiName, handleChange, contract, corgis, generateQuote, accountId } = this.props
         let quote = generateQuote()
+        let dna = accountId+"_"+newCorgiName
+        console.log("**back ", backgroundColor, "**name ",newCorgiName, "**quote ",quote,"**color,", color,"**dna", dna)
         contract.createRandomCorgi({
-            backgroundColor,
+            backgroundColor:backgroundColor,
             name: newCorgiName,
-            quote,
-            color
+            quote: quote,
+            color: color,
+            randDna: dna
         }).then(response => {
             console.log("[animation.js] generation", response)
             let corgi = response

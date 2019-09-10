@@ -1,3 +1,10 @@
+// @nearfile
+
+// ADDING THE TOKEN METADATA TO THE INDIVIDUAL CORGI ALLOWS INTEROP WITH OTHERS
+export class CorgiMetaData {
+  dna: Array<string>;
+}
+
 export class Corgi {
   owner: string;
   sender:string;
@@ -11,10 +18,6 @@ export class Corgi {
   quote: string;
   level: i32;
   metadata: CorgiMetaData;
-}
-// ADDING THE TOKEN METADATA TO THE INDIVIDUAL CORGI ALLOWS INTEROP WITH OTHERS
-export class CorgiMetaData {
-  dna: Array<string>;
 }
 
 export class CorgiArray {

@@ -70,11 +70,12 @@ class App extends Component {
     async signedInFlow() {
         const accountId = await this.props.wallet.getAccountId();
         this.getCorgis(accountId).then(res => {
+            console.log(res.len)
             this.setState({
                 loggedIn: true,
                 accountId
             });
-            if (res == null || res.corgis.length < 1 || res.corgis == null) {
+            if (res == null || res.corgis == null || res.corgis.length < 1) {
                 this.setState({
                     loaded: true
                 });
@@ -224,6 +225,7 @@ class App extends Component {
                             corgis={corgis}
                             contract={contract}
                             dna={dna}
+                            accountId={accountId}
                         />} />
                     <Route
                         exact
