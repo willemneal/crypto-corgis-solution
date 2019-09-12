@@ -6,7 +6,6 @@ import ReactDOM from "react-dom";
 
 import AppBuilder from './frontend/container/index'
 import "./config.js"
-import * as nearlib from 'nearlib';
 
 async function doInitContract() {
   // window.near = await nearlib.dev.connect(nearConfig);

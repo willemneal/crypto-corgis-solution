@@ -1,6 +1,6 @@
 (function() {
-    const CONTRACT_NAME = 'corgismaster'; /* TODO: fill this in! 'crypto-corgis' 'corgismaster' */
-    const DEFAULT_ENV = 'local'; /* TODO: fill this */
+    const CONTRACT_NAME = 'crypto-corgis'; /* TODO: fill this in! 'crypto-corgis' 'corgismaster' */
+    const DEFAULT_ENV = 'development'; /* TODO: fill this */
 
     function getConfig(env) {
         switch (env) {
@@ -42,7 +42,6 @@
                 throw Error(`Unconfigured environment '${env}'. Can be configured in src/config.js.`);
         }
     }
-    let Cookies = require('js-cookie');
     const cookieConfig = typeof Cookies != 'undefined' && Cookies.getJSON('fiddleConfig');
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = getConfig;
