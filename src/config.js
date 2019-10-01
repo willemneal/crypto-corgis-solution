@@ -1,6 +1,6 @@
 (function() {
-    const CONTRACT_NAME = 'crypto-corgis'; /* TODO: fill this in! 'crypto-corgis' 'corgismaster' */
-    const DEFAULT_ENV = 'development'; /* TODO: fill this */
+    const CONTRACT_NAME = 'corgismaster'; /* TODO: fill this in! 'crypto-corgis' 'corgismaster' */
+    const DEFAULT_ENV = 'local'; /* TODO: fill this */
 
     function getConfig(env) {
         switch (env) {
@@ -17,7 +17,7 @@
                 return {
                     networkId: 'local',
                     nodeUrl: 'http://localhost:3030',
-                    walletUrl: 'http://localhost:3000/src/wallet',
+                    walletUrl: 'http://localhost:3000/wallet',
                     contractName: CONTRACT_NAME,
                     initialBalance: 1000000000000,
                 };
@@ -53,6 +53,7 @@
 // Local environment:
 // nearcore + cmake + protobuf + rustup + openssl
 // python ./scripts/start_localnet.py --local
+// serve src -p 3000
 // NODE_ENV=local yarn start
 // create local account
 // use wallet/login/index.html
