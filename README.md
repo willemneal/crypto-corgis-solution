@@ -4,6 +4,8 @@
 
 The contract implements a "Non-Fungible Token," or NFT for short. In this case it is tradeable corgis that can be owned by one person at a time. 
 
+website address: https://corgis.nearprotocol.com
+
 ## To Run on local node
 Step 1: Create an account for the contract
 ```
@@ -21,7 +23,7 @@ Step 3:
 Run the start script in the terminal, which will deploy the contract with default config and start a server for the static files.
 ```
 yarn
-yarn start
+NODE_ENV=local yarn start
 ```
 
 Step 3:
