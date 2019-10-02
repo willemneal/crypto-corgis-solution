@@ -10,6 +10,12 @@ website address: https://corgis.nearprotocol.com
 Step 1: Create an account for the contract
 ```
 npm install
+```
+(optional but recommand) install yarn 
+```
+npm i yarn
+```
+```
 near login
 ```
 
@@ -20,13 +26,18 @@ const CONTRACT_NAME = "contractId"; /* TODO: fill this in! */
 ```
 
 Step 3:
+install server to your global environment:
+```
+npm i -g serve
+```
+
+Step 4:
 Run the start script in the terminal, which will deploy the contract with default config and start a server for the static files.
 ```
-yarn
 NODE_ENV=local yarn start
 ```
 
-Step 3:
+Step 5:
 Open http://localhost:5000
 That's it!
 
