@@ -1,6 +1,6 @@
 // import "allocator/arena";
-import { context, storage, near, collections, base64 } from "./near";
-import { Corgi, CorgiArray, CorgiMetaData } from "./model.near";
+import { context, storage, PersistentMap, base64 } from "near-runtime-ts";
+import { Corgi, CorgiArray, CorgiMetaData } from "./model";
 // export { memory }
 
 // export { CorgiTokenMarket } ;
@@ -24,9 +24,9 @@ const HEX_ALPHABET: string = '0123456789abcdef';
 //
 
 // Collections where we store data
-let balances = collections.map<string, u64>("b");
-let corgis = collections.map<string, Corgi>("c");
-let corgisByOwner = collections.map<string, CorgiArray>("co");
+let balances = new PersistentMap<string, u64>("b");
+let corgis = new PersistentMap<string, Corgi>("c");
+let corgisByOwner = new PersistentMap<string, CorgiArray>("co");
 
 // *********************************************************
 // // Methods to call for Terms
@@ -184,14 +184,18 @@ function generateRandomDna(): string {
   return b64;
 }
 
+function randomNum(maxNum: u32): u32 {
+  let buf = near.randomBuffer(4);
+  return (load<u64>(buf.data.buffer.dataStart)) % maxNum; 
+}
+
 function generateRandomrate(): string {
-  Math.seedRandom(12345)
-  let rand = Math.random()
-  if (rand > 0.1) {
+  let rand = randomNum(100);
+  if (rand > 10) {
     return "COMMON"
-  } else if (rand > 0.05) {
+  } else if (rand > 5) {
     return "UNCOMMON"
-  } else if (rand > 0.01) {
+  } else if (rand > 1) {
     return "RARE"
   } else if (rand > 0) {
     return "VERY RARE"
@@ -200,19 +204,17 @@ function generateRandomrate(): string {
   }
 }
 
-// random is not working
 function generateRandomLength(rarity: string): string {
-  Math.seedRandom(67890);
-  let l = Math.random();
+  let baseLength = (randomNum(100) * 50) / 100;
   let sausage = 0.0;
   if (rarity == "COMMON") {
-    sausage = l * 50.0 + 150.0;
+    sausage = baseLength + 150;
   } else if (rarity == "UNCOMMON") {
-    sausage = l * 50.0 + 100.0;
+    sausage = baseLength + 100;
   } else if (rarity == "RARE") {
-    sausage = l * 50.0 + 50.0;
+    sausage = baseLength + 50;
   } else if (rarity == "VERY RARE") {
-    sausage = l * 50.0;
+    sausage = baseLength;
   }
   return sausage.toString()
 }
