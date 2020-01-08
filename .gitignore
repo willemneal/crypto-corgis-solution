@@ -3,6 +3,7 @@ node_modules
 */.DS_store
 neardev
 out/
+package-lock.json
 /dist/*
 !/dist/404.html
 !/dist/index.html
